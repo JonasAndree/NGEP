@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>ITTools</title>
+	<title>IT Tools</title>
 	<meta name="description" content="Startup Teching tool" />
 	<meta name="author" content="Jonas Andrée" />
 	<link rel="stylesheet" type="text/css" href="css/main.css"/>
@@ -16,8 +16,10 @@
 		
 		<nav id="course-navbar">
 			<section id="nav-menu-content">
-    			<div id="page-logo" class="nav-item"><h1>IT Tools</h1></div>
+    			<div id="page-logo" class="nav-item" onclick='uppdateNavBarContent(null)'><h1>IT Tools</h1></div>
     			<ul id="subject-list">
+    				
+    				<!-- 
     				<li class="nav-item one-line-nav-item">Programming
     					<div class="icons">
     						<div id="java-icon" class="nav-item-icons"></div>
@@ -29,14 +31,16 @@
     					<div class="icons">
     						<div id="html-icon" class="nav-item-icons"></div>
     						<div id="css-icon" class="nav-item-icons"></div>
+    						<div id="js-icon" class="nav-item-icons"></div>
     					</div>
     				</li>
     				<li class="nav-item two-line-nav-item">Webbserver-<br>programming
     					<div class="icons two-line-icons">
     						<div id="php5-icon" class="nav-item-icons"></div>
+    						<div id="dj-icon" class="nav-item-icons"></div>
     					</div>
     				</li>
-    				<li></li>
+    				 -->
     			</ul>
 			</section>
 		</nav>
