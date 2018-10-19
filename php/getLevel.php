@@ -8,7 +8,7 @@
     }    
     
     // Add parrent
-    $level = $conn->query("SELECT level FROM `pages` WHERE heading='$heading'");
+    $level = $conn->query("SELECT * FROM `pages` WHERE parent='$heading'");
     $level = $level->fetch_assoc();
     $level = $level["level"];
     

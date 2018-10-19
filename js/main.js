@@ -7,11 +7,16 @@ function toggleMenuBar(menuElement) {
 	document.getElementById("course-navbar").classList.toggle("toggle");
 }
 
-var subjectList = document.getElementById("subject-list");
 
-uppdateNavBarContent("null");
+uppdateNavBarContent("null", "level0");
+var activeLevel = 0; 
+function uppdateNavBarContentClick(navBarParrent) {
+	uppdateNavBarContent(navBarParrent, "level0");
+	activeLevel = document.getElementById("test").getAttribute("data-value") + 1;
+}
 
-function uppdateNavBarContent(navBarParrent) {
+function uppdateNavBarContent(navBarParrent, menu) {
+	var subjectList = document.getElementById(menu);
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
@@ -32,14 +37,20 @@ function addSubbMenues() {
 		
 		var content = document.createElement("div");
 		content.classList.add("sub-nav-content");
+		content.setAttribute("id", "sub-nav-content-" + i);
+		var width = window.innerWidth / 10; 
+		if (width < 125)
+			width = 125;
 		
-		content.style.width = window.innerWidth / 10 + "px";
-		content.style.left = (window.innerWidth / 10 + 5) * (i + 1) + "px";
+		content.style.width = width + "px";
+		content.style.left = (width + 5) * (i + 1) + "px";
 
 		container.appendChild(content);
 		document.getElementsByTagName("body")[0].appendChild(container);
 	}
 }
+
+
 function getMinNavLevel() {
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
@@ -52,10 +63,19 @@ function getMinNavLevel() {
 	xmlhttp.open("GET", "php/getMinNavLevel.php", true);
 	xmlhttp.send();
 }
-
-function hoveringNavElement(element) {
-	var heading =  element.innerHTML;
+function hoveringNavElement(element, level) {
+	
+	console.log("level"+ level);
+	console.log("active level" + activeLevel);
+	console.log((level - activeLevel));
+	
+	document.getElementById("sub-nav-conainer-" + (level - activeLevel)).style.display = "block";
+	var heading = element.innerHTML;
 	heading = heading.trim();
+	uppdateNavBarContent(heading, "sub-nav-content-" + (level - activeLevel));
+		
+	/*var levels = document.getElementById("test").getAttribute("data-value");
+	console.log(levels);
 	
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
@@ -65,10 +85,9 @@ function hoveringNavElement(element) {
 	};
 	xmlhttp.open("GET", "php/getLevel.php?heading=" + heading, true);
 	xmlhttp.send();
+	*/
 }
 
-function showSubMenu(var level) {
-	document.getElementById("") {
-		
-	}
+function showSubMenu(level) {
+	
 }

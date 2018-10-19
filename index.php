@@ -16,8 +16,8 @@
 		
 		<nav id="course-navbar">
 			<section id="nav-menu-content">
-    			<div id="page-logo" class="nav-item" onclick='uppdateNavBarContent(null)'><h1>IT Tools</h1></div>
-    			<ul id="subject-list">
+    			<div id="page-logo" class="nav-item" onclick="uppdateNavBarContentClick('null');"><h1>IT Tools</h1></div>
+    			<div id="level0">
     				
     				<!-- 
     				<li class="nav-item one-line-nav-item">Programming
@@ -41,7 +41,7 @@
     					</div>
     				</li>
     				 -->
-    			</ul>
+    			</div>
 			</section>
 		</nav>
 	</header>
