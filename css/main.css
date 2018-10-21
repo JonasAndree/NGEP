@@ -56,9 +56,10 @@ h1 {
 		 	transform: rotate(45deg) translate(-8px, -9px);
 		}
 		
+		
 	nav#course-navbar {
 	}
-		section#nav-menu-content {
+		section#sub-nav-conainer-0-0 {
 			background-color: var(--nav-color);
 			width: 10vw;
 			min-width: 125px;
@@ -67,11 +68,9 @@ h1 {
 			opacity: 1;
 			transition: 0.3s;
 		}
-		.toggle section#nav-menu-content {
-			width: 0px;
-			opacity: 0;
+		.toggle section#sub-nav-conainer-0-0 {
+			display: block;
 		}
-		
 		#page-logo {
 			background-image: url("../images/main/logo.gif");
 			background-repeat: no-repeat;
@@ -130,8 +129,6 @@ h1 {
 			margin-top: 5px;
 		}
 		
-		
-		
 			.icons {
 				margin-top: -25px;
 				display: flex;
@@ -176,13 +173,15 @@ h1 {
 				.two-line-icons {
 					margin-top: 12px;
 				}
-					.sub-nav-conainer {
+		
+					.sub-nav-container {
 						display: none;
 					}
 						.sub-nav-content {
 							position: fixed;
-							widht: 20vw;
 							height: 100vh;
+							width: 10vw;
+							min-width: 125px;
 							background-color: var(--nav-color);
 							top: 0px;
 						}

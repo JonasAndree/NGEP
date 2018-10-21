@@ -8,11 +8,59 @@ function toggleMenuBar(menuElement) {
 }
 
 
+function updateNavBar() {
+	
+}
+
+var elementHoveredId = [null];
+
+
+function hoveringNavElement(element, containerId, contentId, level) {
+	/*console.log(element);
+	console.log(containerId);
+	console.log(contentId);
+	console.log(level);*/
+	
+	if (elementHoveredId.length < level)
+		elementHoveredId.push(null);
+	
+	var newElement = document.getElementById(containerId);
+	
+	if (level < elementHoveredId.length) {
+		for (var i = level + 1; i <= elementHoveredId.length; i++) {
+			elementHoveredId[level].style.display = "none";
+			elementHoveredId[level] = null;
+		}
+	}
+	
+	if (elementHoveredId[level] == null) {
+		newElement.style.display = "block"; 
+		elementHoveredId[level] = newElement;
+	} else if (elementHoveredId[level] != newElement) {
+		elementHoveredId[level].style.display = "none"; 
+		newElement.style.display = "block"; 
+		elementHoveredId[level] = newElement;
+	}
+	console.log(elementHoveredId);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 uppdateNavBarContent("null", "level0");
 var activeLevel = 0; 
 function uppdateNavBarContentClick(navBarParrent) {
 	uppdateNavBarContent(navBarParrent, "level0");
-	activeLevel = document.getElementById("test").getAttribute("data-value") + 1;
+	//activeLevel = parseInt(document.getElementById("test").getAttribute("data-value")) + 1;
 }
 
 function uppdateNavBarContent(navBarParrent, menu) {
@@ -85,9 +133,9 @@ function hoveringNavElement(element, level) {
 	};
 	xmlhttp.open("GET", "php/getLevel.php?heading=" + heading, true);
 	xmlhttp.send();
-	*/
+	*//*
 }
 
 function showSubMenu(level) {
 	
-}
+}*/
