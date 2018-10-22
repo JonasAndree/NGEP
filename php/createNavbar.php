@@ -34,9 +34,10 @@
                         $nextLevel = ($level + 1);
                         $childHeading = $child->heading;
                         $parentId = $child->id;
-                        echo "<li class='nav-item one-line-nav-item' 
-                                onmouseover='hoveringNavElement(this, \"sub-nav-conainer-$nextLevel-$parentId\", \"sub-nav-content-$nextLevel-$parentId \", \"$nextLevel\")' 
-                              >" . $child->heading . 
+                        echo "<li id='nav-item-$parentId' class='nav-item one-line-nav-item' 
+                                onmouseover='navElementMouseOver(this, \"sub-nav-conainer-$nextLevel-$parentId\", \"sub-nav-content-$nextLevel-$parentId \", \"$nextLevel\")' 
+                                level='$level' parent='sub-nav-conainer-$nextLevel-$parentId' 
+                                onclick='navElementClicked(this)'>" . $child->heading . 
                              "</li>";
                         if (count($child->children) > 0)
                             populatePage($child, $nextLevel);

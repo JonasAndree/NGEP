@@ -1,50 +1,31 @@
 var menuButton = document.getElementById("nav-menu-button");
-menuButton.classList.toggle("toggle");
-toggleMenuBar(menuButton);
+//menuButton.classList.toggle("toggle");
+//toggleMenuBar(menuButton);
 
 function toggleMenuBar(menuElement) {
 	menuElement.classList.toggle("toggle");
 	document.getElementById("course-navbar").classList.toggle("toggle");
 }
 
-
-function updateNavBar() {
-	
-}
-
-var elementHoveredId = [null];
-
-
-function hoveringNavElement(element, containerId, contentId, level) {
-	/*console.log(element);
-	console.log(containerId);
-	console.log(contentId);
-	console.log(level);*/
-	
-	if (elementHoveredId.length < level)
-		elementHoveredId.push(null);
-	
+var containerHoveredId = [null];
+var activeMinLevel = 0;
+function navElementMouseOver(element, containerId, contentId, level) {
 	var newElement = document.getElementById(containerId);
 	
-	if (level < elementHoveredId.length) {
-		for (var i = level + 1; i <= elementHoveredId.length; i++) {
-			elementHoveredId[level].style.display = "none";
-			elementHoveredId[level] = null;
-		}
+	if (containerHoveredId[level] != null)
+		containerHoveredId[level].style.display = "none";
+	
+	if (newElement != null) {
+		containerHoveredId[level] = newElement;
+		containerHoveredId[level].style.display = "block";
 	}
 	
-	if (elementHoveredId[level] == null) {
-		newElement.style.display = "block"; 
-		elementHoveredId[level] = newElement;
-	} else if (elementHoveredId[level] != newElement) {
-		elementHoveredId[level].style.display = "none"; 
-		newElement.style.display = "block"; 
-		elementHoveredId[level] = newElement;
-	}
-	console.log(elementHoveredId);
 }
 
-
+function navElementClicked(element) {
+	console.log("Element ID = " + element.getAttribute("level"));
+	console.log("Parent ID = " + element.getAttribute("parent"));
+}
 
 
 
