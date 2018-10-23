@@ -11,7 +11,6 @@
     if ($parent != "null") {
         $grandParent = $conn->query("SELECT * FROM `pages` WHERE heading='$parent'");
         $grandParent = $grandParent->fetch_assoc();
-        //$grandParent = current($grandParent);
         $grandParent = $grandParent["parent"];  
         echo "<li class='nav-item nav-paranet' onclick='uppdateNavBarContentClick(\"$grandParent\")'>
                 $parent

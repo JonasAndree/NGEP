@@ -25,21 +25,41 @@
         global $maxLevel;
         if ($maxLevel < $level)
             $maxLevel = $level;
-        
-            echo "<section id='sub-nav-conainer-$level-$parentId' class='sub-nav-container'>";
+ 
+        echo "<section id='sub-nav-conainer-$level-$parentId' class='sub-nav-container'>";
             echo "<div id='sub-nav-content-$level-$parentId' class='sub-nav-content'  
                    style='left: calc(" . ($level * 10) . "vw  + " . (5 * $level) . "px )'>";
-                echo "<ul>";
+                if ($parentPage->heading == "root") {
+                    echo "<div id='page-logo' class='nav-item'><h1>IT Tools</h1></div>";
+                } /*else {
+                    echo "<li class='nav-item nav-paranet'>
+                                $parentPage->heading
+                            </li>";
+                }*/
+                echo "<ul>";   
                     foreach ($parentPage->children as $child) {
-                        $nextLevel = ($level + 1);
+                        $nextLevel = $level + 1;
                         $childHeading = $child->heading;
                         $parentId = $child->id;
+                        $numberOfChildren = count($child->children);
                         echo "<li id='nav-item-$parentId' class='nav-item one-line-nav-item' 
                                 onmouseover='navElementMouseOver(this, \"sub-nav-conainer-$nextLevel-$parentId\", \"sub-nav-content-$nextLevel-$parentId \", \"$nextLevel\")' 
                                 level='$level' parent='sub-nav-conainer-$nextLevel-$parentId' 
-                                onclick='navElementClicked(this)'>" . $child->heading . 
-                             "</li>";
-                        if (count($child->children) > 0)
+                                nrChildren='$numberOfChildren'
+                                onclick='navElementClicked(this)'>";
+                        if ($numberOfChildren != 0)
+                            echo "<div>";
+                        
+                            echo "<div class='nav-button-name'> $child->heading </div>";
+                        
+                        if ($numberOfChildren != 0) {
+                            echo "<span class='arrow'><span></span></span>";
+                            echo "</div>";
+                        }
+                        echo "</li>";
+                        
+                        
+                        if ($numberOfChildren > 0)
                             populatePage($child, $nextLevel);
                     }
                 echo "</ul>";
@@ -57,7 +77,7 @@
     
     $rootPage = new Page();
     getPages($rootPage, $conn);
-    print_r($rootPage);
+    //print_r($rootPage);
     populatePage($rootPage, 0);
 
 ?>
