@@ -1,25 +1,58 @@
 <?php
-    $maxLevel = 0; 
+    $maxLevel = 0;
+    $rootPage = null;
+    $currentUser;
+    $id = $_REQUEST["id"];
+    $parentId = $_REQUEST["parent"];
+    $conn = new mysqli("localhost", "root", "", "it_tools");
+    
+    
+    if ($conn->connect_error) {
+        die("<div class='failed'>Connection failed: " . $conn->connect_error . "</div><br>");
+    }
+    
     class Page {
+        public $parent = "null";
         public $heading = "root";
         public $id = 0;
         public $children = array();
     }
     
-    function getPages($parent, $conn) {
+    function getPages($parent) {
         $parentId = $parent->id;
-        $children = $conn->query("SELECT * FROM `pages` WHERE parent='$parentId'");
+        $children = $GLOBALS['conn']->query("SELECT * FROM `pages` WHERE parent='$parentId'");
         while ($child = $children->fetch_assoc()) {
             $newPage = new Page();
+            $newPage->parent = $parentId;
             $newPage->heading = $child["heading"];
             $newPage->id = $child["id"];
             array_push($parent->children, $newPage);
-            getPages($newPage, $conn);
+            getPages($newPage);
         }
     }
     
+    function getPage($tempRootPage, $id, $parentId, $tempLevel) {
+        if ($tempRootPage->id == $id && $tempRootPage->parent == $parentId) {
+            return array($tempRootPage, $tempLevel);
+        } else {
+            foreach ($tempRootPage->children as $child) {
+                return getPage($child, $id, $parentId, $tempLevel++);
+            }
+        }
+    }
+    
+    function uppdateView($id, $parentId) {
+        
+        $rootPage = new Page();
+        getPages($rootPage);
+        
+        $parentPage = getPage($rootPage, $id, $parentId, 0);
+        
+        populatePage($parentPage[0], $parentPage[1]);
+    }
+    
     function populatePage($parentPage, $level) {
-        $parentHeading = $parentPage->heading;
+        print_r($parentPage->id);
         $parentId = $parentPage->id;
         
         global $maxLevel;
@@ -28,14 +61,14 @@
  
         echo "<section id='sub-nav-conainer-$level-$parentId' class='sub-nav-container'>";
             echo "<div id='sub-nav-content-$level-$parentId' class='sub-nav-content'  
-                   style='left: calc(" . ($level * 10) . "vw  + " . (5 * $level) . "px )'>";
+                   style='left: calc(" . ($level * 10) . "vw  + " . (10 * $level) . "px )'>";
                 if ($parentPage->heading == "root") {
                     echo "<div id='page-logo' class='nav-item'><h1>IT Tools</h1></div>";
-                } /*else {
+                } else {
                     echo "<li class='nav-item nav-paranet'>
                                 $parentPage->heading
                             </li>";
-                }*/
+                }
                 echo "<ul>";   
                     foreach ($parentPage->children as $child) {
                         $nextLevel = $level + 1;
@@ -44,21 +77,25 @@
                         $numberOfChildren = count($child->children);
                         echo "<li id='nav-item-$parentId' class='nav-item one-line-nav-item' 
                                 onmouseover='navElementMouseOver(this, \"sub-nav-conainer-$nextLevel-$parentId\", \"sub-nav-content-$nextLevel-$parentId \", \"$nextLevel\")' 
-                                level='$level' parent='sub-nav-conainer-$nextLevel-$parentId' 
+                                heading='$child->heading' 
+                                parentId='$child->parent' 
+                                id='$child->id' 
                                 nrChildren='$numberOfChildren'
                                 onclick='navElementClicked(this)'>";
-                        if ($numberOfChildren != 0)
-                            echo "<div>";
                         
-                            echo "<div class='nav-button-name'> $child->heading </div>";
-                        
-                        if ($numberOfChildren != 0) {
+                            if ($numberOfChildren != 0) {
+                                echo "<div>";
+                                echo "<div class='nav-button-parent'> 
+                                $child->heading $child->parent </div>";
+                                
                             echo "<span class='arrow'><span></span></span>";
-                            echo "</div>";
-                        }
+                                echo "</div>";
+                            } else {
+                                echo "<div class='nav-button-parent-not'> 
+                                    $child->heading $child->parent
+                                </div>";
+                            }
                         echo "</li>";
-                        
-                        
                         if ($numberOfChildren > 0)
                             populatePage($child, $nextLevel);
                     }
@@ -68,16 +105,11 @@
     }
     
     /* to optimice we are getting al the pages at once and greate the page */
-    $currentUser;
-    $conn = new mysqli("localhost", "root", "", "it_tools");
     
-    if ($conn->connect_error) {
-        die("<div class='failed'>Connection failed: " . $conn->connect_error . "</div><br>");
-    }
     
-    $rootPage = new Page();
-    getPages($rootPage, $conn);
+    uppdateView((int) $id, (int) $parentId);
+    
+    
     //print_r($rootPage);
-    populatePage($rootPage, 0);
-
+    //populatePage($rootPage, 0);
 ?>

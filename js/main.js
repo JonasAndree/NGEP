@@ -44,18 +44,30 @@ function navElementClicked(element) {
 	//console.log("Parent ID = " + element.getAttribute("parent"));
 	//console.log("Number of children = " + element.getAttribute("nrChildren"));
 	
-	console.log(document.getElementById(element.getAttribute("parent"))) ;
+	//console.log(document.getElementById(element.getAttribute("parent"))) ;
 	
-	console.log(lastLevel);
+	//console.log(lastLevel);
+	console.log(element.getAttribute('heading'));
+	console.log(element.getAttribute('parentId'));
 	
+	updateNavBar(element.getAttribute('id') , element.getAttribute('parentId'));
 	
 	
 }
 
+function updateNavBar(id, parent) {
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			document.getElementById("course-navbar").innerHTML = this.responseText;
+		}
+	};
+	xmlhttp.open("GET", "php/createNavBar.php?id=" + id + "&parent=" + parent, true);
+	xmlhttp.send();
+}
 
 
-
-
+updateNavBar("0", "null");
 
 
 
@@ -64,12 +76,12 @@ function navElementClicked(element) {
 /*
 uppdateNavBarContent("null", "level0");
 var activeLevel = 0; 
-function uppdateNavBarContentClick(navBarParrent) {
-	uppdateNavBarContent(navBarParrent, "level0");
+function uppdateNavBarContentClick(navBarparent) {
+	uppdateNavBarContent(navBarparent, "level0");
 	//activeLevel = parseInt(document.getElementById("test").getAttribute("data-value")) + 1;
 }
 
-function uppdateNavBarContent(navBarParrent, menu) {
+function uppdateNavBarContent(navBarparent, menu) {
 	var subjectList = document.getElementById(menu);
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
@@ -77,7 +89,7 @@ function uppdateNavBarContent(navBarParrent, menu) {
 			subjectList.innerHTML = this.responseText;
 		}
 	};
-	xmlhttp.open("GET", "php/getPages.php?parrent=" + navBarParrent, true);
+	xmlhttp.open("GET", "php/getPages.php?parent=" + navBarparent, true);
 	xmlhttp.send();
 }
 

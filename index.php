@@ -16,7 +16,6 @@
 		
 		<nav id="course-navbar">
 		
-			<?php include "php/createNavbar.php" ?>
 			<!--<section id="nav-menu-content">
     			 <div id="page-logo" class="nav-item" onclick="uppdateNavBarContentClick('null');"><h1>IT Tools</h1></div>
     			<div id="level0">
