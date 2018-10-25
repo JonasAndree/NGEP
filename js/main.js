@@ -5,6 +5,9 @@ var menuButton = document.getElementById("nav-menu-button");
 function toggleMenuBar(menuElement) {
 	menuElement.classList.toggle("toggle");
 	document.getElementById("course-navbar").classList.toggle("toggle");
+	
+	console.log("updateNavBar");
+	//updateNavBar("0", "null", "root");
 }
 
 var containerHoveredId = [null];
@@ -63,13 +66,23 @@ function updateNavBar(id, parent, heading) {
 			document.getElementById("course-navbar").innerHTML = this.responseText;
 		}
 	};
-	xmlhttp.open("GET", "php/createNavBar.php?id=" + id + "&parent=" + parent + "&heading=" + heading, true);
+	xmlhttp.open("GET", "php/updateNavBar.php?id=" + id + "&parent=" + parent + "&heading=" + heading, true);
 	xmlhttp.send();
 }
 
 
-updateNavBar("0", "null", "root");
+function createNavbar() {
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			updateNavBar("0", "null", "root");
+		}
+	};
+	xmlhttp.open("GET", "php/createNavBar.php", true);
+	xmlhttp.send();
+}
 
+createNavbar();
 
 
 

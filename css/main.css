@@ -81,7 +81,7 @@ h1 {
 			filter: brightness(130%);
 		}
 		
-		section#sub-nav-conainer-0-0 {
+		section#sub-nav-container-main {
 			background-color: var(--nav-color);
 			width: 10vw;
 			/*min-width: 125px;*/
@@ -90,7 +90,7 @@ h1 {
 			opacity: 1;
 			transition: 0.3s;
 		}
-		.toggle section#sub-nav-conainer-0-0 {
+		.toggle section#sub-nav-container-main {
 			display: block;
 		}
 		
