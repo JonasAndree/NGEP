@@ -39,7 +39,6 @@ function navElementMouseOver(element, containerId, contentId, level) {
 }
 
 function navElementClicked(element) {
-	lastLevel = element.getAttribute("level");
 	//console.log("Element ID = " + element.getAttribute("level"));
 	//console.log("Parent ID = " + element.getAttribute("parent"));
 	//console.log("Number of children = " + element.getAttribute("nrChildren"));
@@ -47,27 +46,29 @@ function navElementClicked(element) {
 	//console.log(document.getElementById(element.getAttribute("parent"))) ;
 	
 	//console.log(lastLevel);
+	lastLevel = element.getAttribute("level");
 	console.log(element.getAttribute('heading'));
 	console.log(element.getAttribute('parentId'));
+	console.log(element.getAttribute('childId'));
 	
-	updateNavBar(element.getAttribute('id') , element.getAttribute('parentId'));
+	updateNavBar(element.getAttribute('childId') , element.getAttribute('parentId'), element.getAttribute('heading'));
 	
 	
 }
 
-function updateNavBar(id, parent) {
+function updateNavBar(id, parent, heading) {
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			document.getElementById("course-navbar").innerHTML = this.responseText;
 		}
 	};
-	xmlhttp.open("GET", "php/createNavBar.php?id=" + id + "&parent=" + parent, true);
+	xmlhttp.open("GET", "php/createNavBar.php?id=" + id + "&parent=" + parent + "&heading=" + heading, true);
 	xmlhttp.send();
 }
 
 
-updateNavBar("0", "null");
+updateNavBar("0", "null", "root");
 
 
 

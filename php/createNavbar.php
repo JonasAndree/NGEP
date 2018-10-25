@@ -2,10 +2,16 @@
     $maxLevel = 0;
     $rootPage = null;
     $currentUser;
-    $id = $_REQUEST["id"];
-    $parentId = $_REQUEST["parent"];
+    $newId = $_REQUEST["id"];
+    $newParentId = $_REQUEST["parent"];
+    $newHeading = $_REQUEST["heading"];
+    
+    print_r("_____" . $newId . " , " . $newParentId . "  , " . $newHeading . "  :::: ");
+    
     $conn = new mysqli("localhost", "root", "", "it_tools");
     
+    
+    uppdateView((int) $newId, (int) $newParentId);
     
     if ($conn->connect_error) {
         die("<div class='failed'>Connection failed: " . $conn->connect_error . "</div><br>");
@@ -36,18 +42,17 @@
             return array($tempRootPage, $tempLevel);
         } else {
             foreach ($tempRootPage->children as $child) {
+                print_r($child);
                 return getPage($child, $id, $parentId, $tempLevel++);
             }
         }
     }
     
     function uppdateView($id, $parentId) {
-        
         $rootPage = new Page();
         getPages($rootPage);
-        
+        print_r("id: " . $id . ", parentId: " . $parentId . ": : : : : : : : :");
         $parentPage = getPage($rootPage, $id, $parentId, 0);
-        
         populatePage($parentPage[0], $parentPage[1]);
     }
     
@@ -79,15 +84,13 @@
                                 onmouseover='navElementMouseOver(this, \"sub-nav-conainer-$nextLevel-$parentId\", \"sub-nav-content-$nextLevel-$parentId \", \"$nextLevel\")' 
                                 heading='$child->heading' 
                                 parentId='$child->parent' 
-                                id='$child->id' 
+                                childId='$child->id' 
                                 nrChildren='$numberOfChildren'
                                 onclick='navElementClicked(this)'>";
-                        
                             if ($numberOfChildren != 0) {
                                 echo "<div>";
                                 echo "<div class='nav-button-parent'> 
-                                $child->heading $child->parent </div>";
-                                
+                                $child->heading $child->parent</div>";
                             echo "<span class='arrow'><span></span></span>";
                                 echo "</div>";
                             } else {
@@ -106,8 +109,6 @@
     
     /* to optimice we are getting al the pages at once and greate the page */
     
-    
-    uppdateView((int) $id, (int) $parentId);
     
     
     //print_r($rootPage);

@@ -72,20 +72,19 @@ h1 {
 			filter: grayscale(0%);
 			margin-bottom: 10px;
 			color: var(--bage-logo-color);
+			transform: scale(1.1, 1.1);
 		}
 		#page-logo:hover {
 			filter: brightness(110%);
-			transform: scale(1.0, 1.0);
 		}
 		#page-logo:active {
 			filter: brightness(130%);
-			transform: scale(1.0, 1.0);
 		}
 		
 		section#sub-nav-conainer-0-0 {
 			background-color: var(--nav-color);
 			width: 10vw;
-			min-width: 125px;
+			/*min-width: 125px;*/
 			height: 100vh;
 			padding: 5px;
 			opacity: 1;
