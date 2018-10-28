@@ -3,9 +3,9 @@ session_start();
 $_SESSION['count'] = 0;
 $currentUser;
 
-$conn = new mysqli("localhost", "root", "", "it_tools");
-if ($conn->connect_error) {
-    die("<div class='failed'>Connection failed: " . $conn->connect_error . "</div><br>");
+$_SESSION['conn'] = new mysqli("localhost", "root", "", "it_tools");
+if ($_SESSION['conn'] ->connect_error) {
+    die("<div class='failed'>Connection failed: " . $_SESSION['conn']->connect_error . "</div><br>");
 }
 
 class Page {
@@ -17,7 +17,7 @@ class Page {
 
 function getPages($parent) {
     $parentId = $parent->id;
-    $children = $GLOBALS['conn']->query("SELECT * FROM `pages` WHERE parent='$parentId'");
+    $children = $_SESSION['conn']->query("SELECT * FROM `pages` WHERE parent='$parentId'");
     while ($child = $children->fetch_assoc()) {
         $newPage = new Page();
         $newPage->parent = $parentId;
@@ -30,7 +30,6 @@ function getPages($parent) {
 
 $rootPage = new Page();
 getPages($rootPage);
-
 $_SESSION['rootPage'] = $rootPage;
 
 ?>

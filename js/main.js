@@ -2,12 +2,14 @@ var menuButton = document.getElementById("nav-menu-button");
 //menuButton.classList.toggle("toggle");
 //toggleMenuBar(menuButton);
 
-function toggleMenuBar(menuElement) {
+function toggleMenuBar(menuElement, feild) {
 	menuElement.classList.toggle("toggle");
-	document.getElementById("course-navbar").classList.toggle("toggle");
-	
-	console.log("updateNavBar");
-	//updateNavBar("0", "null", "root");
+	if (feild == "nav") {
+		document.getElementById("course-navbar").classList.toggle("toggle");
+	} 
+	if (feild == "user") {
+		document.getElementById("user-cont").classList.toggle("toggle");
+	}
 }
 
 var containerHoveredId = [null];
@@ -17,7 +19,6 @@ var lastLevel = 0;
 
 function navElementMouseOver(element, containerId, contentId, level) {
 	var newElement = document.getElementById(containerId);
-	
 	if (containerHoveredId[level] != null) {
 		containerHoveredId[level].style.display = "none";
 	}
@@ -41,23 +42,6 @@ function navElementMouseOver(element, containerId, contentId, level) {
 	}
 }
 
-function navElementClicked(element) {
-	//console.log("Element ID = " + element.getAttribute("level"));
-	//console.log("Parent ID = " + element.getAttribute("parent"));
-	//console.log("Number of children = " + element.getAttribute("nrChildren"));
-	
-	//console.log(document.getElementById(element.getAttribute("parent"))) ;
-	
-	//console.log(lastLevel);
-	lastLevel = element.getAttribute("level");
-	console.log(element.getAttribute('heading'));
-	console.log(element.getAttribute('parentId'));
-	console.log(element.getAttribute('childId'));
-	
-	updateNavBar(element.getAttribute('childId') , element.getAttribute('parentId'), element.getAttribute('heading'));
-	
-	
-}
 
 function updateNavBar(id, parent, heading) {
 	var xmlhttp = new XMLHttpRequest();
