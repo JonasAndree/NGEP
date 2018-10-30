@@ -3,16 +3,20 @@ session_start();
 
 $_SESSION['count'] += 1;
 
-class Page {
+class Page
+{
+
     public $parent = "null";
+
     public $heading = "root";
+
     public $id = 0;
+
     public $children = array();
-    
-    public function __toString() {
-        return "My parent is: {$this->parent}<br> ".
-            "My heading is: {$this->heading}<br>".
-            "My id is: {$this->id}<br><br> ";
+
+    public function __toString()
+    {
+        return "My parent is: {$this->parent}<br> " . "My heading is: {$this->heading}<br>" . "My id is: {$this->id}<br><br> ";
     }
 }
 
@@ -22,39 +26,35 @@ $newId = (int) $_REQUEST["id"];
 $newParentId = (int) $_REQUEST["parent"];
 $newHeading = $_REQUEST["heading"];
 
-/*
-print_r("<p style='color: red;'> newId " . $newId . "</p>");
-print_r("<p style='color: green;'> newParentId " . $newParentId . "</p>");
-print_r("<p style='color: blue;'> newHeading " . $newHeading . "</p>");
-*/
-
-
 uppdateView();
 
 $foundRootPage;
 $foundLevel;
 $itr = 0;
-function uppdateView() {
+
+function uppdateView()
+{
     $GLOBALS['itr'] = 0;
     getPage($GLOBALS['rootPage'], 0, $GLOBALS['newId'], $GLOBALS['newParentId'], $GLOBALS['newHeading']);
     populatePage($GLOBALS['foundRootPage'], $GLOBALS['foundLevel']);
 }
+
 function getPage($tempRootPage, $tempLevel, $id, $parentId, $parentHeading)
 {
-    $GLOBALS['itr']++;
-        
+    $GLOBALS['itr'] ++;
+    
     if ($tempRootPage->id == $id) {
         $GLOBALS['foundRootPage'] = $tempRootPage;
         $GLOBALS['foundLevel'] = $tempLevel;
         return true;
     } else {
-        if ($tempRootPage->children != null){
+        if ($tempRootPage->children != null) {
             foreach ($tempRootPage->children as $child) {
-                if (getPage($child, ($tempLevel + 1) , $id, $parentId, $parentHeading)) {
+                if (getPage($child, ($tempLevel + 1), $id, $parentId, $parentHeading)) {
                     return true;
                 }
-            } 
-        } else { 
+            }
+        } else {
             return false;
         }
     }
@@ -70,16 +70,16 @@ function populatePage($parentPage, $level)
         echo "<section id='sub-nav-container-$level-$parentId' class='sub-nav-container '>";
     }
     
-/*    echo "<div id='sub-nav-content-$level-$parentId' class='sub-nav-content'
-                   style='left: calc(" . (($level-$GLOBALS['foundLevel']) * 10) . "vw  + " . (10 * ($level-$GLOBALS['foundLevel'])) . "px )'>";
-*/
+    /*
+     * echo "<div id='sub-nav-content-$level-$parentId' class='sub-nav-content'
+     * style='left: calc(" . (($level-$GLOBALS['foundLevel']) * 10) . "vw + " . (10 * ($level-$GLOBALS['foundLevel'])) . "px )'>";
+     */
     echo "<div id='sub-nav-content-$level-$parentId' class='sub-nav-content'
-                   style='left: calc(" . (($level-$GLOBALS['foundLevel']) * 10) . "vw  + " . (10 * ($level-$GLOBALS['foundLevel'])) . "px )'>";
-    
+                   style='left: calc(" . (($level - $GLOBALS['foundLevel']) * 10) . "vw  + " . (10 * ($level - $GLOBALS['foundLevel'])) . "px )'>";
     
     if ($level == $GLOBALS['foundLevel']) {
         echo "<div id='page-logo' class='nav-item' onclick='updateNavBar(\"0\", \"null\", \"root\")'><h1>IT Tools</h1></div>";
-    } 
+    }
     
     if ($parentPage->heading != "root") {
         findParent($GLOBALS['rootPage'], $parentPage->parent);
@@ -89,11 +89,11 @@ function populatePage($parentPage, $level)
         
         if ($level == $GLOBALS['foundLevel']) {
             echo "<div class='nav-item nav-paranet nav-back' 
-                       onclick='updateNavBar(\" $parrentHeadingId \", \" $parrentHeadingHeading \", \" $parrentHeadingParentId \");'> "; 
-                echo "<div class='animate-arrow'>";
-                    echo "<span class='arrow back'><span></span></span>";         
-                    echo " $parentPage->heading ";
-                echo "</div>";
+                       onclick='updateNavBar(\" $parrentHeadingId \", \" $parrentHeadingHeading \", \" $parrentHeadingParentId \");'> ";
+            echo "<div class='animate-arrow'>";
+            echo "<span class='arrow back'><span></span></span>";
+            echo " $parentPage->heading ";
+            echo "</div>";
             echo "</div>";
         } else {
             echo "<div class='nav-item nav-paranet'
@@ -101,10 +101,7 @@ function populatePage($parentPage, $level)
             echo " $parentPage->heading ";
             echo "</div>";
         }
-        
     }
-    
-    
     
     echo "<ul>";
     foreach ($parentPage->children as $child) {
@@ -138,16 +135,17 @@ function populatePage($parentPage, $level)
 
 $parrentHeadingId;
 $parrentHeadingHeading;
-$parrentHeadingParentId; 
+$parrentHeadingParentId;
 
-function findParent($tempRootPage, $id) {
+function findParent($tempRootPage, $id)
+{
     if ($tempRootPage->id == $id) {
         $GLOBALS['parrentHeadingId'] = $id;
         $GLOBALS['parrentHeadingHeading'] = $tempRootPage->heading;
         $GLOBALS['parrentHeadingParentId'] = $tempRootPage->id;
         return true;
     } else {
-        if ($tempRootPage->children != null){
+        if ($tempRootPage->children != null) {
             foreach ($tempRootPage->children as $child) {
                 if (findParent($child, $id)) {
                     return true;

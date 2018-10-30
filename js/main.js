@@ -68,7 +68,10 @@ function createNavbar() {
 
 createNavbar();
 
-
+function showRegister() {
+	document.getElementById("").style.display = "none";
+	document.getElementById("").style.display = "block";
+}
 
 
 /*

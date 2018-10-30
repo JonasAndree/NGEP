@@ -17,22 +17,21 @@
 		<nav id="course-navbar">
 		
 		</nav>
-		
-		<div id="loggin-container">
-			<div id="loggin">
-				<div id="loggin-button" class="loggin-button" onclick="toggleMenuBar(this, 'user')">
-				  	<div class="loggin-bar-1"></div>
-				  	<div class="loggin-bar-3"></div>
-				</div>
+		<div id="loggin">
+			<div id="loggin-button" class="loggin-button" onclick="toggleMenuBar(this, 'user')">
+			  	<div class="loggin-bar-1"></div>
+			  	<div class="loggin-bar-3"></div>
 			</div>
 		</div>
 		<div id="user-cont">
-    		<div id="user-container">
-        		<div id="user-content">
-        			
-        		</div>
-    		</div>
-    	</div>
+	   		<div id="user-container">
+	       		<div id="user-content">
+					<div id="loggin-container">
+						<?php include "php/login.php"; ?>
+		  			</div>
+	       		</div>
+	   		</div>
+	   	</div>
 	</header>
 	
 	<header> </header>
