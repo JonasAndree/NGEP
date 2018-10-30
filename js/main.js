@@ -69,8 +69,12 @@ function createNavbar() {
 createNavbar();
 
 function showRegister() {
-	document.getElementById("").style.display = "none";
-	document.getElementById("").style.display = "block";
+	document.getElementById("loggin-container").style.display = "none";
+	document.getElementById("register-container").style.display = "block";
+}
+function showLogin() {
+	document.getElementById("loggin-container").style.display = "block";
+	document.getElementById("register-container").style.display = "none";
 }
 
 

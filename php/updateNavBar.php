@@ -115,9 +115,9 @@ function populatePage($parentPage, $level)
                                 onclick='updateNavBar(\"$child->id\", \"$child->parent\", \"$child->heading\")'>";
         if ($numberOfChildren != 0) {
             echo "<div class='animate-arrow'>";
-            echo "<div class='nav-button-parent'>
-                 $child->heading</div>";
-            echo "<span class='arrow'><span></span></span>";
+                echo "<div class='nav-button-parent'>
+                     $child->heading</div>";
+                echo "<span class='arrow'><span></span></span>";
             echo "</div>";
         } else {
             echo "<div class='nav-button-parent-not'>

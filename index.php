@@ -28,7 +28,27 @@
 	       		<div id="user-content">
 					<div id="loggin-container">
 						<?php include "php/login.php"; ?>
+						<div id="show-regiser" class="nav-item" onclick="showRegister()">
+							<div class='animate-arrow'>
+    							Register
+                                <span class='arrow'><span></span></span>
+                            </div>
+						</div>
 		  			</div>
+            		<div id="register-container">
+						<?php include "php/register.php"; ?>		
+            			<div id=show-login" class="nav-item" onclick="showLogin()">
+                    			Login
+                    			<div class='animate-arrow '>
+                    			<span class='arrow back'><span></span></span>
+                			</div>
+            			</div>
+            		</div>
+            	
+            		<div id="log-out">
+            			Mail:<b id="logedin-mail"></b>
+            			<button onclick="logout()">Log out</button>
+        			</div>
 	       		</div>
 	   		</div>
 	   	</div>
