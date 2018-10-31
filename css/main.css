@@ -1,3 +1,7 @@
+::selection {
+    color: var(--nav-color); 
+    background: var(--active-text-color);
+}
 body {
 	--bg-color: rgb(41, 41, 41);
 	--text-color: rgb(220, 220, 220);
@@ -8,14 +12,11 @@ body {
 	--bage-logo-color: rgb(255, 128, 64);
 	--button-background: #000;
 	
+	font-size: 10pt;
 	margin: 0px;
 	padding: 0px;
 	background-color: var(--bg-color);
 	color: var(--text-color);
-}
-::selection {
-    color: var(--nav-color); 
-    background: var(--active-text-color);
 }
 ul {
     list-style-type: none;
@@ -86,9 +87,6 @@ h1 {
 		
 		section#sub-nav-container-main {
 			background-color: var(--nav-color);
-			width: 10vw;
-			/*min-width: 125px;*/
-			height: 100vh;
 			padding: 0px 5px 0px 5px;
 			opacity: 1;
 		}
@@ -117,7 +115,7 @@ h1 {
 			vertical-align: middle;
 			margin-top: 10px;
 			filter: grayscale(30%);
-			padding: 15px 0px 15px 0px;
+			padding: 10px 0px 10px 0px;
 		}
 		.nav-item:hover {
 			filter: brightness(110%);
@@ -213,6 +211,7 @@ h1 {
 		}
 		
 		.nav-item span span{
+			transform: scale(0.80, 0.80);
 			background-image: url(http://thomaspodgro.com/source/arrow.png);
 			display: block;
 			width: 8px;
@@ -226,6 +225,7 @@ h1 {
 		}
 		
 		.nav-item .arrow:before {
+			transform: scale(0.80, 0.80);
 			content:"";
 			background-image: url(http://thomaspodgro.com/source/arrow.png);
 			display: block;
@@ -240,6 +240,7 @@ h1 {
 		}
 		
 		.nav-item .arrow:after {
+			transform: scale(0.80, 0.80);
 			content:"";
 			background-image: url(http://thomaspodgro.com/source/arrow.png);
 			display: block;
@@ -258,31 +259,48 @@ h1 {
 			left: 0px;
 		}
 		
-		.nav-item div:hover .arrow:before {
+		.nav-item:hover .arrow:before {
 			opacity: 0.5;
-		  	animation: animate-arrow-2 0.8s ease-in-out infinite 0.1s;
+		  	animation: animate-arrow-2 0.8s ease-in-out infinite 0.1s ;
 		}
 		
-		.nav-item div:hover .arrow:after {
+		.nav-item:hover .arrow:after {
 		  	opacity: 0.3;
 		  	animation: animate-arrow-3 0.8s ease-in-out infinite 0.2s;
 		}
 		
-		.nav-item div:hover .arrow span {
+		.nav-item:hover .arrow span {
 		  	animation: animate-arrow-1 0.8s ease-in-out infinite;
 		}
 
 @keyframes animate-arrow-1 {
-  0%{transform:translateX(-15px); opacity: 0;}
-  70%,100%{transform:translateX(0px); opacity: 1;}
+  0% { 
+  	transform:translateX(-15px) scale(0.80, 0.80); 
+  	opacity: 0;
+  }
+  70%,100% {
+  	transform:translateX(0px) scale(0.80, 0.80); 
+  	opacity: 1;
+  }
 }
 @keyframes animate-arrow-2 {
-  0%{transform:translateX(-10px); opacity: 0;}
-  70%,100%{transform:translateX(0px); opacity: 0.5;}
+  0% {
+	  transform:translateX(-10px) scale(0.80, 0.80); 
+	  opacity: 0;}
+  70%,100% {
+  	transform:translateX(0px) scale(0.80, 0.80); 
+  	opacity: 0.5;
+  }
 }
 @keyframes animate-arrow-3 {
-  0%{transform:translateX(-5px); opacity: 0;}
-  70%,100%{transform:translateX(0px); opacity: 0.3;}
+  0% { 
+  	transform:translateX(-5px) scale(0.80, 0.80); 
+  	opacity: 0; 
+  }
+  70%,100% {
+	  transform:translateX(0px) scale(0.80, 0.80); 
+	  opacity: 0.3;
+  }
 }
 
 
@@ -379,19 +397,20 @@ h1 {
 			display: none;
 		}
 		#loggin-container {
-			margin-top: 20px;
 			padding: 5px;
 		}
-		
+		#register-container {
+		}
+		.reg-log-form {
+		}
 		#form-container {
-			
 		}
 			form { 
 				width: 10vw;
 			}
 				.form-input {
-					width: calc(10vw - 10px);
 					color: var(--text-color);
+					width: calc(10vw - 4px);
 					margin-bottom: 10px;
 					border-color: var(--active-text-color);
 				}
@@ -400,10 +419,13 @@ h1 {
 					border: none;
 					color: var(--text-color);
 					background-color: var(--active-text-color);
-					
+					filter: grayscale(40%);
 				}
-				#submit {
-					filter: grayscale(30%);
+				.submit-form:hover {
+					filter: grayscale(0%);
+				}
+				.reg-log-form {
+					margin-top: 50px;
 				}
 			#log-out {
 				display: none;
