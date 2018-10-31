@@ -65,7 +65,8 @@ h1 {
 		}
 		
 		
-	nav#course-navbar { }
+	nav#course-navbar { 
+	}
 		#page-logo {
 			background-image: url("../images/main/logo.gif");
 			background-repeat: no-repeat;
@@ -100,7 +101,7 @@ h1 {
 			.sub-nav-content {
 				position: fixed;
 				height: 100vh;
-				padding: 10px;
+				padding: 5px;
 				width: 10vw;
 				background-color: var(--nav-color);
 				top: 0px;
