@@ -75,7 +75,7 @@ function populatePage($parentPage, $level)
      * style='left: calc(" . (($level-$GLOBALS['foundLevel']) * 10) . "vw + " . (10 * ($level-$GLOBALS['foundLevel'])) . "px )'>";
      */
     echo "<div id='sub-nav-content-$level-$parentId' class='sub-nav-content'
-                   style='left: calc(" . (($level - $GLOBALS['foundLevel']) * 10) . "vw  + " . (10 * ($level - $GLOBALS['foundLevel'])) . "px )'>";
+                   style='left: calc(" . (($level - $GLOBALS['foundLevel']) * 10) . "vw  + " . (20 * ($level - $GLOBALS['foundLevel'])) . "px )'>";
     
     if ($level == $GLOBALS['foundLevel']) {
         echo "<div id='page-logo' class='nav-item' onclick='updateNavBar(\"0\", \"null\", \"root\")'><h1>IT Tools</h1></div>";

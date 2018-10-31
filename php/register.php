@@ -1,5 +1,6 @@
 
 <form class="reg-log-form" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
+	<div class='nav-item nav-paranet'>Register</div><br>
 	Firstname: 
 	<input class="form-input nav-item" type="text" name="firstname" required>
 	<br> 

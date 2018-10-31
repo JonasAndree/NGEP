@@ -1,6 +1,7 @@
 
 <form class="reg-log-form" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>"
 	method="post">
+	<div class='nav-item nav-paranet'>Login</div><br>
 	Mail: <br>
 	<input class="form-input nav-item" type="email" name="mail" placeholder="Your email" required>
 	<br> 
@@ -16,8 +17,7 @@ $mail = $password = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $alEnterd = true;
-    
-    if (! empty($_POST["mail"])) {
+    if (!empty($_POST["mail"])) {
         $mail = test_input($_POST["mail"]);
     } else {
         $alEnterd = false;
@@ -31,20 +31,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
     if ($alEnterd == true) {
-        
         $sql = "SELECT * FROM `users` WHERE mail='$mail' AND password='$password'";
         $users = $_SESSION['conn']->query($sql);
         
         $user_array = $users->fetch_assoc();
-        if (! empty($user_array)) {
-            echo "<br>The username and password is ok!<br>";
-            echo "<script>document.getElementById('logedin-mail').innerHTML = ' " . $user_array["mail"] . "'</script>";
-            echo "<script>document.getElementById('form-container').style.display = 'none';</script>";
-            echo "<script>document.getElementById('log-out').style.display = 'inline-block';</script>";
+        if (!empty($user_array)) {
+            print_r("<script>sessionStorage.setItem('loggedIn', 'true');</script>");
+            //echo "<script>document.getElementById('loggin-container').style.display = 'none'</script>";
+            //echo "<script>document.getElementById('user-info').style.display = 'block';</script>";
+            //echo "<br>The username and password is ok!<br>";
+            //echo "<script>document.getElementById('logedin-mail').innerHTML = ' " . $user_array["mail"] . "'</script>";
+            //echo "<script>document.getElementById('form-container').style.display = 'none';</script>";
+            //echo "<script>document.getElementById('log-out').style.display = 'inline-block';</script>";
         } else {
             echo "<br>Incorrect password or mail.";
         }
-        $conn->close();
     }
 }
 

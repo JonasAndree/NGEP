@@ -100,7 +100,7 @@ h1 {
 			.sub-nav-content {
 				position: fixed;
 				height: 100vh;
-				padding: 5px;
+				padding: 10px;
 				width: 10vw;
 				background-color: var(--nav-color);
 				top: 0px;
@@ -195,6 +195,7 @@ h1 {
 			background-color: #101010;
 			color: var(--active-text-color);
     		word-wrap: break-word;
+    		transform:scale(1.10, 1.10); 
 		}
 		.nav-back {
 			width: calc(100% - 40px);
@@ -399,12 +400,8 @@ h1 {
 		#loggin-container {
 			padding: 5px;
 		}
-		#register-container {
-		}
-		.reg-log-form {
-		}
-		#form-container {
-		}
+		#register-container { }
+		#form-container { }
 			form { 
 				width: 10vw;
 			}
@@ -427,7 +424,10 @@ h1 {
 				.reg-log-form {
 					margin-top: 50px;
 				}
-			#log-out {
+				#user-in {
+					margin-top: 50px;
+				}
+			#user-info {
 				display: none;
 			}
 	input, .nav-item {
@@ -438,3 +438,16 @@ h1 {
 		box-shadow: 0 0 5px var(--active-text-color);
 		border: 1px solid var(--active-text-color);
 	}
+	
+	
+	
+	/* Change the white to any color ;) */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px black inset;
+}
+
+/*Change text in autofill textbox*/
+input:-webkit-autofill {
+    -webkit-text-fill-color: var(--active-text-color) !important;
+}
+	

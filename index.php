@@ -44,11 +44,15 @@
                 			</div>
             			</div>
             		</div>
-            	
-            		<div id="log-out">
-            			Mail:<b id="logedin-mail"></b>
-            			<button onclick="logout()">Log out</button>
-        			</div>
+            		<div id="user-info">
+            			<div id="user-in" >
+                			<div class='nav-item nav-paranet'>Logged in</div><br>
+                    		<div id="log-out">
+                    			Mail:<b id="logedin-mail"></b>
+                    			<div class="nav-item" onclick="logout()">Log out</div>
+                			</div>
+                		</div>
+            		</div>
 	       		</div>
 	   		</div>
 	   	</div>
