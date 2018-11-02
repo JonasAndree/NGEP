@@ -1,0 +1,70 @@
+
+#user-cont {}
+	#user-container {
+		display: none;
+	}
+	.toggle #user-container {
+		display: block;
+	}
+		#user-content {
+			position: fixed;
+			background-color: var(--nav-color);
+			width: 150px;
+			height: 100vh;
+			right: 0px;
+			top: 0px;
+			padding: 0px 5px 0px 5px;
+    		/*overflow-x: visible;*/
+		}
+		#user-wrapper {
+			/*overflow-y: auto;*/
+		}
+		#register-container {
+			display: none;
+		}
+		#loggin-container {
+			padding: 5px;
+		}
+		#form-container { }
+			form { 
+				width: 150px;
+			}
+				.form-input {
+					color: var(--text-color);
+					width: calc(150px - 4px);
+					padding: 5px 0px 5px 0px;
+					margin-bottom: 10px;
+					border-color: var(--active-text-color);
+				}
+				.submit-form {
+					border-color: var(--active-text-color);
+					border: none;
+					color: var(--text-color);
+					background-color: var(--active-text-color);
+					filter: grayscale(40%);
+				}
+				.clear-form {
+					border: none;
+					color: var(--text-color);
+					filter: grayscale(40%);
+				}
+				.submit-form:hover {
+					filter: grayscale(0%);
+				}
+				.reg-log-form {
+					margin-top: 50px;
+				}
+				#user-in {
+					margin-top: 50px;
+				}
+			#user-info {
+				display: none;
+			}
+	input, .nav-item {
+	  	transition: 0.3s ease-in-out;
+	 	outline: none;
+	}		
+	input:focus, .nav-item:focus {
+		box-shadow: 0 0 5px var(--active-text-color);
+		border: 1px solid var(--active-text-color);
+	}

@@ -1,0 +1,261 @@
+/*********************************************************
+
+						  NAV
+						  
+ **********************************************************/
+
+nav#course-navbar { }
+	#page-logo {
+		background-image: url("../images/main/logo.gif");
+		background-repeat: no-repeat;
+		background-size: 60vh;
+		height: 12vh;
+		line-height: 12vh;
+		margin-top: 0px;
+		filter: grayscale(0%);
+		margin-bottom: 10px;
+		color: var(--bage-logo-color);
+		transform: scale(1.1, 1.1);
+	}
+	#page-logo:hover {
+		filter: brightness(110%);
+	}
+	#page-logo:active {
+		filter: brightness(130%);
+	}
+	
+	section#sub-nav-container-main {
+		position: fixed;
+		background-color: var(--nav-color);
+		padding: 0px 5px 0px 5px;
+		opacity: 1;
+		top: 0px;
+		left: 0px;
+		width: 150px;
+		height: 100vh;
+		margin-top: -0px;
+	}
+	.toggle section#sub-nav-container-main {
+		display: block;
+	}
+	
+	.sub-nav-container {
+		display: none;
+	}
+		.sub-nav-content {
+			position: absolute;
+			/*height: 100vh;*/
+			padding: 5px 5px 5px 5px;
+			width: 150px;
+			background-color: var(--nav-color);
+			/*top: 0px;*/
+			/*left: 160px;*/
+			margin-top: -50px;
+			margin-left: 160px;
+		}
+	
+	
+	.nav-item {
+		cursor: pointer;
+		background-color: var(--nav-item-color);
+		width: 100%;
+		text-align: center;
+		vertical-align: middle;
+		margin: 5px 0px 5px 0px;
+		filter: grayscale(30%);
+		padding: 10px 0px 10px 0px;
+	}
+	.nav-item:hover {
+		filter: brightness(110%);
+		transform: scale(1.1, 1.1);
+	}
+	.nav-item:active {
+		filter: brightness(130%);
+		transform: scale(1.05, 1.05);
+	}
+	.sub-nav-item {
+		margin-top: 5px;
+	}
+		.icons {
+			margin-top: -25px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+			/* Programmering */
+			#java-icon {
+				background-image: url("../images/programmering/javaiconcolored.png");
+			}
+			#python-icon {
+				background-image: url("../images/programmering/pythoniconcolored.png");
+			}
+			#csharp-icon {
+				background-image: url("../images/programmering/csharpicon.png");
+			}
+			/* Webbutveckling */
+			#html-icon {
+				background-image: url("../images/webbdevelopment/htmlicon.png");
+			}
+			#css-icon {
+				background-image: url("../images/webbdevelopment/cssicon.png");
+			}
+			#js-icon {
+				background-image: url("../images/webbdevelopment/jsicon.png");
+			}
+			/* Webbserverprogrammering */
+			#php5-icon {
+				background-image: url("../images/webbserverprogramming/php5.png");
+			}
+			#dj-icon {
+				background-image: url("../images/webbserverprogramming/djicon.png");
+			}
+			
+			.nav-item-icons {
+				background-repeat: no-repeat;
+				background-size: 15px;	
+				float: left;
+				width: 20px;
+				height: 20px;
+			}
+			.two-line-icons {
+				margin-top: 12px;
+			}
+
+/*********************************************************
+
+						  ARROW
+						  
+ **********************************************************/
+
+.animate-arrow {
+	width: 100%;
+	height: 100%;
+	transition: 0.1s all ease-in;
+}
+	.nav-button-parent {
+		margin-left: 10px;
+		width: 75%;
+   		word-wrap: break-word;		
+	}
+	.nav-button-parent-not {
+		margin-left: 0px;
+		width: 100%;
+   		word-wrap: break-word;	
+	}
+	.nav-paranet {
+		background-color: #101010;
+		color: var(--active-text-color);
+   		word-wrap: break-word;
+   		transform: scale(1.10, 1.10); 
+	}
+	.nav-paranet:hover {
+	}
+	.nav-back {
+		width: calc(100% - 40px);
+		padding-left: 30px;
+		padding-right: 10px;
+	}
+	.nav-item span{
+		display: block;
+		width: 8px;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+	}
+	.nav-item span span{
+		position: absolute;
+		transform: scale(0.80, 0.80);
+		background-image: url(http://thomaspodgro.com/source/arrow.png);
+		display: block;
+		width: 8px;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+		right: 10px;
+		height: 10px;
+		opacity: 1;
+	}
+	
+	.nav-item .arrow:before {
+		position: absolute;
+		content:"";
+		transform: scale(0.80, 0.80);
+		background-image: url(http://thomaspodgro.com/source/arrow.png);
+		display: block;
+		width: 8px;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+		right: 10px;
+		height: 10px;
+		opacity: 0;
+	}
+	
+	.nav-item .arrow:after {
+		position: absolute;
+		content: '';
+		transform: scale(0.80, 0.80);
+		background-image: url(http://thomaspodgro.com/source/arrow.png);
+		display: block;
+		width: 8px;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+		right: 15px;
+		height: 10px;
+		opacity: 0;
+	}
+	.back {
+		position: absolute;
+		transform: rotate(180deg);
+		left: 0px;
+	}
+	
+	.nav-item:hover .arrow:before {
+		opacity: 0.5;
+	  	animation: animate-arrow-2 0.8s ease-in-out infinite 0.1s ;
+	}
+	.nav-item:hover .arrow:after {
+	  	opacity: 0.3;
+	  	animation: animate-arrow-3 0.8s ease-in-out infinite 0.2s;
+	}
+	.nav-item:hover .arrow span {
+	  	animation: animate-arrow-1 0.8s ease-in-out infinite;
+	}
+	
+/*********************************************************
+
+						  KEYFRAMES
+						  
+ **********************************************************/
+
+@keyframes animate-arrow-1 {
+	0% { 
+		transform: translateX(-15px) scale(0.80, 0.80); 
+		opacity: 0;
+	}
+	70%,100% {
+		transform: translateX(0px) scale(0.80, 0.80); 
+		opacity: 1;
+	}
+}
+@keyframes animate-arrow-2 {
+	0% {
+		transform: translateX(-10px) scale(0.80, 0.80); 
+		opacity: 0;}
+	70%,100% {
+		transform: translateX(0px) scale(0.80, 0.80); 
+		opacity: 0.5;
+	}
+}
+@keyframes animate-arrow-3 {
+	0% { 
+		transform: translateX(-5px) scale(0.80, 0.80); 
+		opacity: 0; 
+	}
+	70%,100% {
+		transform: translateX(0px) scale(0.80, 0.80); 
+		opacity: 0.3;
+	}
+}
+	

@@ -1,6 +1,15 @@
 
 <form class="reg-log-form" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
-	<div class='nav-item nav-paranet'>Register</div><br>
+	
+	<div class='nav-item nav-paranet tooltip' onclick='showLogin()'>
+		Register		
+			<span class='tooltiptext'>Go back to loggin.</span>
+		
+			<div class='animate-arrow'>
+			<span class='arrow back'><span></span></span>
+		</div>
+	</div>
+	
 	Firstname: 
 	<input class="form-input nav-item" type="text" name="firstname" required>
 	<br> 
@@ -13,74 +22,81 @@
 	Password: 
 	<input class="form-input nav-item" type="password" name="password" required>
 	<br> 
-	Birthdate: 
-	<input class="form-input nav-item" type="date" name="birthdate">
+	Verify password: 
+	<input class="form-input nav-item" type="password" name="passwordv" required>
 	<br> 
+	Position
+	<select class="form-input nav-item" name="position" required>
+        <option value="Student" selected>Student</option>
+        <option value="Teacher">Teacher</option>
+    </select>
+	<br> 
+	School
+	<select class="form-input nav-item" name="school" required>
+        <option value="none" selected>No school</option>
+        <option value="ntisundbyberg">NTI Gymnasiet Sundbyberg</option>
+    </select>
+    <br> 
+	<br>
 	<button class="submit-form nav-item" type="submit">Register</button>
+  	<button class="clear-form nav-item" type="reset">Clear</button>
+
 </form>
 <?php
-$firstName = $lastName = $mail = $password = $birthdate = "";
+error_reporting(0);
+$password = $passwordv = 
+$_SESSION['firstName'] = $_SESSION['lastName'] = $_SESSION['mail'] = 
+$_SESSION['birthdate'] = $_SESSION['position'] = $_SESSION['school'] = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $alEnterd = true;
+    $_SESSION['firstName'] = test_input($_POST["firstname"]);
+    $_SESSION['lastName'] = test_input($_POST["lastname"]);
+    $_SESSION['mail'] = test_input($_POST["mail"]);
+    $_SESSION['birthdate'] = test_input($_POST["birthdate"]);
+    $_SESSION['position'] = test_input($_POST["position"]);
+    $_SESSION['school'] = test_input($_POST["school"]);
     
-    $firstName = test_input($_POST["firstname"]);
-    $lastName = test_input($_POST["lastname"]);
-    $mail = test_input($_POST["mail"]);
+    
+    
+    
+    
+    
+    
     $password = test_input($_POST["password"]);
-    
-    $birthdate = $_POST["birthdate"];
+    $passwordv = test_input($_POST["passwordv"]);
+
     
     if (! empty($_POST["firstname"])) {
-        $firstName = $_POST["firstname"];
+        $_SESSION['firstName']  = $_POST["firstname"];
     } else {
         $alEnterd = false;
-        echo "Pleace select a firstname! <br>";
     }
     if (! empty($_POST["lastname"])) {
-        $lastName = $_POST["lastname"];
+        $_SESSION['lastName'] = $_POST["lastname"];
     } else {
         $alEnterd = false;
-        echo "Pleace select a lastname! <br>";
     }
     if (! empty($_POST["mail"])) {
-        $mail = $_POST["mail"];
+        $_SESSION['mail'] = $_POST["mail"];
     } else {
         $alEnterd = false;
-        echo "Pleace select a mail! <br>";
     }
-    if (! empty($_POST["password"])) {
+    if (! empty($_POST["password"]) && !empty($_POST["passwordv"]) && 
+        $_POST["password"] == $_POST["passwordv"] ) {
         $password = $_POST["password"];
     } else {
         $alEnterd = false;
-        echo "Pleace select a password! <br>";
     }
     
+    
     if ($alEnterd == true) {
-        $serverName = "localhost";
-        $userName = "Jonas";
-        $serverPassword = "r32bsW6XvAMhEVrA";
-        $dbName = "tek15";
-        
-        // Create connection
-        $conn = new mysqli($serverName, $userName, $serverPassword, $dbName);
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        } else {
-            echo "Connection successful";
-        }
-        // Quary
-        $sql = "INSERT INTO `users`(`firstname`, `lastname`, `mail`, `password`, `birthdate`) VALUES 
-                                               ('" . $firstName . "', '" . $lastName . "','" . $mail . "','" . $password . "','" . $birthdate . "')";
-        
-        if ($conn->query($sql) === TRUE) {
-            echo "New record created successfully";
-        } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
-        }
-        
-        $conn->close();
+        $sql = "INSERT INTO `users`(`firstname`, `lastname`, `mail`, `password`, `position`, `school`) VALUES 
+              ('" . $_SESSION['firstName'] . "', '" . $_SESSION['lastName'] . "','" . $_SESSION['mail'] . "','" . 
+              $password . "','" . $_SESSION['position'] . "','" . $_SESSION['school'] . "')";
+        if ($_SESSION['conn']->query($sql) === TRUE) {
+            //print_r("<script>sessionStorage.setItem('loggedIn', 'true');</script>");
+        } 
     }
 }
 

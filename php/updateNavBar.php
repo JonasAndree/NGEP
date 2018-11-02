@@ -5,17 +5,11 @@ $_SESSION['count'] += 1;
 
 class Page
 {
-
     public $parent = "null";
-
     public $heading = "root";
-
     public $id = 0;
-
     public $children = array();
-
-    public function __toString()
-    {
+    public function __toString() {
         return "My parent is: {$this->parent}<br> " . "My heading is: {$this->heading}<br>" . "My id is: {$this->id}<br><br> ";
     }
 }
@@ -74,9 +68,13 @@ function populatePage($parentPage, $level)
      * echo "<div id='sub-nav-content-$level-$parentId' class='sub-nav-content'
      * style='left: calc(" . (($level-$GLOBALS['foundLevel']) * 10) . "vw + " . (10 * ($level-$GLOBALS['foundLevel'])) . "px )'>";
      */
-    echo "<div id='sub-nav-content-$level-$parentId' class='sub-nav-content'
-                   style='left: calc(" . (($level - $GLOBALS['foundLevel']) * 10) . "vw  + " . (20 * ($level - $GLOBALS['foundLevel'])) . "px )'>";
-    
+    if ($level == $GLOBALS['foundLevel']) {
+        echo "<div id='sub-nav-content-$level-$parentId' class=''>";
+     //              style='left: calc(" . (($level - $GLOBALS['foundLevel']) * 150) . "px  + " . (20 * ($level - $GLOBALS['foundLevel'])) . "px )'>";
+    } else  {
+        echo "<div id='sub-nav-content-$level-$parentId' class='sub-nav-content' style='z-index:-$level;'>";
+        //              style='left: calc(" . (($level - $GLOBALS['foundLevel']) * 150) . "px  + " . (20 * ($level - $GLOBALS['foundLevel'])) . "px )'>";
+    }
     if ($level == $GLOBALS['foundLevel']) {
         echo "<div id='page-logo' class='nav-item' onclick='updateNavBar(\"0\", \"null\", \"root\")'><h1>IT Tools</h1></div>";
     }
@@ -96,10 +94,10 @@ function populatePage($parentPage, $level)
             echo "</div>";
             echo "</div>";
         } else {
-            echo "<div class='nav-item nav-paranet'
+     /*       echo "<div class='nav-item nav-paranet'
                        onclick='updateNavBar(\" $parrentHeadingId \", \" $parrentHeadingHeading \", \" $parrentHeadingParentId \");'> ";
             echo " $parentPage->heading ";
-            echo "</div>";
+            echo "</div>";*/
         }
     }
     

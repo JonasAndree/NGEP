@@ -1,9 +1,13 @@
+
+console.log(sessionStorage.getItem('loggedIn'));
 if (sessionStorage.getItem('loggedIn') == 'true') {
 	loggedIn(true);
+	console.log("already logged in");
+	toggleMenuBar(document.getElementById("loggin-button"), 'user')
 } else {
 	sessionStorage.setItem('loggedIn', 'false');
 }
-window.addEventListener('storage',function(e){
+window.addEventListener('storage' ,function(e){
 	if(e.storageArea===sessionStorage){
 		console.log(e);
 		if(e.key == "loggedIn") {
@@ -14,7 +18,29 @@ window.addEventListener('storage',function(e){
 			}
 		}
 	} 
-});
+}); 
+function setUp() {
+    var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			document.getElementById("user-cont").innerHTML = this.responseText;
+			
+		    var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					document.getElementById("chat-cont").innerHTML = this.responseText;
+				}
+			};
+			xmlhttp.open("GET", "php/userContent.php", true);
+			xmlhttp.send();
+		}
+	};
+	xmlhttp.open("GET", "php/updateUser.php", true);
+	xmlhttp.send();
+	
+}
+
+
 
 
 
@@ -28,63 +54,10 @@ function toggleMenuBar(menuElement, feild) {
 	if (feild == "user") {
 		document.getElementById("user-cont").classList.toggle("toggle");
 	}
-}
-
-var containerHoveredId = [null];
-var elementHoveredId = [null];
-var activeMinLevel = 0;
-var lastLevel = 0;
-
-function navElementMouseOver(element, containerId, contentId, level) {
-	var newElement = document.getElementById(containerId);
-	if (containerHoveredId[level] != null) {
-		containerHoveredId[level].style.display = "none";
-	}
-	if (elementHoveredId[level] != null) {
-		elementHoveredId[level].style.transform = "scale(1.0, 1.0)";
-		elementHoveredId[level].style.color = "var(--text-color)";
-	}
-	if (newElement != null) {
-		containerHoveredId[level] = newElement;
-		containerHoveredId[level].style.display = "block";
-	}
-	if (element != null) {
-		if (level < lastLevel) {
-			elementHoveredId[lastLevel].style.transform = "scale(1.0, 1.0)";
-			elementHoveredId[lastLevel].style.color = "var(--text-color)";
-		}
-		elementHoveredId[level] = element;
-		elementHoveredId[level].style.transform = "scale(1.1, 1.1)";
-		elementHoveredId[level].style.color = "var(--hover-text-color)";
-		lastLevel = level;
+	if (feild == "chat") {
+		document.getElementById("chat-cont").classList.toggle("toggle");
 	}
 }
-
-
-function updateNavBar(id, parent, heading) {
-	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			document.getElementById("course-navbar").innerHTML = this.responseText;
-		}
-	};
-	xmlhttp.open("GET", "php/updateNavBar.php?id=" + id + "&parent=" + parent + "&heading=" + heading, true);
-	xmlhttp.send();
-}
-
-
-function createNavbar() {
-	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			updateNavBar("0", "null", "root");
-		}
-	};
-	xmlhttp.open("GET", "php/createNavBar.php", true);
-	xmlhttp.send();
-}
-
-createNavbar();
 
 function showRegister() {
 	document.getElementById("loggin-container").style.display = "none";
@@ -102,10 +75,29 @@ function loggedIn(state) {
 	} else {
 		document.getElementById('loggin-container').style.display = 'none';
 	    document.getElementById('user-info').style.display = 'block';
+	    
+	    var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				document.getElementById("user-stats").innerHTML = this.responseText;
+			}
+		};
+		var firstName = sessionStorage.getItem('firstName');
+		var lastName = sessionStorage.getItem('lastName');
+		var birthdate = sessionStorage.getItem('birthdate');
+		var position = sessionStorage.getItem('position');
+		var school = sessionStorage.getItem('school');
+		xmlhttp.open("GET", "php/updateUser.php?firstName=" + firstName + "&lastName=" + lastName + "&birthdate=" + birthdate + "&position=" + position + "&school=" + school, true);
+		xmlhttp.send();
 	}
 }
 function logout() {
 	console.log("logged out");
 	sessionStorage.setItem('loggedIn', 'false');
+	var firstName = sessionStorage.getItem('none');
+	var lastName = sessionStorage.getItem('none');
+	var birthdate = sessionStorage.getItem('none');
+	var position = sessionStorage.getItem('none');
+	var school = sessionStorage.getItem('none');
 	loggedIn(false)
 }
