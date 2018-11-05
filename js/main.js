@@ -56,6 +56,7 @@ function toggleMenuBar(menuElement, feild) {
 	}
 	if (feild == "chat") {
 		document.getElementById("chat-cont").classList.toggle("toggle");
+		document.getElementById("chat-cont").classList.toggle("toggle");
 	}
 }
 

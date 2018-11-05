@@ -9,7 +9,7 @@
 						  
  **********************************************************/
  
- #nav-menu-button {
+#nav-menu-button {
 	cursor: pointer;
 	transform: scale(0.6, 0.6);
 	position: fixed;
@@ -19,7 +19,7 @@
 	padding: 0px 6px 0px 6px;
 	z-index: 40;
 }
-	 #nav-menu-button.toggle {
+	#nav-menu-button.toggle {
 		background-color: rgba(0,0,0,0);
 	}
 	#nav-menu-button:hover {

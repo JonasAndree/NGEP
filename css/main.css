@@ -9,10 +9,14 @@
 	--text-color: rgb(220, 220, 220);
 	--nav-color: rgb(34, 34, 34);
 	--active-text-color: rgb(255, 128, 64);
+	/*--active-text-color: rgb(27, 255, 128);*/
 	--hover-text-color: #ff8040;
+	/*--hover-text-color: #1bff80;*/
 	--nav-item-color: rgb(25,20,20,0.8);
 	--bage-logo-color: rgb(255, 128, 64);
+	/*--bage-logo-color: rgb(27, 255, 128);*/
 	--scroll-color: #ff8346;
+	/*--scroll-color: #1bff80;*/
 	--button-background: #000;
 	
 	font-size: 10pt;
