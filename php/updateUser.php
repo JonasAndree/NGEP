@@ -5,7 +5,14 @@
     $birthdate = $_SESSION['birthdate'] = $_REQUEST["birthdate"];
     $position = $_SESSION['position'] = $_REQUEST["position"];
     $school = $_SESSION['school'] = $_REQUEST["school"];
-    echo "<form class='reg-log-form' action='this' method='post'>";
+    $mail = $_SESSION['mail'] = $_REQUEST["mail"];
+    
+    
+    echo "<form class='reg-log-form' 
+           target='_blank' 
+           action='php/register.php' 
+           method='post' 
+           autocomplete='off'>";
     
     echo "<div class='nav-item nav-paranet tooltip' onclick='logout()'>";
     echo "<span class='tooltiptext'>Sign out</span>";
@@ -18,11 +25,17 @@
     echo "<br>";
     
     echo "<div>Firstname: </div>";
-    echo "<input class='form-input nav-item' type='text' name='firstname' placeholder='$firstName'>";
+    echo "<input class='form-input nav-item' type='text' name='firstname' value='$firstName' placeholder='$firstName'>";
     echo "<div>Lastname: </div>";
-    echo "<input class='form-input nav-item' type='text' name='lastname' placeholder='$lastName'>";
-    echo "<div>Position: </div>";
+    echo "<input class='form-input nav-item' type='text' name='lastname' value='$lastName' placeholder='$lastName'>";
+    echo "<div>Mail: </div>";
+    echo "<input class='form-input nav-item' type='text' name='mail' value='$mail' placeholder='$mail'>";
     
+    $update = true;
+    $mail = true;
+    include "getPositions.php";
+    
+    /*
     echo " <select class='form-input nav-item' name='position'>";
     if ($position == "Student") {
         echo "<option value='Student' selected>Student</option>";
@@ -33,8 +46,12 @@
     } else {
         echo "<option value='admin' >Admin</option>";
     }
-    echo "</select>";
+    echo "</select>";*/
     
+    include "getSchools.php";
+    
+    
+    /*
     echo "<div>School: </div>";
     echo "<select class='form-input nav-item' name='school'>";
     if ($school == "none") {
@@ -44,7 +61,7 @@
         echo "<option value='none' >No school</option>";
         echo "<option value='NTI Gymnasiet Sundbyberg' selected>NTI Gymnasiet Sundbyberg</option>";
     }
-    echo "</select>";
+    echo "</select>";*/
     echo "<button class='submit-form nav-item' type='submit'>Update</button>";
     echo "</form>";
 ?>

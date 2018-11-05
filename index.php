@@ -33,10 +33,9 @@
 		<nav id="course-navbar"></nav>
         
 		<div id="user-cont">
-			<?php include "php/userContent.php"; ?> 
+		
 		</div>
 		<div id="chat-cont">
-			<?php include "php/chatContent.php"; ?> 
 		</div>
 	</header>
 	

@@ -1,5 +1,5 @@
 
- <form class="reg-log-form" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>"
+ <form class="reg-log-form" target="_blank" action="<?php echo htmlspecialchars('php/login.php');?>"
 	method="post">
 	<!--<form class="reg-log-form" action="php/login.php" target="_blank"
 	method="post"> -->
@@ -45,13 +45,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $birthdate = $_SESSION['birthdate'] = $user_array['birthdate'];
             $position = $_SESSION['position'] = $user_array['position'];
             $school = $_SESSION['school'] = $user_array['school'];
-            print_r("<script>sessionStorage.setItem('loggedIn', 'true');
-                             sessionStorage.setItem('firstName', '$firstName');
-                             sessionStorage.setItem('lastName', '$lastName');
-                             sessionStorage.setItem('birthdate', '$birthdate');
-                             sessionStorage.setItem('position', '$position');
-                             sessionStorage.setItem('school', '$school');</script>");
+            print_r("<script>localStorage.setItem('loggedIn', 'true');
+                             localStorage.setItem('firstName', '$firstName');
+                             localStorage.setItem('lastName', '$lastName');
+                             localStorage.setItem('birthdate', '$birthdate');
+                             localStorage.setItem('position', '$position');
+                             localStorage.setItem('school', '$school');
+                             localStorage.setItem('mail', '$mail');
+                     </script>");
             echo "logged in";
+            echo "<script>window.close();</script>";
         } 
     }
 }
