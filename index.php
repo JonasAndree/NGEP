@@ -31,12 +31,8 @@
         </div>
         
 		<nav id="course-navbar"></nav>
-        
-		<div id="user-cont">
-		
-		</div>
-		<div id="chat-cont">
-		</div>
+		<div id="user-cont"></div>
+		<div id="chat-cont"></div>
 	</header>
 	
 	<header> </header>

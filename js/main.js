@@ -5,7 +5,6 @@ if (localStorage.getItem('loggedIn') == 'true') {
 	xmlhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			document.getElementById("user-cont").innerHTML = this.responseText;
-
 			loggedIn(true);
 			console.log("already logged in");
 			toggleMenuBar(document.getElementById("loggin-button"), 'user');
@@ -14,7 +13,6 @@ if (localStorage.getItem('loggedIn') == 'true') {
 	xmlhttp.open("GET", "php/userContent.php", true);
 	xmlhttp.send();
 } else {
-	
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
@@ -26,8 +24,7 @@ if (localStorage.getItem('loggedIn') == 'true') {
 }
 
 window.addEventListener('storage' ,function(e){
-	if(e.storageArea===localStorage){
-		console.log(e);
+	if(e.storageArea === localStorage){
 		if(e.key == "loggedIn") {
 			if (e.newValue == 'true') {
 				loggedIn(true);
@@ -37,22 +34,21 @@ window.addEventListener('storage' ,function(e){
 		}
 	} 
 }); 
-function setUp() {
-    var xmlhttp = new XMLHttpRequest();
+pupulateChat();
+function pupulateChat() {
+	var xmlhttp = new XMLHttpRequest();	
 	xmlhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-			document.getElementById("user-cont").innerHTML = this.responseText;
-			
-		   
+			document.getElementById("chat-cont").innerHTML = this.responseText;
 		}
 	};
-	xmlhttp.open("GET", "php/updateUser.php", true);
-	xmlhttp.send();
-	
-}
-
-
-
+	var firstName = localStorage.getItem('firstName');
+	var lastName = localStorage.getItem('lastName');
+	var position = localStorage.getItem('position');
+	var school = localStorage.getItem('school');
+	var mail = localStorage.getItem('mail');
+	xmlhttp.open("GET", "php/chatContent.php?firstName=" + firstName + "&lastName=" + lastName + "&position=" + position + "&school=" + school + "&mail=" + mail, true);
+};
 
 
 var menuButton = document.getElementById("nav-menu-button");
@@ -66,7 +62,7 @@ function toggleMenuBar(menuElement, field) {
 		document.getElementById("user-cont").classList.toggle("toggle");
 	}
 	if (field == "chat") {
-		document.getElementById("chat-cont").classList.toggle("toggle");
+		pupulateChat();
 		document.getElementById("chat-cont").classList.toggle("toggle");
 	}
 }
@@ -80,7 +76,6 @@ function showLogin() {
 	document.getElementById("register-container").style.display = "none";
 }
 function loggedIn(state) {
-	console.log("loggin " + state);
 	if (!state) {
 		document.getElementById('loggin-container').style.display = 'block';
 	    document.getElementById('user-info').style.display = 'none';
@@ -97,11 +92,10 @@ function loggedIn(state) {
 		};
 		var firstName = localStorage.getItem('firstName');
 		var lastName = localStorage.getItem('lastName');
-		var birthdate = localStorage.getItem('birthdate');
 		var position = localStorage.getItem('position');
 		var school = localStorage.getItem('school');
 		var mail = localStorage.getItem('mail');
-		xmlhttp.open("GET", "php/updateUser.php?firstName=" + firstName + "&lastName=" + lastName + "&birthdate=" + birthdate + "&position=" + position + "&school=" + school + "&mail=" + mail, true);
+		xmlhttp.open("GET", "php/updateUser.php?firstName=" + firstName + "&lastName=" + lastName + "&position=" + position + "&school=" + school + "&mail=" + mail, true);
 		xmlhttp.send();
 	}
 }

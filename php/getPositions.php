@@ -2,23 +2,30 @@
     session_start();
     echo "Position: ";
     
+    
     $_SESSION['conn'] = new mysqli("localhost", "root", "", "it_tools");
     $sql = "SELECT * FROM `positions`";
     $positions = $_SESSION['conn']->query($sql);
     
+    if ($position  == "Student") {
+        echo "<select class='form-input nav-item' name='position' disabled> ";
+    } else {
+        echo "<select class='form-input nav-item' name='position'>";
+    }
     
-    if ($update == true) {
-        
+    while ($pos = $positions->fetch_assoc()) {
+        $position_name = $pos["name"];
+        $position_selectable = $pos["selectable"];
+        echo "<br>$position_name";
+        if ($update == true && $position == $position_name) {
+            echo "<option value='$position_name' selected>$position_name</option>";
+        } else if ($position_selectable == 1) {
+            echo "<option value='$position_name'>$position_name</option>";
+        }
     }
     
     
-    echo "<select class='form-input nav-item' name='position' required>";
-    while ($position = $positions->fetch_assoc()) {
-        $position_name = $position["name"];
-        $position_selectable = $position["selectable"];
-        if ($position_selectable == 1)
-            echo "<option value='$position_name'>$position_name</option>";        
-    }
     echo "</select>";
+    
 ?>
 

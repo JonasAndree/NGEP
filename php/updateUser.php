@@ -1,67 +1,113 @@
+
+<div id="up-con">
+	<form class="reg-log-form" 
+      target="print_popup" 
+      onsubmit="window.open('about:blank','print_popup','width=200px, height=200px');" 
+	  action="<?php echo htmlspecialchars('php/updateUser.php');?>" 
+	  method="post">
+        <div class='nav-item nav-paranet tooltip' onclick='logout()'>
+            <span class='tooltiptext'>Sign out</span>
+            Logged in
+            <div class='animate-arrow'>
+            	<span class='arrow back'><span></span></span>
+        	</div>
+        </div>
+        <br>
+        <br>
+        <div>Firstname: </div>
+
 <?php
-/*session_start();*/
-    $firstName = $_SESSION['firstName'] = $_REQUEST["firstName"];
-    $lastName = $_SESSION['lastName'] = $_REQUEST["lastName"];
-    $birthdate = $_SESSION['birthdate'] = $_REQUEST["birthdate"];
-    $position = $_SESSION['position'] = $_REQUEST["position"];
-    $school = $_SESSION['school'] = $_REQUEST["school"];
-    $mail = $_SESSION['mail'] = $_REQUEST["mail"];
-    
-    
-    echo "<form class='reg-log-form' 
-           target='_blank' 
-           action='php/register.php' 
-           method='post' 
-           autocomplete='off'>";
-    
-    echo "<div class='nav-item nav-paranet tooltip' onclick='logout()'>";
-    echo "<span class='tooltiptext'>Sign out</span>";
-    echo "Logged in";
-    echo "<div class='animate-arrow '>";
-    echo "<span class='arrow back'><span></span></span>";
-    echo "</div>";
-    echo "</div>";
-    echo "<br>";
-    echo "<br>";
-    
-    echo "<div>Firstname: </div>";
+$firstName = $lastName = $position = 
+$school = $mail = "";
+/* session_start(); */
+if ($_SERVER["REQUEST_METHOD"] != "POST") {
+    $firstName = $_REQUEST["firstName"];
+    $lastName = $_REQUEST["lastName"];
+    $position = $_REQUEST["position"];
+    $school = $_REQUEST["school"];
+    $mail = $_REQUEST["mail"];
+} else {
+    $firstName = $_POST["firstname"];
+    $lastName = $_POST["lastname"];
+    $position = $_POST["position"];
+    $school = $_POST["school"];
+    $mail = $_POST["mail"];
+}
+
+if ($position == "Student") {
+    echo "<input class='form-input nav-item' type='text' name='firstname' value='$firstName' placeholder='$firstName' readonly>";
+} else {
     echo "<input class='form-input nav-item' type='text' name='firstname' value='$firstName' placeholder='$firstName'>";
-    echo "<div>Lastname: </div>";
-    echo "<input class='form-input nav-item' type='text' name='lastname' value='$lastName' placeholder='$lastName'>";
-    echo "<div>Mail: </div>";
-    echo "<input class='form-input nav-item' type='text' name='mail' value='$mail' placeholder='$mail'>";
-    
-    $update = true;
-    $mail = true;
-    include "getPositions.php";
-    
-    /*
-    echo " <select class='form-input nav-item' name='position'>";
-    if ($position == "Student") {
-        echo "<option value='Student' selected>Student</option>";
-        echo "<option value='Teacher'>Teacher</option>";
-    } else if($position == "Teacher"){
-        echo "<option value='Student' >Student</option>";
-        echo "<option value='Teacher' selected>Teacher</option>";
-    } else {
-        echo "<option value='admin' >Admin</option>";
-    }
-    echo "</select>";*/
-    
-    include "getSchools.php";
-    
-    
-    /*
-    echo "<div>School: </div>";
-    echo "<select class='form-input nav-item' name='school'>";
-    if ($school == "none") {
-        echo "<option value='none' selected>No school</option>";
-        echo "<option value='NTI Gymnasiet Sundbyberg'>NTI Gymnasiet Sundbyberg</option>";
-    } else if ($school == "NTI Gymnasiet Sundbyberg") {
-        echo "<option value='none' >No school</option>";
-        echo "<option value='NTI Gymnasiet Sundbyberg' selected>NTI Gymnasiet Sundbyberg</option>";
-    }
-    echo "</select>";*/
+}
+
+echo "<div>Lastname: </div>";
+if ($position == "Student") {
+    echo "<input class='form-input nav-item' type='text' name='lastname' value='$lastName' placeholder='$lastName' readonly> ";
+} else {
+    echo "<input class='form-input nav-item' type='text' name='lastname' value='$lastName' placeholder='$lastName'> ";
+}
+echo "<div>Mail: </div>";
+if ($position == "Student") {
+    echo "<input class='form-input nav-item' type='text' name='mail' value='$mail' placeholder='$mail' readonly> ";
+} else {
+    echo "<input class='form-input nav-item' type='text' name='mail' value='$mail' placeholder='$mail' readonly> ";
+}
+$update = true;
+include "getPositions.php";
+include "getSchools.php";
+if ($position != "Student") {
     echo "<button class='submit-form nav-item' type='submit'>Update</button>";
-    echo "</form>";
+}
+echo "</form>";
+echo "</div>";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    echo "<script>
+        document.getElementById('up-con').innerHTML = '';
+    </script>";
+    if ($firstName != test_input2($_POST["firstname"]))
+        update("users", "firstname", $data, $mail);
+    
+    $newfirstName = $_SESSION['firstName'] = test_input2($_POST["firstname"]);
+    $newlastName = $_SESSION['lastName'] = test_input2($_POST["lastname"]);
+    $newmail = $_SESSION['mail'] = test_input2($_POST["mail"]);
+    $newposition = $_SESSION['position'] = test_input2($_POST["position"]);
+    $newschool = $_SESSION['school'] = test_input2($_POST["school"]);
+    
+    update("users", "firstname", $firstName, $mail);
+    update("users", "lastname", $lastName, $mail);
+    update("users", "mail", $mail, $mail);
+    update("users", "position", $position, $mail);
+    update("users", "school", $school, $mail);
+
+    print_r("<script>localStorage.setItem('loggedIn', 'true');
+                 localStorage.setItem('firstName', '$newfirstName');
+                 localStorage.setItem('lastName', '$newlastName');
+                 localStorage.setItem('mail', '$newmail');
+                 localStorage.setItem('position', '$newposition');
+                 localStorage.setItem('school', '$newschool');
+         </script>");
+    echo "<script>window.close();</script>";
+    
+}
+
+function update($table, $attribut, $data, $mail)
+{   
+    $sql = "UPDATE `$table` SET $attribut = '$data' WHERE mail = '$mail'";
+    $_SESSION['conn'] = new mysqli("localhost", "root", "", "it_tools");
+    
+    if ($_SESSION['conn']->query($sql) === TRUE) {
+        echo "$mail <- $table -> $attribut -> $data";
+    }
+    $_SESSION['conn']->close();
+}
+
+function test_input2($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
 ?>

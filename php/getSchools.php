@@ -5,11 +5,22 @@
     $sql = "SELECT * FROM `schools`";
     $schools = $_SESSION['conn']->query($sql);
     
-    echo "<select class='form-input nav-item' name='school' required>";
+    if ($_SESSION["position"]  == "Student") {
+        echo "<select class='form-input nav-item' name='school' disabled>";
+    } else {
+        echo "<select class='form-input nav-item' name='school' required>";
+    }
+    
     echo "<option value='none' selected>No school</option>";
-    while ($school = $schools->fetch_assoc()) {
-        $school_name = $school["name"];
-        echo "<option value='$school_name'>$school_name</option>";        
+    
+    while ($scho = $schools->fetch_assoc()) {
+        $school_name = $scho["name"];
+        
+        if ($update == 1 && $school == $school_name) {
+            echo "<option value='$school_name' selected>$school_name</option>";             
+        } else {
+            echo "<option value='$school_name' readonly>$school_name</option>";  
+        }      
     }
     echo "</select>";
 ?>
