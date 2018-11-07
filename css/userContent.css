@@ -7,21 +7,27 @@
 		display: block;
 	}
 		#user-content {
+    		overflow-x: visible;
 			position: fixed;
 			background-color: var(--nav-color);
 			width: 150px;
-			height: 100vh;
 			right: 0px;
 			top: 0px;
 			padding: 0px 5px 0px 5px;
-    		/*overflow-x: visible;*/
 		}
 		#user-wrapper {
-			/*overflow-y: auto;*/
+		    width: 120%;
+		    height: 100%;
+			overflow-y: scroll;
+		    padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
+		    box-sizing: content-box; /* So the width will be 100% + 17px */
+		
 		}
 		#register-container {
-			display: none;
+			display: none;  
+			padding: 5px;  
 		}
+		
 		#loggin-container {
 			padding: 5px;
 		}

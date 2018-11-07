@@ -36,12 +36,10 @@
 	</header>
 	
 	<header> </header>
-	<main> 
-		
-	</main>
+	<main> </main>
 	<footer> </footer>
 	
-	
+	<script type="text/javascript" src="js/chat.js"></script>
 	<script type="text/javascript" src="js/nav.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 </body>

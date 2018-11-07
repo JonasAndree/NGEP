@@ -8,9 +8,49 @@
 		#chat-content {
 			position: fixed;
 			background-color: var(--nav-color);
-			width: 120px;
-			height: 50vh;
-			right: 162px;
+			width: 150px;
+			right: 0px;
 			bottom: 0px;
-			padding: 0px 5px 0px 5px;
+			padding: 20px 5px 5px 5px;
 		}
+		.toggle #chat-content {
+			
+		}
+			.chat-header {
+				background-color: black;
+				filter: brightness(0.8);
+				height: 30px;
+				width: calc(100% - 10px);
+				transform: scale(1.1, 1.1);
+				padding: 5px;
+			}
+				.chat-line-container {
+					cursor: n-resize;
+					width: 100%;		
+					margin: -12px 5px 5px 5px;
+					padding: 5px;
+					
+				}
+					.chat-line {
+						background-color: var(--active-text-color);
+						width: 90%;
+						height: 2px;
+					}
+				.chat-img {
+					background-color: black;
+					width: 30px;
+					height: 30px;
+					float: right;
+					margin-right: 5px;
+				}
+				.chat-heading {
+					color: var(--active-text-color);
+					margin: 8px;
+				}
+				
+			.chat-main {
+				background-color: var(--nav-item-color);
+				width: 100%;
+				margin-top: 10px;
+				height: calc(100% - 90px);
+			}

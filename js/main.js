@@ -34,36 +34,25 @@ window.addEventListener('storage' ,function(e){
 		}
 	} 
 }); 
-pupulateChat();
-function pupulateChat() {
-	var xmlhttp = new XMLHttpRequest();	
-	xmlhttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			document.getElementById("chat-cont").innerHTML = this.responseText;
-		}
-	};
-	var firstName = localStorage.getItem('firstName');
-	var lastName = localStorage.getItem('lastName');
-	var position = localStorage.getItem('position');
-	var school = localStorage.getItem('school');
-	var mail = localStorage.getItem('mail');
-	xmlhttp.open("GET", "php/chatContent.php?firstName=" + firstName + "&lastName=" + lastName + "&position=" + position + "&school=" + school + "&mail=" + mail, true);
-};
 
-
+var chattVisible = false;
 var menuButton = document.getElementById("nav-menu-button");
+toggleMenuBar(document.getElementById("chat-button"), "chat");
 
 function toggleMenuBar(menuElement, field) {
 	menuElement.classList.toggle("toggle");
 	if (field == "nav") {
 		document.getElementById("course-navbar").classList.toggle("toggle");
 	} 
-	if (field == "user") {
-		document.getElementById("user-cont").classList.toggle("toggle");
-	}
-	if (field == "chat") {
-		pupulateChat();
-		document.getElementById("chat-cont").classList.toggle("toggle");
+	if (field == "user" || field == "chat") {
+		if (field == "user") {		
+			document.getElementById("user-cont").classList.toggle("toggle");
+		}
+		if (field == "chat") {
+			pupulateChat();
+			chattVisible = !chattVisible; 
+			document.getElementById("chat-cont").classList.toggle("toggle");
+		}
 	}
 }
 
@@ -74,12 +63,16 @@ function showRegister() {
 function showLogin() {
 	document.getElementById("loggin-container").style.display = "block";
 	document.getElementById("register-container").style.display = "none";
+	
+
 }
 function loggedIn(state) {
 	if (!state) {
 		document.getElementById('loggin-container').style.display = 'block';
 	    document.getElementById('user-info').style.display = 'none';
+	    
 	} else {
+		pupulateChat();
 		document.getElementById('loggin-container').style.display = 'none';
 		document.getElementById('register-container').style.display = 'none';
 	    document.getElementById('user-info').style.display = 'block';
@@ -100,14 +93,14 @@ function loggedIn(state) {
 	}
 }
 function logout() {
-	console.log("logged out");
 	localStorage.setItem('loggedIn', 'false');
 	localStorage.setItem('firstName', 'none');
 	localStorage.setItem('lastName', 'none');
 	localStorage.setItem('mail', 'none');
 	localStorage.setItem('position', 'none');
 	localStorage.setItem('school', 'none');
-	
+	pupulateChat();
+
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
