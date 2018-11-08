@@ -12,23 +12,24 @@ function pupulateChat() {
 	xmlhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			document.getElementById("chat-content").innerHTML = this.responseText;
-			
+			chats = [];
 			if (document.getElementById("chat-content") != null) {
 				var height = document.getElementById("chat-content").offsetHeight;
 
-				if (height < 150)
-					height = 150; 
+				if (height < 300)
+					height = 300; 
 				
 				if (chattVisible) {			
-					document.getElementById("chat-content").style.height = height -25 + "px";
+					document.getElementById("chat-content").style.height = height + "px";
 				} 
 				if (document.getElementById("user-content") != null) {
 					if (chattVisible) {			
-						document.getElementById("user-content").style.height = "calc(100vh - " + height + "px)";
+						document.getElementById("user-content").style.height = "calc(100vh - " + height +"px)";
 					} else { 
 						document.getElementById("user-content").style.height = "100vh";
 					}
 				}
+				
 			}
 		}
 	};
@@ -46,18 +47,26 @@ function resizeChatWindowUp(event, element) {
 		dragedChatWindow = element;
 	} 
 }
-function resizeChatWindowMove(event) {
+function resizeChatWindowMove(event, element) {
 	if (dragedChatWindow != null) {
+		
+		var screenCssPixelRatio = (window.outerHeight - 8) / window.innerHeight;
+		console.log(screenCssPixelRatio);
+		
+		var positionElement = dragedChatWindow.getBoundingClientRect().top + 5;
+		
 		var height = document.getElementById("chat-content").offsetHeight;
-		var newHeight = screen.height - event.clientY;
-		if (newHeight > screen.height - 150)
-			newHeight = screen.height - 150;
-		if (newHeight < screen.height - (screen.height - 150))
-			newHeight = screen.height - (screen.height - 150);
+		var newHeight = window.innerHeight - event.clientY + 10;
+		
+		if (newHeight < 300)
+			newHeight = 300;
+		if (newHeight > screen.height - 300)
+			newHeight = screen.height - 300;
+		
 		if (dragedChatWindow.parentNode.id == "chat-content") {
-			document.getElementById("user-content").style.height = (screen.height - newHeight + 15) + "px";
+			document.getElementById("user-content").style.height = (window.innerHeight - newHeight) + "px";
 		}
-		dragedChatWindow.parentNode.style.height = newHeight + "px";
+		dragedChatWindow.parentNode.style.height = newHeight + "px";		
 	}
 }
 function resizeChatWindowDrop(event) {
@@ -71,14 +80,12 @@ var chattHovering = "false";
 function displayChatInfo(name, state) {
 	var hoverChat = document.getElementById(name+"-chat-dialog-info");
 	if (state == "over") {
-		
 		if (activChatt != null) {
 			activChatt.setAttribute("stay", "false");
 			activChatt.style.display = "none";
 		}
 		hoverChat.style.display = "block";
 	} else { 
-
 		if (activChatt != null) {
 			activChatt.setAttribute("stay", "true");
 			activChatt.style.display = "block";
@@ -95,15 +102,16 @@ function displayChat(name) {
 		clickedChat.style.display = "none";
 		var removedPos = parseInt(clickedChat.getAttribute("pos"));
 		console.log(removedPos + 1 + " : " + chats.length); 
-		/*if ( (parseInt(removedPos) + 1) < chats.length) {
-			console.log(chats[parseInt(removedPos) + 1]);
-			var right= 160 + 150 * chats[parseInt(removedPos)-1];
-			chats[parseInt(removedPos)].style.right = right + "px";
-		}*/
 		chats[removedPos] = "none";
 		console.log(removedPos + " : " + chats.length); 
-			
+		document.getElementById(name+'-chat-list-item').style.transform = "scale(1.00, 1.00)";
+		document.getElementById(name+'-chat-list-item').style.backgroundColor = "var(--nav-item-color)"; 
+		document.getElementById(name+'-chat-arrow').setAttribute("class", "arrow back")
 	} else {
+		document.getElementById(name+'-chat-list-item').style.transform = "scale(1.10, 1.10)";
+		document.getElementById(name+'-chat-list-item').style.backgroundColor = "black"; 
+		document.getElementById(name+'-chat-arrow').setAttribute("class", "arrow")
+
 		clickedChat.setAttribute("stay", "true");
 		clickedChat.style.display = "block";
 		var newPos; 
@@ -120,7 +128,7 @@ function displayChat(name) {
 			newPos = 0; 
 		}
 		clickedChat.setAttribute("pos", newPos);
-		var right= 160 + 150 * newPos;
+		var right = 170 + 170 * newPos;
 		console.log(clickedChat.firstElementChild);
 		chats[newPos] = clickedChat;
 		clickedChat.firstElementChild.style.right = right + "px";

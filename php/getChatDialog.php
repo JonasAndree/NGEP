@@ -1,26 +1,28 @@
 <?php
-    echo "$resip_name $resip_Last_name <br>";
-    echo "$mail <br>";
-    echo "chat 1 test<br>";
+    $_SESSION['conn'] = new mysqli("localhost", "root", "", "it_tools");
     
-    echo "chat 2 test<br>";
-
-    echo "chat 3 test<br>";
-
-    echo "chat 4 test<br>";
-
-    echo "chat 5 test<br>";
-
-    echo "chat 6 test<br>";
-
-    echo "chat 7 test<br>";
-
-    echo "chat 8 test<br>";
-    
-    echo "chat 9 test<br>";
-    
-    echo "chat 10 test<br>";
-    
-    echo "chat 11 test<br>";
-
+    $sql = "SELECT * FROM `messages` WHERE touser='$mail' AND fromuser='$resip_mail' 
+            UNION
+            SELECT * FROM `messages` WHERE touser='$resip_mail' AND fromuser='$mail'
+            ORDER BY sent";
+    $messages = $_SESSION['conn']->query($sql);
+    if (!empty($messages)) {
+        while ($message = $messages->fetch_assoc()) {
+            if ($mail == $message['fromuser']) {
+                echo "<div class='chat-speech-bubble left'>"
+                            . $message['message'].
+                      "";
+                echo "<p class='chat-speech-date left'>"
+                        .$message['sent'].
+                    "<p></div>";
+            } else {
+                echo "<div class='chat-speech-bubble right'>"
+                            .$message['message'].
+                      "";
+                echo "<p class='chat-speech-date right'>"
+                    .$message['sent'].
+                    "<p></div>";
+            }
+        }
+    }
 ?>
