@@ -32,7 +32,13 @@
         
 		<nav id="course-navbar"></nav>
 		<div id="user-cont"></div>
-		<div id="chat-cont"></div>
+		<div id="chat-cont">
+			<div id="chat-container">
+				<div id="chat-content">
+				
+				</div>
+			</div>
+		</div>
 	</header>
 	
 	<header> </header>

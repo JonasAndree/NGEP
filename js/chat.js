@@ -11,22 +11,25 @@ function pupulateChat() {
 	var xmlhttp = new XMLHttpRequest();	
 	xmlhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-			document.getElementById("chat-cont").innerHTML = this.responseText;
+			document.getElementById("chat-content").innerHTML = this.responseText;
+			
 			if (document.getElementById("chat-content") != null) {
-				
 				var height = document.getElementById("chat-content").offsetHeight;
 
-				if (height < 200)
-					height = 200; 
-
+				if (height < 150)
+					height = 150; 
+				
 				if (chattVisible) {			
-					document.getElementById("chat-content").style.height = height + "px";
-					document.getElementById("user-content").style.height = "calc(100vh - " + height + "px)";
-				} else { 
-					document.getElementById("user-content").style.height = "100vh";
+					document.getElementById("chat-content").style.height = height -25 + "px";
+				} 
+				if (document.getElementById("user-content") != null) {
+					if (chattVisible) {			
+						document.getElementById("user-content").style.height = "calc(100vh - " + height + "px)";
+					} else { 
+						document.getElementById("user-content").style.height = "100vh";
+					}
 				}
 			}
-
 		}
 	};
 	var firstName = localStorage.getItem('firstName');
@@ -45,7 +48,6 @@ function resizeChatWindowUp(event, element) {
 }
 function resizeChatWindowMove(event) {
 	if (dragedChatWindow != null) {
-		console.log("reg");
 		var height = document.getElementById("chat-content").offsetHeight;
 		var newHeight = screen.height - event.clientY;
 		if (newHeight > screen.height - 150)
@@ -64,5 +66,65 @@ function resizeChatWindowDrop(event) {
 	}
 }
 
+var activChatt = null;
+var chattHovering = "false";
+function displayChatInfo(name, state) {
+	var hoverChat = document.getElementById(name+"-chat-dialog-info");
+	if (state == "over") {
+		
+		if (activChatt != null) {
+			activChatt.setAttribute("stay", "false");
+			activChatt.style.display = "none";
+		}
+		hoverChat.style.display = "block";
+	} else { 
 
+		if (activChatt != null) {
+			activChatt.setAttribute("stay", "true");
+			activChatt.style.display = "block";
+		}
+		hoverChat.style.display = "none";
+	}
+}
+var chats = [];
 
+function displayChat(name) {
+	var clickedChat = document.getElementById(name+"-chat-dialog"); 
+	if (clickedChat.getAttribute("stay") == "true") {
+		clickedChat.setAttribute("stay", "false");
+		clickedChat.style.display = "none";
+		var removedPos = parseInt(clickedChat.getAttribute("pos"));
+		console.log(removedPos + 1 + " : " + chats.length); 
+		/*if ( (parseInt(removedPos) + 1) < chats.length) {
+			console.log(chats[parseInt(removedPos) + 1]);
+			var right= 160 + 150 * chats[parseInt(removedPos)-1];
+			chats[parseInt(removedPos)].style.right = right + "px";
+		}*/
+		chats[removedPos] = "none";
+		console.log(removedPos + " : " + chats.length); 
+			
+	} else {
+		clickedChat.setAttribute("stay", "true");
+		clickedChat.style.display = "block";
+		var newPos; 
+		if (chats.length > 0) {
+			for (var i = 0; i < chats.length; i++) {
+				if (chats[i] == "none")	{
+					newPos = i; 
+					break;
+				} else {
+					newPos = chats.length;
+				}
+			}
+		} else {
+			newPos = 0; 
+		}
+		clickedChat.setAttribute("pos", newPos);
+		var right= 160 + 150 * newPos;
+		console.log(clickedChat.firstElementChild);
+		chats[newPos] = clickedChat;
+		clickedChat.firstElementChild.style.right = right + "px";
+		
+	}
+	
+}
