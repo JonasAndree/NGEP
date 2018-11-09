@@ -60,8 +60,8 @@ function resizeChatWindowMove(event, element) {
 		
 		if (newHeight < 300)
 			newHeight = 300;
-		if (newHeight > screen.height - 300)
-			newHeight = screen.height - 300;
+		if (newHeight > screen.height - 150)
+			newHeight = screen.height - 150;
 		
 		if (dragedChatWindow.parentNode.id == "chat-content") {
 			document.getElementById("user-content").style.height = (window.innerHeight - newHeight) + "px";
@@ -101,16 +101,40 @@ function displayChat(name) {
 		clickedChat.setAttribute("stay", "false");
 		clickedChat.style.display = "none";
 		var removedPos = parseInt(clickedChat.getAttribute("pos"));
-		console.log(removedPos + 1 + " : " + chats.length); 
 		chats[removedPos] = "none";
-		console.log(removedPos + " : " + chats.length); 
 		document.getElementById(name+'-chat-list-item').style.transform = "scale(1.00, 1.00)";
 		document.getElementById(name+'-chat-list-item').style.backgroundColor = "var(--nav-item-color)"; 
-		document.getElementById(name+'-chat-arrow').setAttribute("class", "arrow back")
+		document.getElementById(name+'-chat-arrow').setAttribute("class", "arrow back");
+		
+		
+		for (var i = removedPos; i < chats.length; i++) {
+			if (chats[i] != "none") {
+				var right = 170 + 170 * (i-1);
+				chats[i].firstElementChild.style.right = right + "px";
+				chats[i - 1] = chats[i];
+
+				chats[i - 1].setAttribute("pos", i-1);
+				chats[i] = "none";
+			} 
+			
+			/*if (chats[i] == "none" && i + 1 < chats.length) {
+				console.log("larger");
+				chats[i] = chats[i + 1];
+				var right = 170 + 170 * i;
+				chats[i].firstElementChild.style.right = right + "px";
+				
+				chats[i + 1] = "none";
+			}*/
+		}
+
+		for (var i = 0; i < chats.length; i++) {
+			console.log(i + " cool " + chats[i]);
+		}
+		
 	} else {
-		document.getElementById(name+'-chat-list-item').style.transform = "scale(1.10, 1.10)";
+		document.getElementById(name+'-chat-list-item').style.transform = "scale(1.05, 1.05)";
 		document.getElementById(name+'-chat-list-item').style.backgroundColor = "black"; 
-		document.getElementById(name+'-chat-arrow').setAttribute("class", "arrow")
+		document.getElementById(name+'-chat-arrow').setAttribute("class", "arrow");
 
 		clickedChat.setAttribute("stay", "true");
 		clickedChat.style.display = "block";
@@ -129,7 +153,6 @@ function displayChat(name) {
 		}
 		clickedChat.setAttribute("pos", newPos);
 		var right = 170 + 170 * newPos;
-		console.log(clickedChat.firstElementChild);
 		chats[newPos] = clickedChat;
 		clickedChat.firstElementChild.style.right = right + "px";
 		

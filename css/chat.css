@@ -91,6 +91,7 @@
 		background-color: var(--nav-color);
 		padding: 0px 5px 5px 5px;
 		z-index: -42;
+		transition: right 0.3s;
 	}
 		.chat-dialog {
 			background-color: var(--nav-item-color);

@@ -10,17 +10,17 @@
         while ($message = $messages->fetch_assoc()) {
             if ($mail == $message['fromuser']) {
                 echo "<div class='chat-speech-bubble left'>"
-                            . $message['message'].
+                        . $message['message'].
                       "";
                 echo "<p class='chat-speech-date left'>"
                         .$message['sent'].
                     "<p></div>";
             } else {
                 echo "<div class='chat-speech-bubble right'>"
-                            .$message['message'].
+                        .$message['message'].
                       "";
                 echo "<p class='chat-speech-date right'>"
-                    .$message['sent'].
+                        .$message['sent'].
                     "<p></div>";
             }
         }
