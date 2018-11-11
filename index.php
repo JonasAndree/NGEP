@@ -11,7 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="css/userContent.css"/>
 	<link rel="stylesheet" type="text/css" href="css/chat.css"/>
 </head>
-<body>
+<body class="" >
 	<header> 
 		<div id="nav-menu-button" class="menu-button" onclick="toggleMenuBar(this, 'nav')">
 		  	<div class="bar1"></div>

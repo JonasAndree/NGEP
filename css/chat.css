@@ -1,3 +1,15 @@
+*.unselectable {
+   -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+
+   /*
+     Introduced in IE 10.
+     See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+   */
+   -ms-user-select: none;
+   user-select: none;
+}
 #chat-cont {}
 	#chat-container {
 		display: none;
@@ -35,6 +47,8 @@
 						width: 130px;
 						height: 2px;
 					}
+					
+				
 				.chat-img {
 					width: 25px;
 					height: 25px;
@@ -93,6 +107,35 @@
 		z-index: -42;
 		transition: right 0.3s;
 	}
+		
+			.chat-dialog-line-container {
+				cursor: n-resize;
+				width: 100%;		
+				margin: 5px 5px 5px 5px;
+				padding: 5px;
+					margin-left: 20px;
+			}
+				.chat-dialog-line {
+					background-color: var(--active-text-color);
+					width: 120px;
+					height: 2px;
+				}
+	
+			.chat-move-container {
+				position: absolute;
+				top:-1px;
+				margin: 5px 5px 5px 5px;
+				padding: 5px 5px 5px 5px;
+				cursor: -webkit-grab; 
+				cursor: grab;
+			}
+				.chat-move-box {
+					background-color: var(--active-text-color);
+					width: 4px;
+					height: 4px;
+				}
+	
+	
 		.chat-dialog {
 			background-color: var(--nav-item-color);
 			height: calc(100% - 142px);
@@ -180,13 +223,15 @@
 			
 			
 			
+#temp-space {
+	border-width: 2px;
+	position: absolute;
+	bottom: 5px;
+	border-style: dashed;
+	border-color: var(--active-text-color);
+	width: 160px;
+	height: 300px;
+}			
 			
 			
-			
-			
-			
-			
-			
-			
-				
-				
+		

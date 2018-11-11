@@ -30,7 +30,7 @@ if ($firstName != "none") {
 /* echo "<section class='chat-main'> */
 echo "<section> <ul>";
     findParent('Josefine', 'Andree', 'Josefine@Andree.se', $mail);
-    findParent('Jonas', 'Andree', 'kenfors@kth.se', $mail);
+    findParent('Karl', 'Kenfors', 'kenfors@kth.se', $mail);
     findParent('Admin', '', 'Admin', $mail);
 echo "</ul> </section>";
 
@@ -60,13 +60,20 @@ function findParent($resip_name, $resip_Last_name, $resip_mail, $mail)
             echo " 
         </div>
     </li>
-    <div id='$resip_mail-chat-dialog' class='chat-dialog-container' stay='false' pos='none'>
-        <div class='chat-dialog-content'>";
+    <div id='$resip_mail-chat-dialog' class='chat-dialog-container ' flying='false' 
+         stay='false' pos='none'>
+        <div class='chat-dialog-content resize-drag'>";
+            /*echo "<div class='chat-size-container'>";
+                */echo "<div class='chat-dialog-line-container'
+                     onmousedown='resizeChatWindowUp(event, this)'>
+                     <div class='chat-dialog-line'> </div>
+               </div>";
+                echo "<div class='chat-move-container'
+                           onmousedown='moveChatWindowUp(event, this, \"$resip_mail\")' parent='$resip_mail'>
+                    <div class='chat-move-box'> </div>
+               </div>";
+            /*echo "</div>";*/
             
-            echo "<div class='chat-line-container'
-                      onmousedown='resizeChatWindowUp(event, this)'>
-                      <div class='chat-line'> </div>
-                 </div>";
             echo "<div class='nav-item nav-paranet chat-header' 
                        onclick='displayChat(\"$resip_mail\",\"true\")'>
                             $resip_name $resip_Last_name
