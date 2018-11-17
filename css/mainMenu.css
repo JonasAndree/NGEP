@@ -54,10 +54,7 @@
 						  LOGGIN  
 						  
  **********************************************************/
-#loggin-container {
-	position: fixed;
-	right: 0px;
-}
+
 	#loggin {
 		background-color: rgba(20, 20, 20, 0.2);
 		width: 0px;
@@ -129,6 +126,9 @@
 				border-right: 0px solid transparent;
 				border-bottom: 0px solid var(--text-color);
 			}
+			#show-regiser {
+				width: calc(100% - 20px);
+			}
 
 
 /*********************************************************
@@ -162,7 +162,7 @@
 		z-index: 40;
 	}
 	#chat-button.toggle {
-		/*background-color: rgba(0,0,0,0);*/
+		background-color: rgba(0,0,0,0);
 	}
 	#chat-button:hover {
 		filter: brightness(110%);

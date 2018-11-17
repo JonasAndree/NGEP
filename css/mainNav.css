@@ -9,13 +9,14 @@ nav#course-navbar { }
 		background-image: url("../images/main/logo.gif");
 		background-repeat: no-repeat;
 		background-size: 60vh;
-		height: 12vh;
-		line-height: 12vh;
+		height: 120px;
+		line-height: 130px;
 		margin-top: 0px;
 		filter: grayscale(0%);
 		margin-bottom: 10px;
 		color: var(--bage-logo-color);
 		transform: scale(1.1, 1.1);
+	font-family:"EVE", arial, sans-serif;
 	}
 	#page-logo:hover {
 		filter: brightness(110%);
@@ -31,7 +32,7 @@ nav#course-navbar { }
 		opacity: 1;
 		top: 0px;
 		left: 0px;
-		width: 150px;
+		width: 160px;
 		height: 100vh;
 		margin-top: -0px;
 	}
@@ -44,18 +45,16 @@ nav#course-navbar { }
 	}
 		.sub-nav-content {
 			position: absolute;
-			/*height: 100vh;*/
-			padding: 5px 5px 5px 5px;
-			width: 150px;
+			width: 160px;
 			background-color: var(--nav-color);
-			/*top: 0px;*/
-			/*left: 160px;*/
-			margin-top: -50px;
-			margin-left: 160px;
+			margin-top: -45px;
+			margin-left: 176px;
+			padding: 0px 5px 0px 5px;
 		}
 	
 	
 	.nav-item {
+		position: relative;
 		cursor: pointer;
 		background-color: var(--nav-item-color);
 		width: 100%;
@@ -65,6 +64,7 @@ nav#course-navbar { }
 		filter: grayscale(30%);
 		padding: 10px 0px 10px 0px;
 		border: none;
+		z-index: 45;
 	}
 	.nav-item:hover {
 		filter: brightness(110%);
@@ -211,6 +211,14 @@ nav#course-navbar { }
 		position: absolute;
 		transform: rotate(180deg);
 		left: 0px;
+	}
+	.rotate {
+		position: absolute;
+		transform: translateX(10px) translateY(10px) rotate(90deg);
+	}
+	.rotate-back {
+		position: absolute;
+		transform: translateX(10px) translateY(-15px) rotate(-90deg);
 	}
 	
 	.nav-item:hover .arrow:before {

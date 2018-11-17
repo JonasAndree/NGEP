@@ -6,25 +6,39 @@
  
  body {
 	--bg-color: rgb(41, 41, 41);
-	--text-color: rgb(220, 220, 220);
-	--nav-color: rgb(34, 34, 34);
+	--bg-color-text: rgb(39, 39, 39);
+	--text-color: rgb(200, 200, 200);
+	--nav-color: rgba(34, 34, 34, 0.8);
 	--active-text-color: rgb(255, 128, 64);
 	/*--active-text-color: rgb(27, 255, 128);*/
 	--hover-text-color: #ff8040;
 	/*--hover-text-color: #1bff80;*/
-	--nav-item-color: rgb(25,20,20,0.8);
+	--nav-item-color: rgb(25,20,20,0.5);
 	--bage-logo-color: rgb(255, 128, 64);
 	/*--bage-logo-color: rgb(27, 255, 128);*/
 	--scroll-color: #ff8346;
 	/*--scroll-color: #1bff80;*/
 	--button-background: #000;
 	--paranet-color: #101010;
+	/*font-family:"EVE", arial, sans-serif;*/
 	
-	font-size: 10pt;
+	/*font-family: "Lucida Console", Monaco, monospace;*/
+	font-family: "Verdana", Geneva, sans-serif;
+	font-size: 9pt;
 	margin: 0px;
 	padding: 0px;
-	background-color: var(--bg-color);
 	color: var(--text-color);
+	
+	
+	/*text-align:justify;*/
+	/*background:
+	radial-gradient(black 15%, transparent 16%) 0 0,
+	radial-gradient(black 15%, transparent 16%) 8px 8px,
+	radial-gradient(rgba(41, 41, 41,.1) 15%, transparent 20%) 0 1px,
+	radial-gradient(rgba(41, 41, 41,.1) 15%, transparent 20%) 8px 9px;
+	*/
+	background-color: var(--bg-color);
+	background-size:15px 15px;
 }
 ::selection {
     color: var(--nav-color); 
@@ -133,7 +147,7 @@ main {
     top: 0px;
     width: calc(100vw - 400px);
     left: 150px;
-    background-color: rebeccapurple;
+    
 }
 
 

@@ -2,11 +2,6 @@
    -moz-user-select: -moz-none;
    -khtml-user-select: none;
    -webkit-user-select: none;
-
-   /*
-     Introduced in IE 10.
-     See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
-   */
    -ms-user-select: none;
    user-select: none;
 }
@@ -23,19 +18,35 @@
 			width: 150px;
 			right: 0px;
 			bottom: 0px;
-			padding: -0px 5px 5px 5px;
+			padding: 0px 5px 5px 5px;
 		}
 		.toggle #chat-content {
 			
 		}
 			.chat-header {
 				background-color: black;
-				filter: brightness(0.8);
-				width: calc(100% - 10px);
-				transform: scale(1.1, 1.1);
-				padding: 10px 5px 10px 5px;
-   				margin-top: 0px;
+				filter: brightness(0.8);   
+				padding-left: 20px;
+    			padding-right: 20px;
+				width: calc(100% - 20px);
+    			left: -10px;
+				transform: scale(1.0, 1.0);
+   				margin-top: 5px;
 			}
+			.chat-button {
+				padding-left: 25px;
+    			padding-right: 25px;
+				word-wrap: break-word;
+			}
+			.admin-chat-button {
+   				margin-top: 25px;
+			}
+			
+			.chat-header:hover {
+				transform: scale(1.05, 1.05);
+			}
+			
+			
 				.chat-line-container {
 					cursor: n-resize;
 					width: 100%;		
@@ -53,9 +64,38 @@
 					width: 25px;
 					height: 25px;
 					float: right;
-					margin-right: 5px;
+					margin-right: -12px;
 					margin-top: -5px;
 				}
+				.chat-button-img.right{
+					position: absolute;
+					width: 25px;
+					height: 25px;
+					top: 0;
+    				bottom: 0;
+					right: 0px;
+					margin: auto;
+				}
+				.chat-button-img.left{
+					position: absolute;
+					width: 25px;
+					height: 25px;
+					top: 0;
+    				bottom: 0;
+					left: 0px;
+					margin: auto;
+				}
+				.chat-dialog-img {
+					position: absolute;
+					width: 25px;
+					height: 25px;
+					left: 0px;
+					top: 0;
+    				bottom: 0;
+					margin: auto;
+				}
+				
+				
 				.chat-heading {
 					color: var(--active-text-color);
 				}
@@ -79,20 +119,18 @@
 	.chat-dialog-content-info {
 		position: fixed; 
 		width: 140px;
-		height: 50px; 
-		right: 150px; 
-		bottom: 0px;
+		right: 160px;
 		background-color: var(--nav-color);
 		padding: 5px 5px 5px 5px;
+		z-index: 50;
 	}
 		.chat-dialog-info {
 			background-color: var(--nav-item-color);
-			height: calc(100% - 10px);
 			width: calc(100% - 10px);
-			overflow-y: auto;
 			padding: 5px 5px 5px 5px;
-			z-index: 45;
 		}
+	
+	
 	
 	
 	
@@ -103,123 +141,169 @@
 		height: 300px; 
 		bottom: 0px;
 		background-color: var(--nav-color);
-		padding: 0px 5px 5px 5px;
-		z-index: -42;
-		transition: right 0.3s;
+		padding: 0px 3px 5px 3px;
+		z-index: 47;
+		transition: 0.3s;
+		border-color: var(--nav-color);
+		border-width: 2px 2px 0px 2px;
+		border-style: solid;
+		min-width: 160px;
+	}
+			
+	.chat-dialog-content:before {
+	  height: 100%;
+	  width: 5px;
+	  display: inline-block;
+	  position: absolute;
+	  top: 0px;
+	  left: -5px;
+	  content: '';
+	  color: transparent;
+	  border-top: 2px;
+	  cursor: w-resize;
 	}
 		
-			.chat-dialog-line-container {
-				cursor: n-resize;
-				width: 100%;		
-				margin: 5px 5px 5px 5px;
-				padding: 5px;
-					margin-left: 20px;
-			}
-				.chat-dialog-line {
-					background-color: var(--active-text-color);
-					width: 120px;
-					height: 2px;
-				}
-	
-			.chat-move-container {
-				position: absolute;
-				top:-1px;
-				margin: 5px 5px 5px 5px;
-				padding: 5px 5px 5px 5px;
-				cursor: -webkit-grab; 
-				cursor: grab;
-			}
-				.chat-move-box {
-					background-color: var(--active-text-color);
-					width: 4px;
-					height: 4px;
-				}
+	.chat-dialog-content:after {
+	  height: 100%;
+	  width: 5px;
+	  display: inline-block;
+	  position: absolute;
+	  top: 0px;
+	  right: -5px;
+	  content: '';
+	  color: transparent;
+	  border-top: 2px;
+	  cursor: e-resize;
+	}
 	
 	
-		.chat-dialog {
-			background-color: var(--nav-item-color);
-			height: calc(100% - 142px);
-			width: calc(100% - 15px);
-			overflow: auto;
-			padding: 5px 5px 5px 5px;
+	
+	
+	
+	
+	
+		.chat-dialog-line-container {
+			cursor: n-resize;
+			width: calc(90% - 10px);
+			margin: 5px 5px 5px 5px;
+			padding: 5px;
+			margin-left: 20px;
 		}
-		
-			
-			.chat-speech-bubble {
-				position: relative;
-				background: var(--text-color);
-				border-radius: .4em;
-				max-width: calc(100% - 10px);
-				padding: 8px 5px 1px 5px;
-				transition: 0.3s;
-				margin-bottom: 30px;
-				z-index: 4;
+			.chat-dialog-line {
+				background-color: var(--active-text-color);
+				width: 100%;
+				height: 2px;
 			}
-			.chat-speech-bubble.left {
-				right: 0px;
-				background-color: var(--paranet-color);
-			}
-			.chat-speech-bubble.right {
-				left: 0px;
-				background-color: var(--bg-color);
-				text-align: right;
-			}
-			.chat-speech-bubble:after {
-				content: '';
-				position: absolute;
-				bottom: 0;
-				width: 0;
-				height: 0;
-				border: 18px solid transparent;
-				border-top-color: var(--paranet-color);
-				margin-left: -2px;
-				margin-bottom: -12px;
-				transition: 0.3s;
-				z-index: -6;
-			}
-			.chat-speech-bubble.left:after {
-				left: 10%;
-				border-bottom: 0;
-				border-left: 0;
-				
-			}
-			.chat-speech-bubble.right:after {
-				border-top-color: var(--bg-color);
-				left: 80%;
-				border-bottom: 0;
-				border-right: 0;
-			}
-		
-			
-			.chat-speech-date {
-				position: relative;
-				font-size: 6pt;
-				top: 8px;
-			}
-			.chat-speech-date.left {
-				float: right;
-			}
-			.chat-speech-date.right {
-				float: left;
-			}
-		
-		
-		
-		
-		
-		
-		.chat-input {
+
+		.chat-move-container {
 			position: absolute;
-			left: 5px;
-			bottom: 28px; 
+			top:-1px;
+			margin: 5px 5px 5px 5px;
+			padding: 5px 5px 5px 5px;
+			cursor: -webkit-grab; 
+			cursor: grab;
 		}
-		.chat-submit-button {
-			position: absolute; 
-			bottom: 0px;
-			width: 145px;
-			padding-top: 5px;
-    		padding-bottom: 5px;
+			.chat-move-box {
+				background-color: var(--active-text-color);
+				width: 4px;
+				height: 4px;
+			}
+			
+	.chat-dialog {
+		background-color: var(--nav-item-color);
+		height: calc(100% - 142px);
+		width: calc(100% - 10px);
+		overflow: auto;
+		padding: 5px 5px 5px 5px;
+	}
+	.chat-speech-bubble-container {
+			position: relative;
+			max-width: calc(100% - 10px);
+			padding: 5px 5px 5px 5px;
+			margin-bottom: 50px;
+	}
+	.chat-speech-bubble-container2 {
+			position: absolute;
+			max-width: calc(100% - 10px);
+	}
+	
+		.chat-speech-bubble-container2.left {
+			right: 0px;
 		}
+		.chat-speech-bubble-container2.right {
+			left: 0px;
+		}
+	
+	
+		.chat-speech-bubble {
+			position: relative;
+			background-color: var(--text-color);
+			border-radius: .4em;
+			padding: 5px 5px 5px 5px;
+			transition: 0.3s;
+			z-index: 4;
+			min-width: 80px;
+			word-wrap: break-word;
+		}
+		.chat-speech-bubble.left {
+			right: 0px;
+			background-color: var(--paranet-color);
+			text-align: right;
+		}
+		.chat-speech-bubble.right {
+			left: 0px;
+			background-color: var(--bg-color);
+		}
+		.chat-speech-bubble:after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			width: 0;
+			height: 0;
+			border: 18px solid transparent;
+			border-top-color: var(--paranet-color);
+			margin-left: -2px;
+			margin-bottom: -12px;
+			transition: 0.3s;
+			z-index: -6;
+		}
+		.chat-speech-bubble.left:after {
+			left: 10%;
+			border-bottom: 0;
+			border-left: 0;
+			
+		}
+		.chat-speech-bubble.right:after {
+			border-top-color: var(--bg-color);
+			left: 80%;
+			border-bottom: 0;
+			border-right: 0;
+		}
+		
+		.chat-speech-date {
+			position: relative;
+			font-size: 5pt;
+			bottom: 6px;
+		}
+		.chat-speech-date.left {
+			float: right;
+		}
+		.chat-speech-date.right {
+			float: left;
+		}
+	.chat-input {
+		position: absolute;
+		left: 5px;
+		width: calc(100% - 10px);
+		bottom: 28px; 
+	}
+	.chat-submit-button {
+		position: absolute; 
+		bottom: 0px;
+		width: calc(100% - 10px);
+		padding-top: 5px;
+   		padding-bottom: 5px;
+	}
 			
 			
 			
@@ -229,9 +313,15 @@
 	bottom: 5px;
 	border-style: dashed;
 	border-color: var(--active-text-color);
+	background-color: var(--nav-item-color);
 	width: 160px;
 	height: 300px;
+	-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(50%);
+	z-index: -6;
 }			
-			
-			
-		
+	
+	
+	
+	
+	

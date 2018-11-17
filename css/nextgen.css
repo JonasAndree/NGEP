@@ -1,0 +1,79 @@
+/**
+ * CSS Document
+ * Project, portfolio 2014
+ * CSS File
+ * Jonas Andr√©e,    jonandre@kth.se 
+ */
+@font-face {
+	font-family: 'EVE';
+	src: url(../Font/eve_3.ttf);
+}	
+
+.metalTexture {
+	background-image: 
+	-webkit-repeating-linear-gradient(top, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0)   6%, hsla(0,0%,100%, .1) 7.5%),
+	-webkit-repeating-linear-gradient(top, hsla(0,0%,  0%,0) 0%, hsla(0,0%,  0%,0)   4%, hsla(0,0%,  0%,.03) 4.5%),
+	-webkit-repeating-linear-gradient(top, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0) 1.2%, hsla(0,0%,100%,.15) 2.2%),
+	linear-gradient(180deg, hsl(0,0%,78%) 0%, 
+	hsl(0,0%,100%) 100%, 
+	hsl(0,0%,78%) 53%,
+	hsl(0,0%,70%) 100%);
+}
+.text {
+	font-family:"EVE", arial, sans-serif;
+	font-size:10px;
+	position:relative;
+	top:16px;
+	border-radius:0.5em;
+	padding:0 1em;
+	color:rgba(100,100,100,1);
+	margin:0px;
+	float:left;
+}
+	/**
+	 *	H‰r startar bakgrundens css
+	 */
+	div#background-field {
+	position: fixed;
+		font-size:12px;
+		-webkit-user-select:none;  /* Chrome all / Safari all */
+		-moz-user-select:none;     /* Firefox all */
+		-ms-user-select:none;      /* IE 10+ */
+		user-select:none;          /* Likely future */ 
+		cursor: default;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100vw;
+		height: 100vh;
+		color:var(--bg-color-text);
+	}
+		div#logo {
+			font-family:"EVE", arial, sans-serif;
+			position:absolute;
+			width:360px;
+			height:100px;
+		}
+			div#NGE {
+				font-size:1010%;
+				position:absolute;
+				top:0px;
+		
+				text-shadow:
+				-1px -1px 0 #262626,
+				1px -1px 0 #262626,
+				-1px 1px 0 #2C2C2C,
+				1px 1px 0 #2C2C2C;
+			}
+			div#NextGen {
+				font-size:20px;
+				position:absolute;
+				top:110px;
+			}
+			div#education {
+				font-size:20px;
+				text-align:right;
+				position:absolute;
+				top:130px;
+				right:0px;
+			}
