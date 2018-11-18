@@ -16,7 +16,7 @@ nav#course-navbar { }
 		margin-bottom: 10px;
 		color: var(--bage-logo-color);
 		transform: scale(1.1, 1.1);
-	font-family:"EVE", arial, sans-serif;
+		font-family:"EVE", arial, sans-serif;
 	}
 	#page-logo:hover {
 		filter: brightness(110%);

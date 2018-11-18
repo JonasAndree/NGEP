@@ -1,3 +1,0 @@
-Warning: include(getSchools.php): 
-failed to open stream: No such file or directory in 
-C:\xampp\htdocs\ITTools\php\userContent.php on line 85

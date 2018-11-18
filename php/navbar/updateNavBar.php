@@ -74,7 +74,7 @@ function populatePage($parentPage, $level)
         //              style='left: calc(" . (($level - $GLOBALS['foundLevel']) * 150) . "px  + " . (20 * ($level - $GLOBALS['foundLevel'])) . "px )'>";
     }
     if ($level == $GLOBALS['foundLevel']) {
-        echo "<div id='page-logo' class='nav-item' onclick='updateNavBar(\"0\", \"null\", \"root\")'><h1>IT Tools</h1></div>";
+        echo "<div id='page-logo' class='nav-item' onclick='updateNavBar(\"0\", \"null\", \"root\")'><h1>NGEP</h1></div>";
     }
     
     if ($parentPage->heading != "root") {

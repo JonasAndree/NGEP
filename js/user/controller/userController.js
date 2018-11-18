@@ -22,7 +22,6 @@ if (localStorage.getItem('loggedIn') == 'true') {
 	xmlhttp.send();
 }
 
-
 function showRegister() {
 	document.getElementById("loggin-container").style.display = "none";
 	document.getElementById("register-container").style.display = "block";
@@ -42,7 +41,6 @@ function loggedIn(state) {
 		document.getElementById("user-login-header").style.display = "block";
 		document.getElementById("user-register-header").style.display = "none";
 		document.getElementById("user-user-header").style.display = "none";
-	    
 	} else {
 		document.getElementById('loggin-container').style.display = 'none';
 		document.getElementById('register-container').style.display = 'none';
