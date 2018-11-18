@@ -1,9 +1,11 @@
 
+
 toggleMenuBar(document.getElementById("chat-button"), "chat");
+toggleMenuBar(document.getElementById("navbar"), "toggle");
 function toggleMenuBar(menuElement, field) {
 	menuElement.classList.toggle("toggle");
 	if (field == "nav") {
-		document.getElementById("course-navbar").classList.toggle("toggle");
+		document.getElementById("navbar").classList.toggle("toggle");
 	} 
 	if (field == "user" || field == "chat") {
 		if (field == "user") {		

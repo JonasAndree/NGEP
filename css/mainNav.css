@@ -5,6 +5,23 @@
  **********************************************************/
 
 nav#course-navbar { }
+	#page-logo-container {
+		display: none;
+	}
+	.toggle #page-logo-container {
+		display: block;
+	}
+	#page-logo-content {
+		position: fixed;
+		background-color: var(--nav-color);
+		padding: 0px 5px 0px 5px;
+		opacity: 1;
+		top: 0px;
+		left: 0px;
+		width: 160px;
+		height: 160px;
+		margin-top: -0px;
+	}
 	#page-logo {
 		background-image: url("../images/main/logo.gif");
 		background-repeat: no-repeat;
@@ -30,10 +47,10 @@ nav#course-navbar { }
 		background-color: var(--nav-color);
 		padding: 0px 5px 0px 5px;
 		opacity: 1;
-		top: 0px;
+		top: 160px;
 		left: 0px;
 		width: 160px;
-		height: 100vh;
+		height: calc(100vh - 160px);
 		margin-top: -0px;
 	}
 	.toggle section#sub-nav-container-main {

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>IT Tools</title>
+    <title>NextGen Education Platform</title>
     <meta name="description" content="Startup Teching tool" />
     <meta name="author" content="Jonas Andrée" />
     <meta charset="utf-8" />
@@ -15,7 +15,7 @@
 <body class="" onload="">
 	<header>
 		<div id="background-field">
-			<div id="logo" >
+			<div id="logo">
 				<div id="NGE">Nge</div>
 				<!-- <div id="NextGen">
 					<font size="5" >N</font> <font>ext </font>
@@ -48,7 +48,17 @@
 			</div>
 		</div>
 
-		<nav id="course-navbar"></nav>
+		<nav id="navbar">
+			<div id="page-logo-container">
+				<div id="page-logo-content">
+        			<div id='page-logo' class='nav-item' onclick='updateNavBar("0", "null", "root")' >
+        				<h1>Ngep</h1>
+        			</div>
+    			</div>
+			</div>
+			<div id="course-navbar">
+			</div>
+		</nav>
 		<div id="user-cont"></div>
 		<div id="chat-cont">
 			<div id="chat-container">

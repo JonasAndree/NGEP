@@ -49,6 +49,7 @@ function logMeIn() {
 				temp = document.getElementById("school-user").getAttribute("user-value");
 				localStorage.setItem("school", temp);
 				pupulateChat();
+				updateUserNavBar();
 			}
 		}
 	};
@@ -105,3 +106,26 @@ function changeImage() {
 	xhr.open('POST', form.getAttribute('action'), true);
 	xhr.send(formData);
 }
+
+function updateUserNavBar() {/*
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			document.getElementById("sub-nav-content-0-0").innerHTML = this.responseText;
+		}
+	};
+	var firstName = localStorage.getItem('firstName');
+	var lastName = localStorage.getItem('lastName');
+	var position = localStorage.getItem('position');
+	var school = localStorage.getItem('school');
+	var mail = localStorage.getItem('mail');
+	xmlhttp.open("GET", "php/navbar/updateUserNavBar.php?firstName=" + firstName + 
+										  			   "&lastName=" + lastName + 
+										  			   "&position=" + position + 
+										  			   "&school=" + school + 
+										  			   "&mail=" + mail, true);
+	xmlhttp.send();
+	pupulateChat();*/
+}
+
+

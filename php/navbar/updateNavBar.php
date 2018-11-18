@@ -62,19 +62,10 @@ function populatePage($parentPage, $level)
         echo "<section id='sub-nav-container-$level-$parentId' class='sub-nav-container '>";
     }
     
-    /*
-     * echo "<div id='sub-nav-content-$level-$parentId' class='sub-nav-content'
-     * style='left: calc(" . (($level-$GLOBALS['foundLevel']) * 10) . "vw + " . (10 * ($level-$GLOBALS['foundLevel'])) . "px )'>";
-     */
     if ($level == $GLOBALS['foundLevel']) {
         echo "<div id='sub-nav-content-$level-$parentId' class=''>";
-     //              style='left: calc(" . (($level - $GLOBALS['foundLevel']) * 150) . "px  + " . (20 * ($level - $GLOBALS['foundLevel'])) . "px )'>";
     } else  {
         echo "<div id='sub-nav-content-$level-$parentId' class='sub-nav-content' style='z-index:-$level;'>";
-        //              style='left: calc(" . (($level - $GLOBALS['foundLevel']) * 150) . "px  + " . (20 * ($level - $GLOBALS['foundLevel'])) . "px )'>";
-    }
-    if ($level == $GLOBALS['foundLevel']) {
-        echo "<div id='page-logo' class='nav-item' onclick='updateNavBar(\"0\", \"null\", \"root\")'><h1>NGEP</h1></div>";
     }
     
     if ($parentPage->heading != "root") {
@@ -91,11 +82,6 @@ function populatePage($parentPage, $level)
             echo " $parentPage->heading ";
             echo "</div>";
             echo "</div>";
-        } else {
-     /*       echo "<div class='nav-item nav-paranet'
-                       onclick='updateNavBar(\" $parrentHeadingId \", \" $parrentHeadingHeading \", \" $parrentHeadingParentId \");'> ";
-            echo " $parentPage->heading ";
-            echo "</div>";*/
         }
     }
     
