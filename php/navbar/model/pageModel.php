@@ -2,6 +2,7 @@
 class Page
 {
     public $parent = "null";
+    public $parentType = "null";
     public $heading = "root";
     public $id = 0;
     public $children = array();

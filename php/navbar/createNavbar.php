@@ -33,5 +33,5 @@ function getPages($parent)
 $rootPage = new Page();
 getPages($rootPage);
 $_SESSION['rootPage'] = $rootPage;
-
+include "updateNavBar.php";
 ?>

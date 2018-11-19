@@ -6,7 +6,7 @@ function pupulateChat() {
 			document.getElementById("chat-content").innerHTML = this.responseText;
 			chats = [];
 			if (document.getElementById("chat-content") != null) {
-				var height = document.getElementById("chat-content").offsetHeight;
+				var height = document.getElementById("chat-content").style.height;
 				if (height < 300)
 					height = 300;
 				if (height > window.innerHeight - 150)

@@ -9,7 +9,6 @@ function updateNavBar(id, parent, heading) {
 	xmlhttp.send();
 }
 
-createNavbar();
 function createNavbar() {
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {

@@ -4,7 +4,6 @@ if (localStorage.getItem('loggedIn') == 'true') {
 		if (this.readyState == 4 && this.status == 200) {
 			document.getElementById("user-cont").innerHTML = this.responseText;
 			loggedIn(true);
-			toggleMenuBar(document.getElementById("loggin-button"), 'user');
 			reactivateUser();
 			updateUserNavBar();
 		}
@@ -16,7 +15,8 @@ if (localStorage.getItem('loggedIn') == 'true') {
 	xmlhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			document.getElementById("user-cont").innerHTML = this.responseText;
-			localStorage.setItem('loggedIn', 'false');		
+			localStorage.setItem('loggedIn', 'false');	
+			createNavbar();
 		}
 	};
 	xmlhttp.open("GET", "php/user/userContent.php", true);
@@ -42,8 +42,6 @@ function loggedIn(state) {
 		document.getElementById("user-login-header").style.display = "block";
 		document.getElementById("user-register-header").style.display = "none";
 		document.getElementById("user-user-header").style.display = "none";
-
-		updateNavBar();
 	} else {
 		document.getElementById('loggin-container').style.display = 'none';
 		document.getElementById('register-container').style.display = 'none';
@@ -51,7 +49,5 @@ function loggedIn(state) {
 		document.getElementById("user-register-header").style.display = "none";
 	    document.getElementById('user-info').style.display = 'block';
 		document.getElementById("user-user-header").style.display = "block";
-
-		updateUserNavBar();
 	}
 }
