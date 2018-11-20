@@ -81,10 +81,7 @@
                             <option value="Student" selected>Student</option>
                             <option value="Teacher">Teacher</option>
                         </select>
-                    	<br>
                         <?php include "getSchools.php"; ?>
-                        <br> 
-                    	<br>
                     	<button class="submit-form nav-item" type="submit">Register</button>
                       	<button class="clear-form nav-item" type="reset">Clear</button>
                     </form>

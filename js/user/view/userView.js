@@ -112,7 +112,7 @@ function updateUserNavBar() {
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-			document.getElementById("course-navbar").innerHTML = this.responseText;
+			//document.getElementById("course-navbar").innerHTML = this.responseText;
 			updateNavBar("0", "null", "root");
 		}
 	};

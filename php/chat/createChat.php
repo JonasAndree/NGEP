@@ -1,4 +1,6 @@
 <?php
+include_once "../sql.php";
+
 function findParent($parent, $resip_name, $resip_Last_name, $resip_course, $resip_mail, $position, $mail)
 {
     if ($parent == false) {
@@ -39,10 +41,11 @@ function createCourseChildeButton($resip_name, $resip_Last_name, $resip_course, 
             echo "<div class='chat-button'>$resip_course </div>";
         }
     }
+    echo "<div class='nav-button-parent chat-back'></div>";
     
-    echo "<div class='nav-button-parent chat-back '></div>";
-    $sql = "SELECT image FROM `users` WHERE mail='$resip_mail'";
-    $users = $_SESSION['conn']->query($sql);
+    $users = getUserImage($resip_mail);
+    
+    
     $result = $users->fetch_assoc();
     
     if (! empty($result['image'])) {
@@ -134,9 +137,8 @@ function createChatDialog($resip_course, $resip_name, $resip_Last_name, $resip_m
                     <span class='arrow'><span></span></span>
                </div>";
             
-        
-        $sql = "SELECT image FROM `users` WHERE mail='$resip_mail'";
-        $users = $_SESSION['conn']->query($sql);
+        $users = getUserImage($resip_mail);
+
         $result = $users->fetch_assoc();
         if (! empty($result['image'])) {
             echo '<img class="chat-dialog-img" 

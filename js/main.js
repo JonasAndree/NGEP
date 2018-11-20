@@ -1,7 +1,5 @@
 
 
-toggleMenuBar(document.getElementById("chat-button"), "chat");
-toggleMenuBar(document.getElementById("navbar"), "toggle");
 function toggleMenuBar(menuElement, field) {
 	menuElement.classList.toggle("toggle");
 	if (field == "nav") {

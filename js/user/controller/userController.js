@@ -1,26 +1,13 @@
-if (localStorage.getItem('loggedIn') == 'true') {
-	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			document.getElementById("user-cont").innerHTML = this.responseText;
-			loggedIn(true);
-			reactivateUser();
-			updateUserNavBar();
-		}
-	};
-	xmlhttp.open("GET", "php/user/userContent.php", true);
-	xmlhttp.send();
-} else {
-	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			document.getElementById("user-cont").innerHTML = this.responseText;
-			localStorage.setItem('loggedIn', 'false');	
-			createNavbar();
-		}
-	};
-	xmlhttp.open("GET", "php/user/userContent.php", true);
-	xmlhttp.send();
+setUp();
+function setUp() {
+	if (localStorage.getItem('loggedIn') == 'true') {
+		loggedIn(true);
+		reactivateUser();
+		updateUserNavBar();
+	} else {
+		localStorage.setItem('loggedIn', 'false');	
+		createNavbar();
+	}
 }
 
 function showRegister() {

@@ -1,11 +1,8 @@
 <?php
-$_SESSION['conn'] = new mysqli("localhost", "root", "", "it_tools");
+include_once "../sql.php";
 
-$sql = "SELECT * FROM `messages` WHERE touser='$mail' AND fromuser='$resip_mail' AND course='$resip_course'
-            UNION
-            SELECT * FROM `messages` WHERE touser='$resip_mail' AND fromuser='$mail' AND course='$resip_course'
-            ORDER BY sent";
-$messages = $_SESSION['conn']->query($sql);
+$messages = getChatDialog($mail, $resip_mail, $resip_course);
+
 if (! empty($messages)) {
     while ($message = $messages->fetch_assoc()) {
         if ($mail == $message['fromuser']) {

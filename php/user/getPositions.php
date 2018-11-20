@@ -1,9 +1,9 @@
 <?php
+include_once dirname(__FILE__, 2) . "\sql.php";
+
 echo "Position: ";
 
-$_SESSION['conn'] = new mysqli("localhost", "root", "", "it_tools");
-$sql = "SELECT * FROM `positions`";
-$positions = $_SESSION['conn']->query($sql);
+$positions = getPositions();
 
 if (isset($position) ) {
     if ($position == "Student") {

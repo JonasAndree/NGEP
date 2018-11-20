@@ -59,10 +59,13 @@
 			<div id="course-navbar">
 			</div>
 		</nav>
-		<div id="user-cont"></div>
+		<div id="user-cont">
+            <?php include "php/user/userContent.php"; ?>
+		</div>
 		<div id="chat-cont">
 			<div id="chat-container">
-				<div id="chat-content"></div>
+				<div id="chat-content">
+				</div>
 			</div>
 		</div>
 	</header>
@@ -80,8 +83,8 @@
 	<script type="text/javascript" src="js/navBar/view/navBarView.js"></script>
 	
 	<script type="text/javascript" src="js/user/model/userModel.js"></script>
-	<script type="text/javascript" src="js/user/controller/userController.js"></script>
 	<script type="text/javascript" src="js/user/view/userView.js"></script>
+	<script type="text/javascript" src="js/user/controller/userController.js"></script>
 	
 	<script type="text/javascript" src="js/main.js"></script>
 </body>

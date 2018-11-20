@@ -1,8 +1,8 @@
 <?php
-include "../connect.php";
-include "model/pageModel.php";
-
 session_start();
+include_once "../sql.php";
+include_once "model/pageModel.php";
+
 $rootPage = new Page();
 
 $firstName = $_REQUEST["firstName"];
@@ -14,14 +14,12 @@ $position = $_REQUEST['position'];
 include "getSpecificCourses.php";
 
 while ($course = $result->fetch_assoc()) {
-    getRootPages($rootPage, $course, $conn);
+    getRootPages($rootPage, $course);
 }
 
 $_SESSION['rootPage'] = $rootPage;
 
-
-
-function getRootPages($rootPage, $course, $conn)
+function getRootPages($rootPage, $course)
 {
     $parentId = $rootPage->id;
     $newPage = new Page();
@@ -29,24 +27,16 @@ function getRootPages($rootPage, $course, $conn)
     $newPage->parentType = "root";
     $newPage->heading = $course["course"];
     $newPage->id = $course["id"];
-    echo "<li id='$newPage->heading-$newPage->id-nav-item ' class='nav-item'>$newPage->heading</li>";
+    //echo "<li id='$newPage->heading-$newPage->id-nav-item ' class='nav-item'>$newPage->heading</li>";
     
-   // echo $course["course"];
     array_push($rootPage->children, $newPage);
-    
-    
-    //getPages($newPage, $conn);
-    
+    getPages($newPage);
 }
 
-function getPages($parent, $conn)
+function getPages($parent)
 {
     $parentId = $parent->id;
-    if ($parent->parentType == "root")
-        $children = $conn->query("SELECT * FROM `specificpage` WHERE parent='$parentId' AND childeType='course'");
-    else
-        $children = $conn->query("SELECT * FROM `specificpage` WHERE parent='$parentId' AND childeType='page'");
-        
+    $children = getUserPageChilde($parent->parentType, $parentId);
     while ($child = $children->fetch_assoc()) {
         $newPage = new Page();
         $newPage->parent = $parentId;
@@ -54,8 +44,7 @@ function getPages($parent, $conn)
         $newPage->heading = $child["heading"];
         $newPage->id = $child["id"];
         array_push($parent->children, $newPage);
-        getPages($newPage, $conn);
-         
+        getPages($newPage);
     }
 }
 
