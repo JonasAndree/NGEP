@@ -12,13 +12,15 @@ $school = $_REQUEST['school'];
 $position = $_REQUEST['position'];
 
 include "getSpecificCourses.php";
-    
 
 while ($course = $result->fetch_assoc()) {
     getRootPages($rootPage, $course, $conn);
 }
 
 $_SESSION['rootPage'] = $rootPage;
+
+
+
 function getRootPages($rootPage, $course, $conn)
 {
     $parentId = $rootPage->id;
@@ -27,9 +29,13 @@ function getRootPages($rootPage, $course, $conn)
     $newPage->parentType = "root";
     $newPage->heading = $course["course"];
     $newPage->id = $course["id"];
-    //echo "<li id='$newPage->heading-$newPage->id-nav-item ' class='nav-item'>$newPage->heading</li>";
+    echo "<li id='$newPage->heading-$newPage->id-nav-item ' class='nav-item'>$newPage->heading</li>";
+    
+   // echo $course["course"];
     array_push($rootPage->children, $newPage);
-    getPages($newPage, $conn);
+    
+    
+    //getPages($newPage, $conn);
     
 }
 
@@ -48,7 +54,6 @@ function getPages($parent, $conn)
         $newPage->heading = $child["heading"];
         $newPage->id = $child["id"];
         array_push($parent->children, $newPage);
-        //echo "<li id='$newPage->heading-$newPage->id-nav-item ' class='nav-item'>$newPage->heading</li>";
         getPages($newPage, $conn);
          
     }

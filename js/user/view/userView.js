@@ -129,7 +129,3 @@ function updateUserNavBar() {
 	xmlhttp.send();
 	pupulateChat();
 }
-
-function consolelog(param) {
-	console.log(param);
-}

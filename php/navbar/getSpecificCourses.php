@@ -4,26 +4,13 @@ if ($position == "Teacher") {
     $result = $conn->query($sql);
     
 } else {
-    $sql1 = "CREATE TABLE SELECTED_COURSES_TEMPTABLE (
-         course varchar(256), `id` varchar(256))";
-    $conn->query($sql1);
-
-    $sql2 = "SELECT course FROM students WHERE user='$mail' ";
+    $sql1 = "SELECT specificcourse.course, specificcourse.id FROM
+            	(students LEFT JOIN
+                 	(specificcourse LEFT JOIN users
+                     	ON specificcourse.teacher=users.mail)
+                 ON specificcourse.id=students.course )
+            WHERE user='$mail'";
     
-    $courseIds = $conn->query($sql2);
-    while ($id = $courseIds->fetch_assoc()) {
-        $id = $id['course'];
-        $sqlInsert = "INSERT INTO SELECTED_COURSES_TEMPTABLE (course, id)
-            SELECT `course`, `id` FROM `specificcourse` WHERE id='$id'
-        ";
-        $conn->query($sqlInsert);
-    }    
-    
-    
-    $sql2 = "SELECT * FROM SELECTED_COURSES_TEMPTABLE";
-    $result = $conn->query($sql2);
-    
-    $drop = "DROP TABLE SELECTED_COURSES_TEMPTABLE;";
-    $conn->query($drop);
+    $result = $conn->query($sql1);
 }
 ?>

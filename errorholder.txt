@@ -1,0 +1,6 @@
+Fatal error: Uncaught Error: 
+Call to a member function fetch_assoc() on boolean in 
+C:\xampp\htdocs\NGEP\php\chat\getCourses.php:64 Stack trace: 
+#0 C:\xampp\htdocs\NGEP\php\chat\chatContent.php(38): include() #1 {main} 
+thrown in 
+C:\xampp\htdocs\NGEP\php\chat\getCourses.php on line 64
