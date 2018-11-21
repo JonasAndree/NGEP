@@ -184,17 +184,18 @@ function displayChatInfo(name, firstName, lastName, state, hovedElement) {
 	}
 }
 
-function displayChat(name, firstName, lastName) {
-	var clickedChat = document.getElementById(name + "-" + firstName + "-" + lastName + "-chat-dialog");
-	var chatListItem = document.getElementById(name + "-" + firstName + "-" + lastName + '-chat-list-item');
-	var chatArrow = document.getElementById(name + "-" + firstName + "-" + lastName  + '-chat-arrow');
-	var chatImg = document.getElementById(name + "-" + firstName + "-" + lastName  + '-chat-button-img');
+function displayChat(course, firstName, lastName) {
+	var clickedChat = document.getElementById(course + "-" + firstName + "-" + lastName + "-chat-dialog");
+	var chatListItem = document.getElementById(course + "-" + firstName + "-" + lastName + '-chat-list-item');
+	var chatArrow = document.getElementById(course + "-" + firstName + "-" + lastName  + '-chat-arrow');
+	var chatImg = document.getElementById(course + "-" + firstName + "-" + lastName  + '-chat-button-img');
 	
 	if (clickedChat.getAttribute("stay") == "true") {
 		clickedChat.setAttribute("stay", "false");
 		clickedChat.style.display = "none";
 		chatListItem.style.transform = "scale(1.00, 1.00)";
 		chatListItem.style.backgroundColor = "var(--nav-item-color)";
+		chatListItem.style.color = "var(--text-color)";
 		chatArrow.setAttribute("class", "arrow back");
 		chatImg.setAttribute("class", "chat-button-img right");
 		if (clickedChat.getAttribute("flying") == "false") {
@@ -209,7 +210,8 @@ function displayChat(name, firstName, lastName) {
 		clickedChat.setAttribute("stay", "true");
 		clickedChat.style.display = "block";
 		chatListItem.style.transform = "scale(1.05, 1.05)";
-		chatListItem.style.backgroundColor = "black";
+		chatListItem.style.backgroundColor = "var(--nav-pressed-bg)";
+		chatListItem.style.color = "var(--chat-parent-pressed)";
 		chatArrow.setAttribute("class", "arrow");
 		chatImg.setAttribute("class", "chat-button-img left");
 		if (clickedChat.getAttribute("flying") == "false") {
@@ -233,7 +235,7 @@ function displayChat(name, firstName, lastName) {
 			clickedChat.firstElementChild.style.right = right + "px";
 
 			resetRightChatPositions();
-			scrollToBottom(document.getElementById(name + "-" + firstName + "-" + lastName + "-chat-dialog-box"));
+			scrollToBottom(document.getElementById(course + "-" + firstName + "-" + lastName + "-chat-dialog-box"));
 		}
 	}
 }

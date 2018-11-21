@@ -1,7 +1,7 @@
 <?php
 include_once "../sql.php";
 
-$result = getUserInfo($mail, $resip_course);
+$result = getUsers($mail, $resip_course);
 
 echo "<ul>";
     while ($res = $result->fetch_assoc()) {

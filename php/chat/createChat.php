@@ -4,11 +4,11 @@ include_once "../sql.php";
 function findParent($parent, $resip_name, $resip_Last_name, $resip_course, $resip_mail, $position, $mail)
 {
     if ($parent == false) {
-        createCourseChildeButton( $resip_name, $resip_Last_name, $resip_course, $resip_mail, $position);
+        createCourseChildeButton($resip_name, $resip_Last_name, $resip_course, $resip_mail, $position);
         createChatDialog($resip_course, $resip_name, $resip_Last_name, $resip_mail, $mail);
         createChatDialogInfo($parent, $resip_course, $resip_name, $resip_Last_name, $resip_mail, $mail);
     } else {
-        createCourseParentButton($resip_course, $resip_mail, $mail, $position);
+        createCourseParentButton($resip_course, $resip_name, $resip_Last_name, $resip_mail, $mail, $position);
         createChatDialogInfo($parent, $resip_course, '', '', $resip_mail, $mail);
     }
 }
@@ -38,7 +38,7 @@ function createCourseChildeButton($resip_name, $resip_Last_name, $resip_course, 
         if($position == 'Teacher') {
             echo "<div class='chat-button'>$resip_name $resip_Last_name </div>";
         }else {
-            echo "<div class='chat-button'>$resip_course </div>";
+            echo "<div class='chat-button'>$resip_course</div>";
         }
     }
     echo "<div class='nav-button-parent chat-back'></div>";
@@ -59,10 +59,11 @@ function createCourseChildeButton($resip_name, $resip_Last_name, $resip_course, 
 }
 
 
-function createCourseParentButton($resip_course, $resip_mail, $mail, $position){
+function createCourseParentButton($resip_course, $resip_name, $resip_Last_name, $resip_mail, $mail, $position){
     if ($position == "Teacher back") {
         echo "<li id='$resip_course---chat-list-item'
-              class='nav-item nav-paranet'
+              class='nav-item nav-paranet chat-parent-pressed'
+
               onmouseover='displayChatInfo(\"$resip_course\",
                                            \"\", 
                                            \"\",
@@ -80,7 +81,7 @@ function createCourseParentButton($resip_course, $resip_mail, $mail, $position){
                 <span id='$resip_course-chat-arrow' class='arrow rotate-back'><span></span></span>";
     } else {
         echo "<li id='$resip_course-chat-list-item'
-              class='nav-item '
+              class='nav-item'
               onmouseover='displayChatInfo(\"$resip_course\", 
                                            \"\", 
                                            \"\", 
@@ -97,8 +98,8 @@ function createCourseParentButton($resip_course, $resip_mail, $mail, $position){
             echo "<div class='animate-arrow'>
                 <span id='$resip_course-chat-arrow' class='arrow rotate back'><span></span></span>";
     }
-            echo "<div class='chat-button'>$resip_course </div>";
-            echo "<div class='nav-button-parent chat-back '></div>";
+            echo "<div class='chat-button'>$resip_course</div>";
+            echo "<div class='nav-button-parent chat-back'></div>";
         echo "</div>";
     echo " </li>";
 }
@@ -106,8 +107,14 @@ function createCourseParentButton($resip_course, $resip_mail, $mail, $position){
 
 
 function createChatDialog($resip_course, $resip_name, $resip_Last_name, $resip_mail, $mail) {
-    echo "<div id='$resip_course-$resip_name-$resip_Last_name-chat-dialog' class='chat-dialog-container '
-                   flying='false' stay='false' pos='none' >
+    echo "<div id='$resip_course-$resip_name-$resip_Last_name-chat-dialog' 
+               class='chat-dialog-container'
+               course='$resip_course'
+               firstName='$resip_name'
+               lastName='$resip_Last_name'
+               flying='false' 
+               stay='false' 
+               pos='none'>
            <div id='$resip_course-$resip_name-$resip_Last_name-chat-dialog-content'
                 class='chat-dialog-content resize-drag'
                 onmousedown='borderUp(event, this)'
@@ -129,7 +136,7 @@ function createChatDialog($resip_course, $resip_name, $resip_Last_name, $resip_m
                onclick='displayChat(\"$resip_course\", \"$resip_name\", \"$resip_Last_name\")'>";
     
     if ($resip_course == "Admin") {
-        echo " $resip_course";
+        echo "$resip_course";
     } else {
         echo "$resip_course<br> $resip_name $resip_Last_name";
     }

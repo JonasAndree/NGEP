@@ -10,7 +10,7 @@ if (!empty($messages)) {
             array_push($messagesArray,""
                  ."<div class='chat-speech-bubble-container'>"
                      ."<div class='chat-speech-bubble-container2 left'>"
-                         ."<div class='chat-speech-bubble left' > " . $message['message']
+                         ."<div class='chat-speech-bubble left'> " . $message['message']
                          ."</div>"
                          ."<p class='chat-speech-date left'>" . $message['sent'] . "<p>"
                      ."</div>"
@@ -20,7 +20,7 @@ if (!empty($messages)) {
             array_push($messagesArray,""
             . "<div class='chat-speech-bubble-container'>"
                 . "<div class='chat-speech-bubble-container2 right'>"
-                    . "<div class='chat-speech-bubble right' >" . $message['message']
+                    . "<div class='chat-speech-bubble right'>" . $message['message']
                     . "</div>"
                     . "<p class='chat-speech-date right'>" . $message['sent'] . "<p>"
                 . "</div>"

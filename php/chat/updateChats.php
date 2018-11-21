@@ -5,7 +5,7 @@ include "createChat.php";
 $course = $_REQUEST['course'];
 $mail = $_REQUEST['mail'];
 
-$result = updateChat($mail, $course);
+$result = getUsers($mail, $course);
 
 findParent(true, '', '', $course, '', 'Teacher back', $mail);
 while ($res = $result->fetch_assoc()) {

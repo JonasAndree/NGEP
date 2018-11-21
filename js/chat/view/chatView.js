@@ -58,16 +58,39 @@ function borderOut(event, borderElement) {
     } 
 }
 
+var courseChats = {};
 
 function displayChildren(course, mail, position) {
     if (position == "Teacher") {
 	    var xhr = new XMLHttpRequest();
 	    xhr.onreadystatechange = function() {
 	        if (this.readyState == 4 && this.status == 200) {
+	        	if (courseChats["chats-" + course] !== undefined) {
+	        		if (courseChats["chats-" + course].length > 0) {
+	        			console.log(courseChats["chats-" + course]);
+	        			for (var i = courseChats["chats-" + course].length - 1; i <= 0; i--)  {
+	        				var courseName = courseChats["chats-" + course][i].getAttribute("course"); 
+	        				var firstName = courseChats["chats-" + course][i].getAttribute("firstName");
+	        				var lastName = courseChats["chats-" + course][i].getAttribute("lastName");
+	        				console.log(courseName, firstName, lastName);
+	        				displayChat(courseName, firstName, lastName);
+	        			}
+	        		} else {
+	        			console.log("one");
+	        			console.log(chats);
+        	            courseChats["chats-" + course] = chats;	
+        	            chats = {};
+        			}
+	        		
+	        	} else {
+        			console.log("two");
+    	            courseChats["chats-" + course] = chats;	
+	        		chats = {};
+    			}
 	            document.getElementById("chat-headers-ul").innerHTML = this.responseText;
 	        }
 	    };
-	    xhr.open("GET", "php/chat/updateChats.php?course="+course+" &mail="+mail, true);
+	    xhr.open("GET", "php/chat/updateChats.php?course="+course+"&mail="+mail, true);
 	    xhr.send();
     } else {
 	    var xhr = new XMLHttpRequest();

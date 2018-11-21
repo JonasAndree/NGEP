@@ -18,7 +18,7 @@ if ($position == "Student") {
 } else if ($position == "Teacher") {
     $result = getCoursesForTeacher($mail);
     while ($res = $result->fetch_assoc()) {
-        findParent(true, '', '', $res['course'], '',$position , $mail);
+        findParent(true, '', '', $res['course'], '', $position , $mail);
     }
 }
 findParent(false, 'Admin', '', 'Admin', 'Admin', '', $mail);

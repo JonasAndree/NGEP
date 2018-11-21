@@ -112,77 +112,15 @@ function getUserPageChilde($parentType, $parentId)
         return $GLOBALS['conn']->query("SELECT * FROM `specificpage` WHERE parent='$parentId' AND childeType='page'");
 }
 
-function updateChat($mail, $course)
+function getUsers($mail, $course)
 {
-    $sqlCourses = "SELECT `id`, `school` FROM `specificcourse` WHERE `teacher`='$mail' AND `course`='$course'";
-    $idAndSchool = $GLOBALS['conn']->query($sqlCourses);
+    $sql = "SELECT users.firstname, users.lastname, users.mail FROM (users LEFT JOIN
+            specificcourse ON users.school=specificcourse.school)
+            WHERE `teacher`='$mail' AND `course`='$course' AND active=1 AND users.position='Student'
+            ORDER BY users.firstname";
     
-    $idAndSchool = $idAndSchool->fetch_assoc();
-    $id = $idAndSchool['id'];
-    $school = $idAndSchool['school'];
-    
-    $sqlStudents = "
-        CREATE TABLE STUDENTS_TEMPTABLE AS
-        SELECT `user`
-        FROM `students` WHERE `course`='$id'";
-    $GLOBALS['conn']->query($sqlStudents);
-    
-    $sqlCreateUserTable = "
-        CREATE TABLE USERS_TEMPTABLE AS
-        SELECT users.firstname, users.lastname, users.mail FROM users WHERE
-        users.active = 1 AND users.position = 'Student' AND users.school='$school';";
-    $GLOBALS['conn']->query($sqlCreateUserTable);
-    
-    $sqlStudentInfo = "
-        SELECT USERS_TEMPTABLE.firstname, USERS_TEMPTABLE.lastname, USERS_TEMPTABLE.mail
-        FROM
-        USERS_TEMPTABLE JOIN STUDENTS_TEMPTABLE ON USERS_TEMPTABLE.mail = STUDENTS_TEMPTABLE.user
-        ORDER BY USERS_TEMPTABLE.firstname;";
-    $result = $GLOBALS['conn']->query($sqlStudentInfo);
-    
-    $drop = "DROP TABLE USERS_TEMPTABLE, STUDENTS_TEMPTABLE;";
-    $GLOBALS['conn']->query($drop);
-    
-    return $result;
+    return $GLOBALS['conn']->query($sql);
 }
-
-function getUserInfo($mail, $resip_course)
-{
-    $sqlCourses = "SELECT `id`, `school` FROM `specificcourse`
-               WHERE
-              `teacher`='$mail' AND `course`='$resip_course'";
-    $idAndSchool = $GLOBALS['conn']->query($sqlCourses);
-    $idAndSchool = $idAndSchool->fetch_assoc();
-    $id = $idAndSchool['id'];
-    $school = $idAndSchool['school'];
-    
-    $sqlStudents = "
-        CREATE TABLE STUDENTS_TEMPTABLE AS
-        SELECT `user`
-        FROM `students` WHERE `course`='$id'";
-    $GLOBALS['conn']->query($sqlStudents);
-    
-    $sqlCreateUserTable = "
-        CREATE TABLE USERS_TEMPTABLE AS
-        SELECT users.firstname, users.lastname, users.mail FROM users
-        WHERE
-        users.active = 1 AND users.position = 'Student'
-        AND users.school='$school';";
-    $GLOBALS['conn']->query($sqlCreateUserTable);
-    
-    $sqlStudentInfo = "
-        SELECT USERS_TEMPTABLE.firstname, USERS_TEMPTABLE.lastname, USERS_TEMPTABLE.mail
-        FROM
-        USERS_TEMPTABLE JOIN STUDENTS_TEMPTABLE ON USERS_TEMPTABLE.mail = STUDENTS_TEMPTABLE.user
-        ORDER BY USERS_TEMPTABLE.firstname; ";
-    $result = $GLOBALS['conn']->query($sqlStudentInfo);
-    
-    $drop = "DROP TABLE USERS_TEMPTABLE, STUDENTS_TEMPTABLE;";
-    $GLOBALS['conn']->query($drop);
-    
-    return $result;
-}
-
 
 function getChatDialogInfo($mail, $resip_mail, $resip_course) {
     $sql = "SELECT * FROM `messages` WHERE touser='$mail' AND fromuser='$resip_mail' AND course='$resip_course'
@@ -191,6 +129,7 @@ function getChatDialogInfo($mail, $resip_mail, $resip_course) {
             ORDER BY sent DESC LIMIT 3";
     return $GLOBALS['conn']->query($sql);
 }
+
 function getChatDialog($mail, $resip_mail, $resip_course) {
     $sql = "SELECT * FROM `messages` WHERE touser='$mail' AND fromuser='$resip_mail' AND course='$resip_course'
             UNION

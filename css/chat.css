@@ -320,8 +320,10 @@
     filter: grayscale(50%);
 	z-index: -6;
 }			
-	
-	
+.chat-parent-pressed {
+	background-color: var(--active-text-color);
+	color: var(--bg-color-text);
+}
 	
 	
 	
