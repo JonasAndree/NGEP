@@ -21,7 +21,7 @@ if ($position == "Teacher") {
     $newPage->parent = 0;
     $newPage->parentType = "root";
     $newPage->heading = "+ Create new course";
-    $newPage->id = "none";
+    $newPage->id = 5000000;
     array_push($rootPage->children, $newPage);
 }
 
@@ -35,34 +35,33 @@ function getRootPages($rootPage, $course)
 {
     $parentId = $rootPage->id;
     $newPage = new Page();
-    $newPage->parent = $parentId;
+    $newPage->parent = $rootPage;
     $newPage->parentType = "root";
     $newPage->heading = $course["course"];
     $newPage->id = $course["id"];
     array_push($rootPage->children, $newPage);
     getPages($newPage);
 }
-
 function getPages($parent)
 {
     $parentId = $parent->id;
     $children = getUserPageChilde($parent->parentType, $parentId);
     while ($child = $children->fetch_assoc()) {
         $newPage = new Page();
-        $newPage->parent = $parentId;
+        $newPage->parent = $parent;
         $newPage->parentType = $child["childeType"];
         $newPage->heading = $child["heading"];
         $newPage->id = $child["id"];
         array_push($parent->children, $newPage);
         getPages($newPage);
     }
-    ;
+    
     if ($GLOBALS["position"] == "Teacher") {
         $newPage = new Page();
-        $newPage->parent = 0;
+        $newPage->parent = $GLOBALS['rootPage'];
         $newPage->parentType = "root";
         $newPage->heading = "+ Create new page";
-        $newPage->id = "none";
+        $newPage->id = 500000000;
         array_push($parent->children, $newPage);
     }
 }

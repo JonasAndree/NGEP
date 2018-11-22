@@ -11,7 +11,7 @@ function getPages($parent)
     
     while ($child = $children->fetch_assoc()) {
         $newPage = new Page();
-        $newPage->parent = $parentId;
+        $newPage->parent = $parent;
         $newPage->heading = $child["heading"];
         $newPage->id = $child["id"];
         array_push($parent->children, $newPage);
@@ -22,7 +22,8 @@ function getPages($parent)
 $rootPage = new Page();
 getPages($rootPage);
 $_SESSION['rootPage'] = $rootPage;
-include "updateNavBar.php";
+$_SESSION['activePage'] = $rootPage;
+//include "updateNavBar.php";
 ?>
 
 

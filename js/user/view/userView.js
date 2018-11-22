@@ -121,7 +121,7 @@ function updateUserNavBar() {
 	var position = localStorage.getItem('position');
 	var school = localStorage.getItem('school');
 	var mail = localStorage.getItem('mail');
-		xmlhttp.open("GET", "php/navbar/updateUserNavBar.php?firstName=" + firstName + 
+		xmlhttp.open("GET", "php/navbar/createUserNavBar.php?firstName=" + firstName + 
 									"&lastName=" + lastName + 
 									"&position=" + position + 
 									"&school=" + school + 

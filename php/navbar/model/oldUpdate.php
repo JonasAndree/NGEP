@@ -1,87 +1,17 @@
-<?php
-session_start();
-class Page
-{
-    public $parent = "root";
-    public $parentType = "root";
-    public $heading = "root";
-    public $id = 0;
-    public $children = array();
-    public function __toString() {
-        return "My parent is: $this->parent <br> " .
-        "My parentType is: $this->parentType <br>" .
-        "My heading is: $this->heading <br>" .
-        "My id is: $this->id <br>" .
-        "My # children is:". count($this->children)."<br><br>";
-    }
-}
-
-
-setUpPages();
-function setUpPages()
-{
-    $activePage = $_SESSION['activePage'];
-    echo "<section id='sub-nav-container-main' class='sub-nav-container'>";
-            createPage($activePage);
-    echo "</section>";
-}
-
-function createContainer($page) {
-    if ($page->parent == "root"){
-        $parentId = "root";
-        $parentHeading = "root";
+<?php 
+    /*$parentId = $parentPage->id;
+    
+    if ($level == $GLOBALS['foundLevel']) {
+        echo "<section id='sub-nav-container-main' class='sub-nav-container' >";
     } else {
-        $parentId = $page->id;
-        $parentHeading = $page->heading;
+        echo "<section id='sub-nav-container-$level-$parentId' class='sub-nav-container '>";
     }
-    echo "<div id='sub-nav-container-$parentHeading-$parentId' class='sub-nav-container'>";
-        echo "<ul id='sub-nav-ul-$parentHeading-$parentId'>";
-            foreach ($page->children as $child) {
-                createPage($child);
-            }
-        echo "</ul>";
-    echo "</div>";
-}
-
-function createPage($page) {
-    echo "<li id='nav-item-$page->heading-$page->id' 
-              class='nav-item' 
-              style='list-style-type: none;'
-              onmouseover='navElementMouseOver(this,
-                                              \"sub-nav-container-$nextLevel-$parentId\",
-                                              \"sub-nav-content-$nextLevel-$parentId \",
-                                              \"$nextLevel\")'
-
->";
-        if (count($page->children) > 0) {
-            echo "<div class='animate-arrow'>";
-                echo "<div class='nav-button-parent'>";
-                    if ($page->heading == "root")
-                        echo "Arsenalen";
-                    else
-                        echo "$page->heading";
-                echo "</div>";
-                echo "<span class='arrow'><span></span></span>";
-            echo "</div>";
-        } else {
-            echo "<div class='nav-button-parent-not'>";
-                echo "$page->heading";
-            echo "</div>";
-        }
-    echo "</li>";
-    if (count($page->children) > 0)
-        createContainer($page);
-        
-}
-
-
-
-
-
-
-
-
-    /*
+    
+    if ($level == $GLOBALS['foundLevel']) {
+        echo "<div id='sub-nav-content-$level-$parentId' class=''>";
+    } else  {
+        echo "<div id='sub-nav-content-$level-$parentId' class='sub-nav-content' style='z-index:-$level;'>";
+    }
     
     if ($parentPage->heading != "root") {
         findParent($GLOBALS['rootPage'], $parentPage->parent);
@@ -156,7 +86,7 @@ function createPage($page) {
     
 }
 
-*/
+
 /*
 $foundRootPage;
 $foundLevel;
