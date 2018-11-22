@@ -65,31 +65,37 @@ function displayChildren(course, mail, position) {
 	    var xhr = new XMLHttpRequest();
 	    xhr.onreadystatechange = function() {
 	        if (this.readyState == 4 && this.status == 200) {
-	        	if (courseChats["chats-" + course] !== undefined) {
-	        		if (courseChats["chats-" + course].length > 0) {
-	        			console.log(courseChats["chats-" + course]);
-	        			for (var i = courseChats["chats-" + course].length - 1; i <= 0; i--)  {
-	        				var courseName = courseChats["chats-" + course][i].getAttribute("course"); 
-	        				var firstName = courseChats["chats-" + course][i].getAttribute("firstName");
-	        				var lastName = courseChats["chats-" + course][i].getAttribute("lastName");
-	        				console.log(courseName, firstName, lastName);
-	        				displayChat(courseName, firstName, lastName);
-	        			}
-	        		} else {
-	        			console.log("one");
-	        			console.log(chats);
-        	            courseChats["chats-" + course] = chats;	
-        	            chats = {};
-        			}
-	        		
-	        	} else {
-        			console.log("two");
-    	            courseChats["chats-" + course] = chats;	
-	        		chats = {};
-    			}
 	            document.getElementById("chat-headers-ul").innerHTML = this.responseText;
 	        }
 	    };
+	    if (chats.length > 0) {
+    		console.log(chats);
+    	}
+	    
+/*
+    	console.log("courseChats");
+    	console.log("chats-" + course);
+    	console.log(courseChats);
+	    
+    	if (courseChats["chats-" + course] !== undefined) {
+        	console.log("SHOW SHATS AGAIN");
+        	console.log(courseChats["chats-" + course]);
+        	console.log(courseChats["chats-" + course][0]);
+			var courseName = courseChats["chats-" + course][0].getAttribute("course"); 
+			var firstName = courseChats["chats-" + course][0].getAttribute("firstName");
+			var lastName = courseChats["chats-" + course][0].getAttribute("lastName");
+			console.log(courseName + " " + firstName + " " + lastName);
+			displayChat(courseName, firstName, lastName);
+        	
+        	for (var i = courseChats["chats-" + course].length - 1; i >= 0; i--)  {
+	    		console.log("loop");
+				var courseName = courseChats["chats-" + course][i].getAttribute("course"); 
+				var firstName = courseChats["chats-" + course][i].getAttribute("firstName");
+				var lastName = courseChats["chats-" + course][i].getAttribute("lastName");
+				console.log(courseName + " " + firstName + " " + lastName);
+				displayChat(courseName, firstName, lastName);
+			}
+    	}*/
 	    xhr.open("GET", "php/chat/updateChats.php?course="+course+"&mail="+mail, true);
 	    xhr.send();
     } else {
@@ -99,8 +105,20 @@ function displayChildren(course, mail, position) {
 	            document.getElementById("chat-headers-ul").innerHTML = this.responseText;
 	        }
 	    };
-	    if (position == "Teacher back")
+	    if (position == "Teacher back") {
+	    	courseChats["chats-" + course] = {};
+	    	for (var i = 0; i < chats.length; i++) {
+	    		courseChats["chats-" + course][i] = chats[i];
+	    	}
+	    	for (var i = chats.length - 1; i >= 0; i--)  {
+				var courseName = chats[i].getAttribute("course"); 
+				var firstName = chats[i].getAttribute("firstName");
+				var lastName = chats[i].getAttribute("lastName");
+				console.log(courseName + " " + firstName + " " + lastName);
+				displayChat(courseName, firstName, lastName);
+			}
 	    	position = "Teacher";
+	    }
 	    
 	    xhr.open("GET", "php/chat/getCourses.php?mail=" + mail +
 	    								       "&position=" + position +

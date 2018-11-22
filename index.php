@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>NextGen Education Platform</title>
+    <title>NGEP:NextGen Education Platform</title>
     <meta name="description" content="Startup Teching tool" />
     <meta name="author" content="Jonas Andrée" />
     <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/colors.css" />
     <link rel="stylesheet" type="text/css" href="css/nextgen.css" />
     <link rel="stylesheet" type="text/css" href="css/main.css" />
     <link rel="stylesheet" type="text/css" href="css/mainMenu.css" />

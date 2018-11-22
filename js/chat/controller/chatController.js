@@ -210,8 +210,8 @@ function displayChat(course, firstName, lastName) {
 		clickedChat.setAttribute("stay", "true");
 		clickedChat.style.display = "block";
 		chatListItem.style.transform = "scale(1.05, 1.05)";
-		chatListItem.style.backgroundColor = "var(--nav-pressed-bg)";
-		chatListItem.style.color = "var(--chat-parent-pressed)";
+		chatListItem.style.backgroundColor = "var(--chat-parent-childe-bg-color)";
+		chatListItem.style.color = "var(--chat-pressed-color)";
 		chatArrow.setAttribute("class", "arrow");
 		chatImg.setAttribute("class", "chat-button-img left");
 		if (clickedChat.getAttribute("flying") == "false") {

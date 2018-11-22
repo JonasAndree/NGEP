@@ -91,20 +91,31 @@ function populatePage($parentPage, $level)
         $childHeading = $child->heading;
         $parentId = $child->id;
         $numberOfChildren = count($child->children);
-        echo "<li id='nav-item-$parentId' class='nav-item'
+        if ($child->heading != "+ Create new course" && $child->heading != "+ Create new page") {
+            echo "<li id='nav-item-$parentId' class='nav-item'
                                 onmouseover='navElementMouseOver(this, \"sub-nav-container-$nextLevel-$parentId\", \"sub-nav-content-$nextLevel-$parentId \", \"$nextLevel\")'
-                                nrChildren='$numberOfChildren'
-                                onclick='updateNavBar(\"$child->id\", \"$child->parent\", \"$child->heading\")'>";
+                                nrChildren='$numberOfChildren'";
+        } else {
+            echo "<li id='nav-item-$parentId' class='nav-item nav-add-item'
+                                onmouseover='navElementMouseOver(this, \"sub-nav-container-$nextLevel-$parentId\", \"sub-nav-content-$nextLevel-$parentId \", \"$nextLevel\")'
+                                nrChildren='$numberOfChildren'";
+        }
+        if ($child->heading != "+ Create new course" && $child->heading != "+ Create new page") {
+            echo "onclick='updateNavBar(\"$child->id\", \"$child->parent\", \"$child->heading\")'>";
+        } else {
+            echo "onclick='updateNavBar(\"$child->id\", \"$child->parent\", \"$child->heading\"); alert(\"NEW\") '>";
+        }
         if ($numberOfChildren != 0) {
             echo "<div class='animate-arrow'>";
-                echo "<div class='nav-button-parent'>
-                     $child->heading</div>";
+                echo "<div class='nav-button-parent'>";
+                    echo "$child->heading";
+                    echo "</div>";
                 echo "<span class='arrow'><span></span></span>";
             echo "</div>";
         } else {
-            echo "<div class='nav-button-parent-not'>
-                      $child->heading 
-                  </div>";
+            echo "<div class='nav-button-parent-not'>";
+                echo "$child->heading"; 
+            echo "</div>";
         }
         echo "</li>";
         if ($numberOfChildren > 0)

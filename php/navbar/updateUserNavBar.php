@@ -16,8 +16,20 @@ include "getSpecificCourses.php";
 while ($course = $result->fetch_assoc()) {
     getRootPages($rootPage, $course);
 }
+if ($position == "Teacher") {
+    $newPage = new Page();
+    $newPage->parent = 0;
+    $newPage->parentType = "root";
+    $newPage->heading = "+ Create new course";
+    $newPage->id = "none";
+    array_push($rootPage->children, $newPage);
+}
 
 $_SESSION['rootPage'] = $rootPage;
+
+
+
+
 
 function getRootPages($rootPage, $course)
 {
@@ -27,8 +39,6 @@ function getRootPages($rootPage, $course)
     $newPage->parentType = "root";
     $newPage->heading = $course["course"];
     $newPage->id = $course["id"];
-    //echo "<li id='$newPage->heading-$newPage->id-nav-item ' class='nav-item'>$newPage->heading</li>";
-    
     array_push($rootPage->children, $newPage);
     getPages($newPage);
 }
@@ -45,6 +55,15 @@ function getPages($parent)
         $newPage->id = $child["id"];
         array_push($parent->children, $newPage);
         getPages($newPage);
+    }
+    ;
+    if ($GLOBALS["position"] == "Teacher") {
+        $newPage = new Page();
+        $newPage->parent = 0;
+        $newPage->parentType = "root";
+        $newPage->heading = "+ Create new page";
+        $newPage->id = "none";
+        array_push($parent->children, $newPage);
     }
 }
 

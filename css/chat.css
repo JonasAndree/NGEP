@@ -313,16 +313,16 @@
 	bottom: 5px;
 	border-style: dashed;
 	border-color: var(--active-text-color);
-	background-color: var(--nav-item-color);
+	
 	width: 160px;
 	height: 300px;
-	-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-    filter: grayscale(50%);
+	-webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(70%);
 	z-index: -6;
 }			
 .chat-parent-pressed {
-	background-color: var(--active-text-color);
-	color: var(--bg-color-text);
+	background-color: var(--chat-parent-pressed-bg-color);
+	color: var(--active-text-color);
 }
 	
 	

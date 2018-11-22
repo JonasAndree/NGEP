@@ -165,7 +165,7 @@ nav#course-navbar { }
 		color: var(--active-text-color);
    		word-wrap: break-word;
    		transform: scale(1.10, 1.10); 
-   		margin-top: 20px;
+   		margin-top: 5px;
 	}
 	.nav-paranet:hover {
 	}
@@ -249,6 +249,18 @@ nav#course-navbar { }
 	.nav-item:hover .arrow span {
 	  	animation: animate-arrow-1 0.8s ease-in-out infinite;
 	}
+	
+	
+	.nav-add-item {
+	border-width: 2px;
+	border-style: dashed;
+	border-color: var(--active-text-color);
+	color:  var(--active-text-color);
+	-webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(40%);
+	}
+	
+	
 	
 /*********************************************************
 
