@@ -15,42 +15,42 @@ class Page
         "My # children is:". count($this->children)."<br><br>";
     }
 }
-
-
 setUpPages();
 function setUpPages()
 {
     $activePage = $_SESSION['activePage'];
-    echo "<section id='sub-nav-container-main' class='sub-nav-container'>";
-            createPage($activePage);
-    echo "</section>";
+    createPage($activePage);
 }
 
 function createContainer($page) {
-    if ($page->parent == "root"){
-        $parentId = "root";
-        $parentHeading = "root";
-    } else {
+    
         $parentId = $page->id;
         $parentHeading = $page->heading;
-    }
-    echo "<div id='sub-nav-container-$parentHeading-$parentId' class='sub-nav-container'>";
-        echo "<ul id='sub-nav-ul-$parentHeading-$parentId'>";
-            foreach ($page->children as $child) {
-                createPage($child);
-            }
-        echo "</ul>";
+    
+    echo "<div id='sub-nav-container-$parentHeading-$parentId' 
+               class='sub-nav-container'>";
+        echo "<div id='sub-nav-content-$parentHeading-$parentId' 
+                   class='sub-nav-content'>";
+            echo "<ul id='sub-nav-ul-$parentHeading-$parentId'>";
+                foreach ($page->children as $child) {
+                    createPage($child);
+                }
+            echo "</ul>";
+        echo "</div>";
     echo "</div>";
 }
 
 function createPage($page) {
+    
+    $parentId = $page->id;
+    $parentHeading = $page->heading;
     echo "<li id='nav-item-$page->heading-$page->id' 
               class='nav-item' 
               style='list-style-type: none;'
               onmouseover='navElementMouseOver(this,
-                                              \"sub-nav-container-$nextLevel-$parentId\",
-                                              \"sub-nav-content-$nextLevel-$parentId \",
-                                              \"$nextLevel\")'
+                                              \"$parentHeading\",
+                                              \"$parentId\",
+                                              \"0\")'
 
 >";
         if (count($page->children) > 0) {

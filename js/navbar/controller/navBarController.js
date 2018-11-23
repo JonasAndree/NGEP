@@ -8,19 +8,22 @@ window.addEventListener("mouseup", function(event) {
 	}
 });
 
-function navElementMouseOver(element, containerId, contentId, level) {
-	var newElement = document.getElementById(containerId);
-	if (containerHoveredId[level] != null) {
+function navElementMouseOver(element, parentHeading, parentId ) {
+	console.log("sub-nav-container-"+parentHeading+"-"+parentId);
+	var newElement = document.getElementById("sub-nav-container-"+parentHeading+"-"+parentId);
+	
+	newElement.style.display = "block";
+	/*if (containerHoveredId[level] != null) {
 		containerHoveredId[level].style.display = "none";
 	}
 	if (elementHoveredId[level] != null) {
 		elementHoveredId[level].style.transform = "scale(1.0, 1.0)";
 		elementHoveredId[level].style.color = "var(--text-color)";
-	}
-	if (newElement != null) {
+	}*/
+	/*if (newElement != null) {
 		containerHoveredId[level] = newElement;
 		containerHoveredId[level].style.display = "block";
-	}
+	}*//*
 	if (element != null) {
 		if (level < lastLevel) {
 			elementHoveredId[lastLevel].style.transform = "scale(1.0, 1.0)";
@@ -30,5 +33,5 @@ function navElementMouseOver(element, containerId, contentId, level) {
 		elementHoveredId[level].style.transform = "scale(1.1, 1.1)";
 		elementHoveredId[level].style.color = "var(--hover-text-color)";
 		lastLevel = level;
-	}
+	}*/
 }

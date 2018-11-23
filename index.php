@@ -58,6 +58,8 @@
     			</div>
 			</div>
 			<div id="course-navbar">
+				<section id='sub-nav-container-main' class='sub-nav-container'>
+				</section>
 			</div>
 		</nav>
 		<div id="user-cont">
