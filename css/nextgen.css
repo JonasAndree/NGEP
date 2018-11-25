@@ -34,7 +34,7 @@
 	 *	Här startar bakgrundens css
 	 */
 	div#background-field {
-	position: fixed;
+		position: fixed;
 		font-size:12px;
 		-webkit-user-select:none;  /* Chrome all / Safari all */
 		-moz-user-select:none;     /* Firefox all */
@@ -47,6 +47,8 @@
 		width: 100vw;
 		height: 100vh;
 		color:var(--bg-color-text);
+		/*color:var(--paranet-color);*/
+		z-index: -1000;
 	}
 		div#logo {
 			font-family:"EVE", arial, sans-serif;

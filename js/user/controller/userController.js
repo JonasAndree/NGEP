@@ -1,9 +1,8 @@
-setUp();
+
 function setUp() {
 	if (localStorage.getItem('loggedIn') == 'true') {
 		loggedIn(true);
 		reactivateUser();
-		updateUserNavBar();
 	} else {
 		localStorage.setItem('loggedIn', 'false');	
 		createNavbar();

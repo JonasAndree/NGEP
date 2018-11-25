@@ -2,8 +2,9 @@
 class Page
 {
     public $parent = "root";
+    public $level = 0;
     public $parentType = "root";
-    public $heading = "root";
+    public $newPageId = "Courses";
     public $id = 0;
     public $children = array();
     public function __toString() {

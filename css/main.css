@@ -105,16 +105,9 @@ input:-webkit-autofill {
     -webkit-text-fill-color: var(--active-text-color) !important;
 }
 
-
-main {
-	position: fixed;
-    top: 0px;
-    width: calc(100vw - 400px);
-    left: 150px;
-    
+header {
+	width: 0px;
 }
-
-
 
 
 

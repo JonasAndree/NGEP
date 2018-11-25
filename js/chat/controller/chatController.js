@@ -77,7 +77,9 @@ function resizeChatWindowDrop(event) {
 
 function moveChatWindowUp(event, element, name, firstName, lastName) {
 	if (movedChatWindow == null) {
-		var clickedChat = document.getElementById(name + "-" + firstName + "-" + lastName + "-chat-dialog");
+		var clickedChat = document.getElementById(name + "-" + 
+												  firstName + "-" + 
+												  lastName + "-chat-dialog");
 		document.body.setAttribute("class", "unselectable");
 		movedChatWindow = element;
 		if (clickedChat.getAttribute("pos") != "-1") {

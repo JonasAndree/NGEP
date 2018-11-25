@@ -1,0 +1,135 @@
+#main {
+	position: absolute;
+	top: 0px;
+	width: 100vw;
+	z-index: -10;
+	background-color: var(--nav-color);
+	    right: 0px;
+}
+	
+	#page-heading {
+    	border-radius:5px 5px 5px 5px;
+		background-color: black;
+		width: calc(100vw - 360px);
+		height: 260px;	
+		margin-top: 20px;
+		margin-bottom: 10px;
+		margin-left: 180px;
+    	line-height: 260px;
+   		text-align: center;
+	}
+		#page-titel {
+		    line-height: 1.5;
+		    display: inline-block;
+		    vertical-align: middle;
+		}
+	
+
+	#main-margin-left {
+		width: 180px;
+		height: 100vh;
+		float: left;
+	}
+	#main-splitter-left {
+		width: 2px;
+		height: 100vh;
+		float: left;
+		cursor: w-resize;
+	}
+	#main-splitter-left:hover {
+		background-color: var(--chat-pressed-color);
+	}
+	#main-splitter-left:active {
+		background-color: var(--chat-pressed-color);
+	}
+	#main-left {
+		background-color: var(--main-background-color);
+		width: calc(100vw/2 - 183px);
+		height: 100vh;
+		float:left;
+	}
+	#main-splitter-center {
+		width: 2px;
+		height: 100vh;
+		float: left;
+		cursor: w-resize;
+	}
+	#main-splitter-center:hover {
+		background-color: var(--chat-pressed-color);
+	}
+	#main-splitter-center:active {
+		background-color: var(--chat-pressed-color);
+	}
+	#main-right {
+		background-color: var(--main-background-color);
+		width: calc(100vw/2 - 183px);
+		height: 100vh;
+		float: left;
+	}
+	#main-splitter-right {
+		width: 2px;
+		height: 100vh;
+		float: left;
+		cursor: w-resize;
+	}
+	#main-splitter-right:hover {
+		background-color: var(--chat-pressed-color);
+	}
+	#main-splitter-right:active {
+		background-color: var(--chat-pressed-color);
+	}
+	#main-margin-right {
+		width: 170px;
+		height: 100vh;
+		float: right;
+	}
+
+	#main-headers {
+		margin-top: 20px;
+		margin-left: -10px;
+		width: calc(100vw - 360px);
+		height: 40px;
+		background-color: var(--nav-item-color);
+		padding: 5px;
+	}
+		#arsenalen-header {
+    		border-radius:5px 5px 0px 0px;
+			width: 100%;
+			float: left;
+			background-color: var(--paranet-color);
+		
+		}
+		#trials-header {
+    		border-radius:5px 5px 0px 0px;
+			width: 100%;
+			float: left;
+			background-color: var(--paranet-color);
+		}
+	#main-container {
+		position: fixed;
+		width: calc(100vw - 360px);
+		top: 90px;
+		height: 100vh;
+	}
+	
+	.main-header-item {
+		position: relative;
+		cursor: pointer;
+		background-color: var(--nav-item-color);
+		width: 100%;
+		text-align: center;
+		vertical-align: middle;
+		margin: 5px 0px 5px 0px;
+		filter: grayscale(30%);
+		padding: 10px 0px 10px 0px;
+		border: none;
+		z-index: 45;
+	}
+	.main-header-item:hover {
+		filter: brightness(110%);
+		transform: scale(1.05, 1.05);
+	}
+	.main-header-item:active {
+		filter: brightness(130%);
+		transform: scale(1.02, 1.02);
+	}

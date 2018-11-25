@@ -1,14 +1,15 @@
 
  body {
 	--bg-color: rgb(41, 41, 41);
-	--bg-color-text: rgb(39, 39, 39);
+	--bg-color-text: rgb(27, 27, 27);
 	--text-color: rgb(200, 200, 200);
 	--nav-color: rgba(34, 34, 34, 0.8);
 	--active-text-color: rgb(255, 128, 64);
 	/*--active-text-color: rgb(27, 255, 128);*/
 	--hover-text-color: #ff8040;
 	/*--hover-text-color: #1bff80;*/
-	--nav-item-color: rgb(25,20,20,0.5);
+	--nav-item-color: rgb(25,20,20, 1.0);
+	--main-background-color: rgb(20,20,20,0.1);
 	--bage-logo-color: rgb(255, 128, 64);
 	/*--bage-logo-color: rgb(27, 255, 128);*/
 	--scroll-color: #ff8346;
@@ -38,4 +39,7 @@
 	*/
 	background-color: var(--bg-color);
 	background-size:15px 15px;
+	
+	width: 0px;
+	z-index: -2000;
 }

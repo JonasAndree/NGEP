@@ -1,5 +1,4 @@
 
-
 function toggleMenuBar(menuElement, field) {
 	menuElement.classList.toggle("toggle");
 	if (field == "nav") {

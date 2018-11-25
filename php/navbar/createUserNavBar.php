@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 include_once "../sql.php";
 include_once "model/pageModel.php";
@@ -13,25 +14,22 @@ $position = $_REQUEST['position'];
 
 include "getSpecificCourses.php";
 
+$newPageId = 500000000;
 while ($course = $result->fetch_assoc()) {
-    getRootPages($rootPage, $course);
+    getRootPages($rootPage, $course, $newPageId);
 }
 if ($position == "Teacher") {
     $newPage = new Page();
-    $newPage->parent = 0;
+    $newPage->parent = $rootPage;
     $newPage->parentType = "root";
-    $newPage->heading = "+ Create new course";
-    $newPage->id = 5000000;
+    $newPage->heading = "Create new course";
+    $newPage->id = "" + $newPageId;
     array_push($rootPage->children, $newPage);
 }
 
-$_SESSION['rootPage'] = $rootPage;
 
 
-
-
-
-function getRootPages($rootPage, $course)
+function getRootPages($rootPage, $course, $newPageId)
 {
     $parentId = $rootPage->id;
     $newPage = new Page();
@@ -40,9 +38,9 @@ function getRootPages($rootPage, $course)
     $newPage->heading = $course["course"];
     $newPage->id = $course["id"];
     array_push($rootPage->children, $newPage);
-    getPages($newPage);
+    getPages($newPage, $newPageId);
 }
-function getPages($parent)
+function getPages($parent, $newPageId)
 {
     $parentId = $parent->id;
     $children = getUserPageChilde($parent->parentType, $parentId);
@@ -53,29 +51,20 @@ function getPages($parent)
         $newPage->heading = $child["heading"];
         $newPage->id = $child["id"];
         array_push($parent->children, $newPage);
-        getPages($newPage);
+        getPages($newPage, $newPageId--);
     }
     
     if ($GLOBALS["position"] == "Teacher") {
+        $newPageId--;
         $newPage = new Page();
-        $newPage->parent = $GLOBALS['rootPage'];
+        $newPage->parent = $parent;
         $newPage->parentType = "root";
-        $newPage->heading = "+ Create new page";
-        $newPage->id = 500000000;
+        $newPage->heading = "Create new page";
+        $newPage->id = "" + $newPageId;
         array_push($parent->children, $newPage);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
+$_SESSION['rootPage'] = $rootPage;
+$_SESSION['activeUserPage'] = $rootPage;
 
 ?>
