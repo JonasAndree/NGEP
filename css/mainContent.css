@@ -52,11 +52,13 @@
 		width: 180px;
 		height: 100vh;
 		float: left;
+		margin-top: -10px;
 	}
 	#main-splitter-left {
 		width: 2px;
 		height: 100vh;
 		float: left;
+		margin-top: -10px;
 		cursor: w-resize;
 	}
 	#main-splitter-left:hover {
@@ -70,7 +72,7 @@
 		width: calc(100vw/2 - 183px);
 		height: 100vh;
 		float:left;
-		
+		margin-top: -10px;
 		border-left: 2px solid rgb(30, 30, 30);
 	}
 	#main-splitter-center {
@@ -78,6 +80,7 @@
 		height: 100vh;
 		float: left;
 		cursor: w-resize;
+		margin-top: -10px;
 		border-left: 2px solid rgb(30, 30, 30);
 	}
 	#main-splitter-center:hover {
@@ -91,12 +94,14 @@
 		width: calc(100vw/2 - 183px);
 		height: 100vh;
 		float: left;
+		margin-top: -10px;
 		border-right: 2px solid rgb(30, 30, 30);
 	}
 	#main-splitter-right {
 		width: 2px;
 		height: 100vh;
 		float: left;
+		margin-top: -10px;
 		cursor: w-resize;
 	}
 	#main-splitter-right:hover {
@@ -112,8 +117,6 @@
 	}
 
 	#main-headers {
-		margin-top: 20px;
-		margin-left: -10px;
 		width: calc(100vw - 360px);
 		height: 40px;
 		background-color: var(--nav-item-color);
@@ -121,26 +124,102 @@
 	}
 		#arsenalen-header {
     		border-radius:5px 5px 0px 0px;
-    		margin-left: -5px;
+    		margin-left: -3px;
+    		opacity: 0.9;
 			width: 160px;
 			margin-right: calc(100% - 160px);
 			float: left;
 			background-color: var(--paranet-color);
-		
+		    margin-top: -36px;
 			border-top: 2px solid rgb(30, 30, 30);
 			border-left: 2px solid rgb(30, 30, 30);
 			border-right: 2px solid rgb(30, 30, 30);
+			min-height: 14.546px;
+			color: var(--active-text-color)
 		}
+		
+		
+		
+	.main-header-item span{
+		display: block;
+		width: 8px;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+	}
+	.main-header-item span span{
+		position: absolute;
+		transform: scale(0.80, 0.80);
+		background-image: url(http://thomaspodgro.com/source/arrow.png);
+		display: block;
+		width: 8px;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+		right: 10px;
+		height: 10px;
+		opacity: 1;
+	}
+	
+	.main-header-item .arrow:before {
+		position: absolute;
+		content:"";
+		transform: scale(0.80, 0.80);
+		background-image: url(http://thomaspodgro.com/source/arrow.png);
+		display: block;
+		width: 8px;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+		right: 10px;
+		height: 10px;
+		opacity: 0;
+	}
+	
+	.main-header-item .arrow:after {
+		position: absolute;
+		content: '';
+		transform: scale(0.80, 0.80);
+		background-image: url(http://thomaspodgro.com/source/arrow.png);
+		display: block;
+		width: 8px;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+		right: 15px;
+		height: 10px;
+		opacity: 0;
+	}
+		
+		
+	.main-header-item:hover .arrow:before {
+		opacity: 0.5;
+	  	animation: animate-arrow-2 0.8s ease-in-out infinite 0.1s ;
+	}
+	.main-header-item:hover .arrow:after {
+	  	opacity: 0.3;
+	  	animation: animate-arrow-3 0.8s ease-in-out infinite 0.2s;
+	}
+	.main-header-item:hover .arrow span {
+	  	animation: animate-arrow-1 0.8s ease-in-out infinite;
+	}
+		
+		
+		
 		#trials-header {
     		border-radius:5px 5px 0px 0px;
-    		margin-left: -5px;
+    		margin-right: -2px;
 			width: 160px;
-			margin-right: calc(100% - 160px);
-			float: left;
+    		opacity: 0.9;
+			margin-left: calc(100% - 160px);
+			float: right;
+		    margin-top: -36px;
 			background-color: var(--paranet-color);
 			border-top: 2px solid rgb(30, 30, 30);
 			border-left: 2px solid rgb(30, 30, 30);
 			border-right: 2px solid rgb(30, 30, 30);
+			min-height: 14.546px;
+			color: var(--active-text-color)
 		}
 	#main-container {
 		position: fixed;
@@ -161,12 +240,29 @@
 		padding: 10px 0px 10px 0px;
 		border: none;
 		z-index: 45;
+		border-left: 1px solid rgb(50, 50, 50);
+		border-right: 1px solid rgb(30, 30, 30);
+		border-bottom: 1px solid rgb(30, 30, 30);
+		border-top: 1px solid rgb(50, 50, 50);
 	}
 	.main-header-item:hover {
 		filter: brightness(110%);
-		transform: scale(1.05, 1.05);
+		/*transform: scale(1.05, 1.05);*/
 	}
 	.main-header-item:active {
 		filter: brightness(130%);
-		transform: scale(1.02, 1.02);
+		/*transform: scale(1.02, 1.02);*/
+		border-left: 1px solid rgb(30, 30, 30);
+		border-right: 1px solid rgb(50, 50, 50);
+		border-bottom: 1px solid rgb(50, 50, 50);
+		border-top: 1px solid rgb(30, 30, 30);
+	}
+	
+	
+	
+	
+	.main-content {
+		padding: 10px;
+		width: calc(100% - 20px);
+		height: calc(100% - 20px);
 	}

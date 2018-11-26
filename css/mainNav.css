@@ -30,7 +30,7 @@ nav#course-navbar { }
 		background-size: 60vh;
 		height: 120px;
 		line-height: 130px;
-		margin-top: 40px;
+		margin-top: 46px;
 		filter: grayscale(0%);
 		margin-bottom: 10px;
 		color: var(--bage-logo-color);
@@ -97,14 +97,22 @@ nav#course-navbar { }
 		padding: 10px 0px 10px 0px;
 		border: none;
 		z-index: 45;
+		border-left: 1px solid rgb(50, 50, 50);
+		border-right: 1px solid rgb(30, 30, 30);
+		border-bottom: 1px solid rgb(30, 30, 30);
+		border-top: 1px solid rgb(50, 50, 50);
 	}
 	.nav-item:hover {
 		filter: brightness(110%);
-		transform: scale(1.1, 1.1);
+		/*transform: scale(1.1, 1.1);*/
 	}
 	.nav-item:active {
 		filter: brightness(130%);
-		transform: scale(1.05, 1.05);
+		/*transform: scale(1.05, 1.05);*/
+		border-left: 1px solid rgb(30, 30, 30);
+		border-right: 1px solid rgb(50, 50, 50);
+		border-bottom: 1px solid rgb(50, 50, 50);
+		border-top: 1px solid rgb(30, 30, 30);
 	}
 	.sub-nav-item {
 		margin-top: 5px;

@@ -67,7 +67,7 @@ function navElementMouseOver(element, parentHeading, parentId, level, bar) {
 		allParentIds[level] = parentId;
 	}
 	elementHovered[level] = element;
-	elementHovered[level].style.transform = "scale(1.1, 1.1)";
+	//elementHovered[level].style.transform = "scale(1.1, 1.1)";
 	elementHovered[level].style.color = "var(--hover-text-color)";
 	lastLevel = level;
 }

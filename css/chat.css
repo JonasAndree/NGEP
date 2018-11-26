@@ -20,8 +20,8 @@
 			bottom: 0px;
 			padding: 0px 5px 5px 5px;
 			
-		border-top: 2px solid rgb(30, 30, 30);
-		border-bottom: 2px solid rgb(30, 30, 30);
+			border-top: 2px solid rgb(30, 30, 30);
+			border-bottom: 2px solid rgb(30, 30, 30);
 			border-left: 2px solid rgb(30, 30, 30);
 			border-right: 2px solid rgb(30, 30, 30);
 		}
@@ -48,10 +48,8 @@
 			}
 			
 			.chat-header:hover {
-				transform: scale(1.05, 1.05);
+				/*transform: scale(1.05, 1.05);*/
 			}
-			
-			
 				.chat-line-container {
 					cursor: n-resize;
 					width: 100%;		

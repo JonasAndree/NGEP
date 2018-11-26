@@ -105,21 +105,37 @@
         <div id="main-splitter-left" 
         	 onmousedown="mainSplitterDown(event, this);"></div>
         <div id="main-left">
-        	<section id="arsenalen-header" class="main-header-item">
-				Arsenalen
+        	<section id="arsenalen-header" class="main-header-item"
+    			 onclick="toggleMainContent('left');">
+    				<div id="arsenalen-header-text">Arsenalen</div>
+                <div class="animate-arrow">
+                	<span id="arsenalen-header-arrow" class="arrow back"><span></span></span>
+            	</div>
 			</section>
     		<section id="arsenalen-main">
-    			Arsenalen
+    			<div id="arsenalen-main-container">
+        			<div id="arsenalen-main-content" class="main-content">
+        				Arsenalen
+        			</div>
+    			</div>
     		</section>
     	</div>
         <div id="main-splitter-center" 
         	 onmousedown="mainSplitterDown(event, this);"></div>
         <div id="main-right">
-            <section id="trials-header" class="main-header-item">
-    			Trials
+            <section id="trials-header" class="main-header-item"
+        			 onclick="toggleMainContent('right');">
+    			<div id="trials-header-text">Trials</div>
+                <div class="animate-arrow">
+                	<span id="trials-header-arrow" class="arrow"><span></span></span>
+            	</div>
     		</section>
     		<section id="trials-main">
-    			Trials
+    			<div id="trials-main-container">
+        			<div id="trials-main-content" class="main-content">
+    					Trials
+        			</div>
+    			</div>
     		</section>
 		</div>
         <div id="main-splitter-right" 

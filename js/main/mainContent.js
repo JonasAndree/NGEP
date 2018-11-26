@@ -3,7 +3,10 @@ var splitterPos;
 var leftMargin;
 var rightMargin;
 var windowWidth = window.innerWidth; 
-
+var rightHeaderStartWidth;
+var leftHeaderStartWidth;
+var minHeaderWidth = 40;
+var maxHeaderWidth = 160;
 function initPage() {
 	
 }
@@ -65,16 +68,54 @@ function moveSplitter(event) {
 		newPos = leftMargin; 
 	if (newPos >= rightMargin)
 		newPos = rightMargin; 
+	
 	var diff = splitterPos - newPos;
 	if (id == "main-splitter-left") {
 		leftDiv.style.width =  startLeftWidth - diff + "px";
 		rightDiv.style.width =  startRightWidth + diff + "px";
 		//resizeHeader("splitter");
 	} else if (id == "main-splitter-center") {
+		if (newPos <= leftMargin + (maxHeaderWidth - minHeaderWidth)) {
+			var leftHeader = document.getElementById("arsenalen-header");
+			console.log(leftHeaderStartWidth - (leftMargin - newPos + 
+					(maxHeaderWidth - minHeaderWidth)));
+			leftHeader.style.width = leftHeaderStartWidth - (leftMargin - newPos + (maxHeaderWidth - minHeaderWidth))+"px";
+			leftVisible = false; 
+			
+			document.getElementById("arsenalen-header-text").style.display = "none";
+			document.getElementById("arsenalen-header-arrow").classList.remove("back");
+			document.getElementById("arsenalen-main-container").style.display = "none";
+			
+		} else if (newPos >= rightMargin - (maxHeaderWidth - minHeaderWidth)) {
+			var rightHeader = document.getElementById("trials-header");
+			console.log(rightHeaderStartWidth - (newPos  - rightMargin + (maxHeaderWidth - minHeaderWidth)));
+			rightHeader.style.width = rightHeaderStartWidth - (newPos - rightMargin + (maxHeaderWidth - minHeaderWidth))+"px";
+			rightVisible = false;
+
+			document.getElementById("trials-header-text").style.display = "none";
+			document.getElementById("trials-header-arrow").classList.add("back");
+			document.getElementById("trials-main-container").style.display = "none";
+		} else {
+			document.getElementById("trials-header-text").style.display = "block";
+			document.getElementById("trials-header-arrow").classList.remove("back");
+			document.getElementById("arsenalen-header-arrow").classList.add("back");
+			document.getElementById("arsenalen-header-text").style.display = "block";
+			document.getElementById("trials-main-container").style.display = "block";
+			document.getElementById("arsenalen-main-container").style.display = "block";
+			rightVisible = true; 
+			leftVisible = true;
+		}
 		leftDiv.style.width =  startLeftWidth - diff + "px";
 		rightDiv.style.width = startRightWidth + diff + "px";
 	} else if (id == "main-splitter-right") {
-		leftDiv.style.width = startLeftWidth - diff + "px";
+		if (!rightVisible) {
+			console.log("startLeftWidth: " + startLeftWidth);
+			console.log("startRightWidth: " + startRightWidth);
+			leftDiv.style.width = startLeftWidth - diff + "px";
+			//rightDiv.style.width = startRightWidth - diff + "px";
+		} else {
+			leftDiv.style.width = startLeftWidth - diff + "px";
+		}
 		//resizeHeader("splitter");
 	}
 }
@@ -86,26 +127,115 @@ function mainSplitterDown(event, element) {
 	var id = dragedSplitter.getAttribute("id");
 	if (id == "main-splitter-left") {
 		leftMargin = 60;
-		leftDiv = document.getElementById("main-margin-left");
-		startLeftWidth = leftDiv.offsetWidth;
-		rightMargin = document.getElementById("main-splitter-center");
-		rightMargin = rightMargin.getBoundingClientRect().left - 160;
-		rightDiv = document.getElementById("main-left");
-		startRightWidth = rightDiv.offsetWidth;
+		if (!rightVisible) {
+
+		} else {
+			leftDiv = document.getElementById("main-margin-left");
+			startLeftWidth = leftDiv.offsetWidth;
+			rightMargin = document.getElementById("main-splitter-center");
+			rightMargin = rightMargin.getBoundingClientRect().left - maxHeaderWidth;
+			rightDiv = document.getElementById("main-left");
+			startRightWidth = rightDiv.offsetWidth;
+		}
 	} else if (id == "main-splitter-center") {
 		leftMargin = document.getElementById("main-splitter-left");
-		leftMargin = leftMargin.getBoundingClientRect().right + 160;
+		leftMargin = leftMargin.getBoundingClientRect().right + minHeaderWidth;
 		leftDiv = document.getElementById("main-left");
 		startLeftWidth = leftDiv.offsetWidth;
 		rightMargin = document.getElementById("main-splitter-right");
-		rightMargin = rightMargin.getBoundingClientRect().left - 160;
+		rightMargin = rightMargin.getBoundingClientRect().left - minHeaderWidth;
 		rightDiv = document.getElementById("main-right");
 		startRightWidth = rightDiv.offsetWidth;
+		var rightHeader = document.getElementById("trials-header");
+		rightHeaderStartWidth = rightHeader.offsetWidth;
+		if (rightHeaderStartWidth < maxHeaderWidth)
+			rightHeaderStartWidth = maxHeaderWidth;
+		var leftHeader = document.getElementById("arsenalen-header");
+		leftHeaderStartWidth = leftHeader.offsetWidth;
+		if (leftHeaderStartWidth < maxHeaderWidth)
+			leftHeaderStartWidth = maxHeaderWidth;
 	} else if (id == "main-splitter-right") {
-		leftMargin = document.getElementById("main-splitter-center");
-		leftMargin = leftMargin.getBoundingClientRect().left + 60;
-		leftDiv = document.getElementById("main-right");
-		startLeftWidth = leftDiv.offsetWidth;
-		rightMargin = window.innerWidth - 60;
+		if (!rightVisible) {
+			leftDiv = document.getElementById("main-left");
+			startLeftWidth = leftDiv.offsetWidth;
+			console.log("startLeftWidth: " + startLeftWidth);
+			
+			rightDiv = document.getElementById("main-right");
+			startRightWidth = rightDiv.offsetWidth;
+			console.log("startRightWidth: " + startRightWidth);
+
+			leftMargin = document.getElementById("main-splitter-left");
+			leftMargin = leftMargin.getBoundingClientRect().left + maxHeaderWidth + 70;
+			rightMargin = window.innerWidth - 60;
+		} else {
+			leftMargin = document.getElementById("main-splitter-center");
+			leftMargin = leftMargin.getBoundingClientRect().left + maxHeaderWidth;
+			leftDiv = document.getElementById("main-right");
+			startLeftWidth = leftDiv.offsetWidth;
+			
+			rightMargin = window.innerWidth - 60;
+		} 
+	}
+}
+var rightVisible = true; 
+var leftVisible = true; 
+function toggleMainContent(side) {
+	var center = document.getElementById("main-splitter-center");
+	var leftHeader = document.getElementById("arsenalen-header");
+	var rightHeader = document.getElementById("trials-header");
+	var rightContent = document.getElementById("main-right");
+	var leftContent = document.getElementById("main-left");
+	var leftContentWidth = leftContent.offsetWidth;
+	var rightContentWidth = rightContent.offsetWidth;
+	if (side == "left") {
+		if (leftVisible) {
+			leftHeader.style.width = minHeaderWidth + "px";
+			leftVisible = false;			
+			leftContent.style.width = minHeaderWidth + "px";
+			rightHeader.style.width = maxHeaderWidth + "px";
+			rightVisible = true;
+			rightContent.style.width = rightContentWidth + leftContentWidth - minHeaderWidth + "px";
+			document.getElementById("arsenalen-header-text").style.display = "none";
+			document.getElementById("arsenalen-header-arrow").classList.toggle("back");
+			document.getElementById("trials-header-text").style.display = "block";
+			document.getElementById("arsenalen-main-container").style.display = "none";
+			document.getElementById("trials-main-container").style.display = "block";
+			
+		} else {
+			center.style.display = "block";
+			leftHeader.style.width = maxHeaderWidth + "px";
+			leftVisible = true;			
+			leftContent.style.width = (rightContentWidth + leftContentWidth)/2 - 2 + "px";
+			rightContent.style.width = (rightContentWidth + leftContentWidth)/2 - 2 + "px";
+			document.getElementById("arsenalen-header-text").style.display = "block";
+			document.getElementById("arsenalen-header-arrow").classList.toggle("back");
+			document.getElementById("arsenalen-main-container").style.display = "block";
+			
+		}
+	} else {
+		if (rightVisible) {
+			leftContent.style.width = rightContentWidth + leftContentWidth - minHeaderWidth + "px";
+			rightContent.style.width = minHeaderWidth + "px";
+			leftHeader.style.width = maxHeaderWidth + "px";
+			rightHeader.style.width = minHeaderWidth + "px";
+			leftVisible = true;			
+			rightVisible = false;
+			document.getElementById("trials-header-text").style.display = "none";
+			document.getElementById("trials-header-arrow").classList.toggle("back");
+			document.getElementById("arsenalen-header-text").style.display = "block";
+			document.getElementById("trials-main-container").style.display = "none";
+			document.getElementById("arsenalen-main-container").style.display = "block";
+
+		} else {
+			center.style.display = "block";
+			leftContent.style.width = (rightContentWidth + leftContentWidth)/2 - 2 + "px";
+			rightContent.style.width = (rightContentWidth + leftContentWidth)/2 - 2 + "px";
+			rightHeader.style.width = maxHeaderWidth + "px";
+			rightVisible = true;
+			document.getElementById("trials-header-text").style.display = "block";
+			document.getElementById("trials-header-arrow").classList.toggle("back");
+			document.getElementById("trials-main-container").style.display = "block";
+
+		}
 	}
 }
