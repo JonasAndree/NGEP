@@ -31,7 +31,7 @@ window.addEventListener("resize", function(event){
 	mainRightDiv.style.width = mainRightDiv.offsetWidth * diff + "px";
 
 	windowWidth = window.innerWidth;
-	resizeHeader("resize");
+	//resizeHeader("resize");
 });
 
 
@@ -69,13 +69,13 @@ function moveSplitter(event) {
 	if (id == "main-splitter-left") {
 		leftDiv.style.width =  startLeftWidth - diff + "px";
 		rightDiv.style.width =  startRightWidth + diff + "px";
-		resizeHeader("splitter");
+		//resizeHeader("splitter");
 	} else if (id == "main-splitter-center") {
 		leftDiv.style.width =  startLeftWidth - diff + "px";
 		rightDiv.style.width = startRightWidth + diff + "px";
 	} else if (id == "main-splitter-right") {
 		leftDiv.style.width = startLeftWidth - diff + "px";
-		resizeHeader("splitter");
+		//resizeHeader("splitter");
 	}
 }
 
@@ -89,16 +89,16 @@ function mainSplitterDown(event, element) {
 		leftDiv = document.getElementById("main-margin-left");
 		startLeftWidth = leftDiv.offsetWidth;
 		rightMargin = document.getElementById("main-splitter-center");
-		rightMargin = rightMargin.getBoundingClientRect().left - 60;
+		rightMargin = rightMargin.getBoundingClientRect().left - 160;
 		rightDiv = document.getElementById("main-left");
 		startRightWidth = rightDiv.offsetWidth;
 	} else if (id == "main-splitter-center") {
 		leftMargin = document.getElementById("main-splitter-left");
-		leftMargin = leftMargin.getBoundingClientRect().right + 80;
+		leftMargin = leftMargin.getBoundingClientRect().right + 160;
 		leftDiv = document.getElementById("main-left");
 		startLeftWidth = leftDiv.offsetWidth;
 		rightMargin = document.getElementById("main-splitter-right");
-		rightMargin = rightMargin.getBoundingClientRect().left - 60;
+		rightMargin = rightMargin.getBoundingClientRect().left - 160;
 		rightDiv = document.getElementById("main-right");
 		startRightWidth = rightDiv.offsetWidth;
 	} else if (id == "main-splitter-right") {

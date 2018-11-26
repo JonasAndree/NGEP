@@ -61,13 +61,13 @@
 			</div>
 			<div id="course-navbar">
     			<div id="course-navbar-content" class='sub-nav-container'>
-        			<div id="" class="loggin-button">
+        			<div id="" class="nav-item nav-paranet">
         				My courses
     				</div>
     				<section id='user-nav-container-main' class="course-containers">
     				</section>
-    				<div id="" class="loggin-button">
-        				Courses
+    				<div id="" class="nav-item nav-paranet">
+        				Subjects
     				</div>
     				<section id='sub-nav-container-main' class="course-containers">
     				</section>
@@ -98,6 +98,7 @@
 	</div>
 	<main id="main">
 		<header id="page-heading" >
+			<div id="page-image"></div>
 			<h1 id="page-titel">Page titel</h1>
 		</header>
         <div id="main-margin-left"></div>

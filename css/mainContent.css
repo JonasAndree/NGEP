@@ -4,24 +4,47 @@
 	width: 100vw;
 	z-index: -10;
 	background-color: var(--nav-color);
-	    right: 0px;
+	right: 0px;
 }
 	
 	#page-heading {
     	border-radius:5px 5px 5px 5px;
 		background-color: black;
-		width: calc(100vw - 360px);
-		height: 260px;	
-		margin-top: 20px;
+		width: 100vw;
+		height: 200px;	
+		margin-top: 40px;
 		margin-bottom: 10px;
-		margin-left: 180px;
-    	line-height: 260px;
-   		text-align: center;
+		font-size: 16pt;
+		overflow: hidden;
+		border-top: 2px solid rgb(30, 30, 30);
+		border-bottom: 2px solid rgb(50, 50, 50);
+		
+  
 	}
+		#page-image {
+			width: 100%;
+			height: 100%;
+	   		background-image: url("../images/programmering/20181126_100325.jpg");
+	   		background-repeat: no-repeat;
+	   		background-size: cover;
+			filter: blur(5px) contrast(150%);;
+		}
 		#page-titel {
-		    line-height: 1.5;
-		    display: inline-block;
+			position: absolute;
+			top: 40px;
+			height: 200px;	
+    		line-height: 200px;
+			width: 100vw;
+		    /*line-height: 1.5;
+		    */display: inline-block;
 		    vertical-align: middle;
+   			text-align: center;
+		    -moz-text-fill-color: white;
+		  	-webkit-text-fill-color: white;
+		    -moz-text-stroke-color: rgba(30,30,30,0.3);
+		  	-webkit-text-stroke-color: rgba(30,30,30,0.3);
+		    -moz-text-stroke-width: 2px;  
+  			-webkit-text-stroke-width: 2px;
 		}
 	
 
@@ -47,12 +70,15 @@
 		width: calc(100vw/2 - 183px);
 		height: 100vh;
 		float:left;
+		
+		border-left: 2px solid rgb(30, 30, 30);
 	}
 	#main-splitter-center {
 		width: 2px;
 		height: 100vh;
 		float: left;
 		cursor: w-resize;
+		border-left: 2px solid rgb(30, 30, 30);
 	}
 	#main-splitter-center:hover {
 		background-color: var(--chat-pressed-color);
@@ -65,6 +91,7 @@
 		width: calc(100vw/2 - 183px);
 		height: 100vh;
 		float: left;
+		border-right: 2px solid rgb(30, 30, 30);
 	}
 	#main-splitter-right {
 		width: 2px;
@@ -94,16 +121,26 @@
 	}
 		#arsenalen-header {
     		border-radius:5px 5px 0px 0px;
-			width: 100%;
+    		margin-left: -5px;
+			width: 160px;
+			margin-right: calc(100% - 160px);
 			float: left;
 			background-color: var(--paranet-color);
 		
+			border-top: 2px solid rgb(30, 30, 30);
+			border-left: 2px solid rgb(30, 30, 30);
+			border-right: 2px solid rgb(30, 30, 30);
 		}
 		#trials-header {
     		border-radius:5px 5px 0px 0px;
-			width: 100%;
+    		margin-left: -5px;
+			width: 160px;
+			margin-right: calc(100% - 160px);
 			float: left;
 			background-color: var(--paranet-color);
+			border-top: 2px solid rgb(30, 30, 30);
+			border-left: 2px solid rgb(30, 30, 30);
+			border-right: 2px solid rgb(30, 30, 30);
 		}
 	#main-container {
 		position: fixed;

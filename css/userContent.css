@@ -14,6 +14,9 @@
 			width: 160px;
 			right: 0px;
 			top: 0px;
+			
+			border-left: 2px solid rgb(30, 30, 30);
+			border-right: 2px solid rgb(30, 30, 30);
 		}
 			#user-headers {
 				margin-top: 30px;

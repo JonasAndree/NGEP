@@ -19,6 +19,11 @@
 			right: 0px;
 			bottom: 0px;
 			padding: 0px 5px 5px 5px;
+			
+		border-top: 2px solid rgb(30, 30, 30);
+		border-bottom: 2px solid rgb(30, 30, 30);
+			border-left: 2px solid rgb(30, 30, 30);
+			border-right: 2px solid rgb(30, 30, 30);
 		}
 		.toggle #chat-content {
 			
@@ -148,32 +153,37 @@
 		border-width: 2px 2px 0px 2px;
 		border-style: solid;
 		min-width: 160px;
+		border-top: 2px solid rgb(30, 30, 30);
+		border-bottom: 2px solid rgb(30, 30, 30);
+			
 	}
 			
 	.chat-dialog-content:before {
-	  height: 100%;
-	  width: 5px;
-	  display: inline-block;
-	  position: absolute;
-	  top: 0px;
-	  left: -5px;
-	  content: '';
-	  color: transparent;
-	  border-top: 2px;
-	  cursor: w-resize;
+		height: 100%;
+		width: 5px;
+		display: inline-block;
+		position: absolute;
+		top: 0px;
+		left: -5px;
+		content: '';
+		color: transparent;
+		border-top: 2px;
+		cursor: w-resize;
+		border-left: 2px solid rgb(30, 30, 30);
 	}
 		
 	.chat-dialog-content:after {
-	  height: 100%;
-	  width: 5px;
-	  display: inline-block;
-	  position: absolute;
-	  top: 0px;
-	  right: -5px;
-	  content: '';
-	  color: transparent;
-	  border-top: 2px;
-	  cursor: e-resize;
+		height: 100%;
+		width: 5px;
+		display: inline-block;
+		position: absolute;
+		top: 0px;
+		right: -5px;
+		content: '';
+		color: transparent;
+		border-top: 2px;
+		cursor: e-resize;
+		border-right: 2px solid rgb(30, 30, 30);
 	}
 	
 	
@@ -211,7 +221,7 @@
 			
 	.chat-dialog {
 		background-color: var(--nav-item-color);
-		height: calc(100% - 142px);
+		height: calc(100% - 152px);
 		width: calc(100% - 10px);
 		overflow: auto;
 		padding: 5px 5px 5px 5px;
@@ -308,16 +318,16 @@
 			
 			
 #temp-space {
-	border-width: 2px;
+	/*border-width: 2px;*/
 	position: absolute;
 	bottom: 5px;
-	border-style: dashed;
+	/*border-style: dashed;
 	border-color: var(--active-text-color);
-	
+	*/
 	width: 160px;
 	height: 300px;
-	-webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
-    filter: grayscale(70%);
+	/*-webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
+    /*filter: grayscale(70%);*/
 	z-index: -6;
 }			
 .chat-parent-pressed {
