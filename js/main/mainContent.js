@@ -5,8 +5,10 @@ var rightMargin;
 var windowWidth = window.innerWidth; 
 var rightHeaderStartWidth;
 var leftHeaderStartWidth;
-var minHeaderWidth = 40;
+var minHeaderWidth = 90;
 var maxHeaderWidth = 160;
+var rightVisible = true; 
+var leftVisible = true; 
 
 document.getElementById("trials-header-hidden-text").style.display = "none";
 document.getElementById("arsenalen-header-hidden-text").style.display = "none";
@@ -73,53 +75,44 @@ function moveSplitter(event) {
 		newPos = leftMargin; 
 	if (newPos >= rightMargin)
 		newPos = rightMargin; 
-	
 	var diff = splitterPos - newPos;
 	var leftHeader = document.getElementById("arsenalen-header");
 	var rightHeader = document.getElementById("trials-header");
 	if (id == "main-splitter-left") {
 		leftDiv.style.width =  startLeftWidth - diff + "px";
 		rightDiv.style.width =  startRightWidth + diff + "px";
-		//resizeHeader("splitter");
 	} else if (id == "main-splitter-center") {
 		if (newPos <= leftMargin + (maxHeaderWidth - minHeaderWidth)) {
-			
 			leftHeader.style.width = leftHeaderStartWidth - (leftMargin - newPos + (maxHeaderWidth - minHeaderWidth))+"px";
 			leftVisible = false; 
 			document.getElementById("arsenalen-header-hidden-text").style.display = "block";
-
 			document.getElementById("arsenalen-header-text").style.display = "none";
 			document.getElementById("arsenalen-header-arrow").classList.remove("back");
 			document.getElementById("arsenalen-main-container").style.display = "none";
-			
+			document.getElementById("arsenalen-main-hidden-content").style.display = "block";
 		} else if (newPos >= rightMargin - (maxHeaderWidth - minHeaderWidth)) {
 			rightHeader.style.width = rightHeaderStartWidth - (newPos - rightMargin + (maxHeaderWidth - minHeaderWidth))+"px";
 			rightVisible = false;
-
 			document.getElementById("trials-header-text").style.display = "none";
 			document.getElementById("trials-header-hidden-text").style.display = "block";
-
+			document.getElementById("trials-main-hidden-content").style.display = "block";
 			document.getElementById("trials-header-arrow").classList.add("back");
 			document.getElementById("trials-main-container").style.display = "none";
 		} else {
 			document.getElementById("trials-header-hidden-text").style.display = "none";
 			document.getElementById("arsenalen-header-hidden-text").style.display = "none";
-			
-
-			
 			document.getElementById("trials-header-text").style.display = "block";
 			document.getElementById("trials-header-arrow").classList.remove("back");
 			document.getElementById("arsenalen-header-arrow").classList.add("back");
 			document.getElementById("arsenalen-header-text").style.display = "block";
 			document.getElementById("trials-main-container").style.display = "block";
 			document.getElementById("arsenalen-main-container").style.display = "block";
-			
-			
+			document.getElementById("trials-main-hidden-content").style.display = "none";
+			document.getElementById("arsenalen-main-hidden-content").style.display = "none";
 			rightVisible = true; 
 			leftVisible = true;
 			leftHeader.style.width = maxHeaderWidth+"px";
 			rightHeader.style.width = maxHeaderWidth+"px";
-
 		}
 		leftDiv.style.width =  startLeftWidth - diff + "px";
 		rightDiv.style.width = startRightWidth + diff + "px";
@@ -128,11 +121,9 @@ function moveSplitter(event) {
 			console.log("startLeftWidth: " + startLeftWidth);
 			console.log("startRightWidth: " + startRightWidth);
 			leftDiv.style.width = startLeftWidth - diff + "px";
-			//rightDiv.style.width = startRightWidth - diff + "px";
 		} else {
 			leftDiv.style.width = startLeftWidth - diff + "px";
 		}
-		//resizeHeader("splitter");
 	}
 }
 
@@ -144,7 +135,12 @@ function mainSplitterDown(event, element) {
 	if (id == "main-splitter-left") {
 		leftMargin = 60;
 		if (!rightVisible) {
-
+			/*
+			 * 
+			 *     to do
+			 * 
+			 * 
+			 */
 		} else {
 			leftDiv = document.getElementById("main-margin-left");
 			startLeftWidth = leftDiv.offsetWidth;
@@ -175,11 +171,9 @@ function mainSplitterDown(event, element) {
 			leftDiv = document.getElementById("main-left");
 			startLeftWidth = leftDiv.offsetWidth;
 			console.log("startLeftWidth: " + startLeftWidth);
-			
 			rightDiv = document.getElementById("main-right");
 			startRightWidth = rightDiv.offsetWidth;
 			console.log("startRightWidth: " + startRightWidth);
-
 			leftMargin = document.getElementById("main-splitter-left");
 			leftMargin = leftMargin.getBoundingClientRect().left + maxHeaderWidth + 70;
 			rightMargin = window.innerWidth - 60;
@@ -188,13 +182,10 @@ function mainSplitterDown(event, element) {
 			leftMargin = leftMargin.getBoundingClientRect().left + maxHeaderWidth;
 			leftDiv = document.getElementById("main-right");
 			startLeftWidth = leftDiv.offsetWidth;
-			
 			rightMargin = window.innerWidth - 60;
 		} 
 	}
 }
-var rightVisible = true; 
-var leftVisible = true; 
 function toggleMainContent(side) {
 	var center = document.getElementById("main-splitter-center");
 	var leftHeader = document.getElementById("arsenalen-header");
@@ -221,6 +212,8 @@ function toggleMainContent(side) {
 			document.getElementById("arsenalen-header-hidden-text").style.display = "block";
 
 			document.getElementById("arsenalen-main-hidden-content").style.display = "block";
+			
+			document.getElementById("trials-main-hidden-content").style.display = "none";
 
 
 		} else {
@@ -256,7 +249,7 @@ function toggleMainContent(side) {
 			document.getElementById("trials-header-hidden-text").style.display = "block";
 			document.getElementById("arsenalen-header-hidden-text").style.display = "none";
 			document.getElementById("trials-main-hidden-content").style.display = "block";
-
+			document.getElementById("arsenalen-main-hidden-content").style.display = "none";
 		} else {
 			center.style.display = "block";
 			leftContent.style.width = (rightContentWidth + leftContentWidth)/2 - 2 + "px";
@@ -269,6 +262,7 @@ function toggleMainContent(side) {
 			document.getElementById("trials-header-hidden-text").style.display = "none";
 			document.getElementById("arsenalen-header-hidden-text").style.display = "none";
 			document.getElementById("trials-main-hidden-content").style.display = "none";
+			
 
 
 		}

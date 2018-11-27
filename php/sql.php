@@ -138,5 +138,9 @@ function getChatDialog($mail, $resip_mail, $resip_course) {
     return $GLOBALS['conn']->query($sql);
 }
 
+function getPageContent($page, $pagetype) {
+    $sql = "SELECT * FROM pagecontent WHERE page='$page' AND pagetype='$pagetype' ORDER BY position";
+    return $GLOBALS['conn']->query($sql);
+}
 
 ?>
