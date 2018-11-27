@@ -108,6 +108,7 @@
         	<section id="arsenalen-header" class="main-header-item"
     			 onclick="toggleMainContent('left');">
     				<div id="arsenalen-header-text">Arsenalen</div>
+    				<div id="arsenalen-header-hidden-text">...</div>
                 <div class="animate-arrow">
                 	<span id="arsenalen-header-arrow" class="arrow back"><span></span></span>
             	</div>
@@ -118,6 +119,9 @@
         				Arsenalen
         			</div>
     			</div>
+        			<div id="arsenalen-main-hidden-content" class="main-content">
+        				...
+        			</div>
     		</section>
     	</div>
         <div id="main-splitter-center" 
@@ -126,6 +130,7 @@
             <section id="trials-header" class="main-header-item"
         			 onclick="toggleMainContent('right');">
     			<div id="trials-header-text">Trials</div>
+    			<div id="trials-header-hidden-text">...</div>
                 <div class="animate-arrow">
                 	<span id="trials-header-arrow" class="arrow"><span></span></span>
             	</div>
@@ -136,6 +141,9 @@
     					Trials
         			</div>
     			</div>
+        			<div id="trials-main-hidden-content" class="main-content">
+        				...
+        			</div>
     		</section>
 		</div>
         <div id="main-splitter-right" 

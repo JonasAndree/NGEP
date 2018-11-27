@@ -16,8 +16,8 @@
 		margin-bottom: 10px;
 		font-size: 16pt;
 		overflow: hidden;
-		border-top: 2px solid rgb(30, 30, 30);
-		border-bottom: 2px solid rgb(50, 50, 50);
+		border-top: 3px solid rgb(30, 30, 30);
+		border-bottom: 3px solid rgb(50, 50, 50);
 		
   
 	}
@@ -137,6 +137,9 @@
 			min-height: 14.546px;
 			color: var(--active-text-color)
 		}
+		#arsenalen-header-hidden-text {
+			diaplay: none;
+		}
 		
 		
 		
@@ -150,7 +153,7 @@
 	.main-header-item span span{
 		position: absolute;
 		transform: scale(0.80, 0.80);
-		background-image: url(http://thomaspodgro.com/source/arrow.png);
+		background-image: url(../images/arrow.png);
 		display: block;
 		width: 8px;
 		top: 0;
@@ -165,7 +168,7 @@
 		position: absolute;
 		content:"";
 		transform: scale(0.80, 0.80);
-		background-image: url(http://thomaspodgro.com/source/arrow.png);
+		background-image: url(../images/arrow.png);
 		display: block;
 		width: 8px;
 		top: 0;
@@ -180,7 +183,7 @@
 		position: absolute;
 		content: '';
 		transform: scale(0.80, 0.80);
-		background-image: url(http://thomaspodgro.com/source/arrow.png);
+		background-image: url(../images/arrow.png);
 		display: block;
 		width: 8px;
 		top: 0;
@@ -220,6 +223,10 @@
 			border-right: 2px solid rgb(30, 30, 30);
 			min-height: 14.546px;
 			color: var(--active-text-color)
+		}
+		
+		#trials-header-hidden-text {
+			diaplay: none;
 		}
 	#main-container {
 		position: fixed;

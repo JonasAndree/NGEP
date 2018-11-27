@@ -24,7 +24,7 @@
 	background-color: var(--active-text-color); 
 }
 ::-webkit-scrollbar-button {
-	background-image: url(http://thomaspodgro.com/source/arrow.png);
+	background-image: url(../images/arrow.png);
     background-repeat: no-repeat;
     background-size: 6px 6px;
     transform: rotate(-90deg);

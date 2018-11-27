@@ -112,15 +112,14 @@ function updateUserNavBar(id, heading) {
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-			console.log("Add userNavBar");
 			var userNavBar = document.getElementById("user-nav-container-main");
 			userNavBar.innerHTML = this.responseText;
 		}
 	};
 	xmlhttp.open("GET", "php/navbar/updateNavBar.php?id=" + id + 
 												   "&heading=" + heading + 
-												   "&bar=" + "user"
-												   , true);
+												   "&bar=" + "user", 
+												   true);
 	xmlhttp.send();
 }
 

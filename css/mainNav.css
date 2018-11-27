@@ -207,7 +207,7 @@ nav#course-navbar { }
 	.nav-item span span{
 		position: absolute;
 		transform: scale(0.80, 0.80);
-		background-image: url(http://thomaspodgro.com/source/arrow.png);
+		background-image: url(../images/arrow.png);
 		display: block;
 		width: 8px;
 		top: 0;
@@ -222,7 +222,7 @@ nav#course-navbar { }
 		position: absolute;
 		content:"";
 		transform: scale(0.80, 0.80);
-		background-image: url(http://thomaspodgro.com/source/arrow.png);
+		background-image: url(../images/arrow.png);
 		display: block;
 		width: 8px;
 		top: 0;
@@ -237,7 +237,7 @@ nav#course-navbar { }
 		position: absolute;
 		content: '';
 		transform: scale(0.80, 0.80);
-		background-image: url(http://thomaspodgro.com/source/arrow.png);
+		background-image: url(../images/arrow.png);
 		display: block;
 		width: 8px;
 		top: 0;

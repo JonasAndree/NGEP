@@ -7,6 +7,11 @@ var rightHeaderStartWidth;
 var leftHeaderStartWidth;
 var minHeaderWidth = 40;
 var maxHeaderWidth = 160;
+
+document.getElementById("trials-header-hidden-text").style.display = "none";
+document.getElementById("arsenalen-header-hidden-text").style.display = "none";
+document.getElementById("trials-main-hidden-content").style.display = "none";
+document.getElementById("arsenalen-main-hidden-content").style.display = "none";
 function initPage() {
 	
 }
@@ -70,40 +75,51 @@ function moveSplitter(event) {
 		newPos = rightMargin; 
 	
 	var diff = splitterPos - newPos;
+	var leftHeader = document.getElementById("arsenalen-header");
+	var rightHeader = document.getElementById("trials-header");
 	if (id == "main-splitter-left") {
 		leftDiv.style.width =  startLeftWidth - diff + "px";
 		rightDiv.style.width =  startRightWidth + diff + "px";
 		//resizeHeader("splitter");
 	} else if (id == "main-splitter-center") {
 		if (newPos <= leftMargin + (maxHeaderWidth - minHeaderWidth)) {
-			var leftHeader = document.getElementById("arsenalen-header");
-			console.log(leftHeaderStartWidth - (leftMargin - newPos + 
-					(maxHeaderWidth - minHeaderWidth)));
+			
 			leftHeader.style.width = leftHeaderStartWidth - (leftMargin - newPos + (maxHeaderWidth - minHeaderWidth))+"px";
 			leftVisible = false; 
-			
+			document.getElementById("arsenalen-header-hidden-text").style.display = "block";
+
 			document.getElementById("arsenalen-header-text").style.display = "none";
 			document.getElementById("arsenalen-header-arrow").classList.remove("back");
 			document.getElementById("arsenalen-main-container").style.display = "none";
 			
 		} else if (newPos >= rightMargin - (maxHeaderWidth - minHeaderWidth)) {
-			var rightHeader = document.getElementById("trials-header");
-			console.log(rightHeaderStartWidth - (newPos  - rightMargin + (maxHeaderWidth - minHeaderWidth)));
 			rightHeader.style.width = rightHeaderStartWidth - (newPos - rightMargin + (maxHeaderWidth - minHeaderWidth))+"px";
 			rightVisible = false;
 
 			document.getElementById("trials-header-text").style.display = "none";
+			document.getElementById("trials-header-hidden-text").style.display = "block";
+
 			document.getElementById("trials-header-arrow").classList.add("back");
 			document.getElementById("trials-main-container").style.display = "none";
 		} else {
+			document.getElementById("trials-header-hidden-text").style.display = "none";
+			document.getElementById("arsenalen-header-hidden-text").style.display = "none";
+			
+
+			
 			document.getElementById("trials-header-text").style.display = "block";
 			document.getElementById("trials-header-arrow").classList.remove("back");
 			document.getElementById("arsenalen-header-arrow").classList.add("back");
 			document.getElementById("arsenalen-header-text").style.display = "block";
 			document.getElementById("trials-main-container").style.display = "block";
 			document.getElementById("arsenalen-main-container").style.display = "block";
+			
+			
 			rightVisible = true; 
 			leftVisible = true;
+			leftHeader.style.width = maxHeaderWidth+"px";
+			rightHeader.style.width = maxHeaderWidth+"px";
+
 		}
 		leftDiv.style.width =  startLeftWidth - diff + "px";
 		rightDiv.style.width = startRightWidth + diff + "px";
@@ -199,8 +215,14 @@ function toggleMainContent(side) {
 			document.getElementById("arsenalen-header-arrow").classList.toggle("back");
 			document.getElementById("trials-header-text").style.display = "block";
 			document.getElementById("arsenalen-main-container").style.display = "none";
-			document.getElementById("trials-main-container").style.display = "block";
+			document.getElementById("trials-main-container").style.display = "block";	
 			
+			document.getElementById("trials-header-hidden-text").style.display = "none";
+			document.getElementById("arsenalen-header-hidden-text").style.display = "block";
+
+			document.getElementById("arsenalen-main-hidden-content").style.display = "block";
+
+
 		} else {
 			center.style.display = "block";
 			leftHeader.style.width = maxHeaderWidth + "px";
@@ -211,6 +233,11 @@ function toggleMainContent(side) {
 			document.getElementById("arsenalen-header-arrow").classList.toggle("back");
 			document.getElementById("arsenalen-main-container").style.display = "block";
 			
+			document.getElementById("trials-header-hidden-text").style.display = "none";
+			document.getElementById("arsenalen-header-hidden-text").style.display = "none";
+
+			document.getElementById("arsenalen-main-hidden-content").style.display = "none";
+
 		}
 	} else {
 		if (rightVisible) {
@@ -226,6 +253,10 @@ function toggleMainContent(side) {
 			document.getElementById("trials-main-container").style.display = "none";
 			document.getElementById("arsenalen-main-container").style.display = "block";
 
+			document.getElementById("trials-header-hidden-text").style.display = "block";
+			document.getElementById("arsenalen-header-hidden-text").style.display = "none";
+			document.getElementById("trials-main-hidden-content").style.display = "block";
+
 		} else {
 			center.style.display = "block";
 			leftContent.style.width = (rightContentWidth + leftContentWidth)/2 - 2 + "px";
@@ -235,6 +266,10 @@ function toggleMainContent(side) {
 			document.getElementById("trials-header-text").style.display = "block";
 			document.getElementById("trials-header-arrow").classList.toggle("back");
 			document.getElementById("trials-main-container").style.display = "block";
+			document.getElementById("trials-header-hidden-text").style.display = "none";
+			document.getElementById("arsenalen-header-hidden-text").style.display = "none";
+			document.getElementById("trials-main-hidden-content").style.display = "none";
+
 
 		}
 	}
