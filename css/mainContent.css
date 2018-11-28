@@ -142,7 +142,6 @@
 		}
 		
 		
-		
 	.main-header-item span{
 		display: block;
 		width: 8px;
@@ -264,9 +263,77 @@
 	
 	
 	
-	
-	.main-content {
-		padding: 10px;
-		width: calc(100% - 20px);
-		height: calc(100% - 20px);
+	#trials-main-container {
+		float: left;
+		height: calc(100vh - 10px);
+		width: calc(100% - 100px);
 	}
+	#arsenalen-main-container {
+		float: right;
+		margin-right:20px;
+		height: calc(100vh - 10px);
+		width: calc(100% - 110px);
+	}
+		.main-content {
+			width: 100%;
+			position: relative;
+			padding: 10px;
+			height: calc(100% - 20px);
+		}
+		#arsenalen-main-content {
+		    overflow: auto;
+		    overflow-x: hidden;
+    		direction:rtl;
+    		text-align: left;
+		}
+		#trials-main-content {
+		    overflow: auto;
+		    overflow-x: hidden;
+		}
+	
+	#arsenalen-main-nav-content {
+		float: left;
+	}
+	#trials-main-nav-content {
+		float: right;
+   		direction:rtl;
+   		text-align: left;
+	}
+	.main-nav-content {
+		padding: 5px;
+		height: calc(100vh - 30px);
+		width: 70px;
+		font-size: 2px;
+	    overflow: auto;
+	    overflow-x: hidden;
+        background-color: var(--main-background-color);
+		border-left: 2px solid rgb(30, 30, 30);
+		border-right: 2px solid rgb(30, 30, 30);
+	}
+	.main-nav-content h1 {
+		font-size: 9px;
+		max-width: 70px;
+	}
+	
+	
+	.content-header {
+	}
+	.content-div {
+		cursor: pointer;
+		margin: 2px 10px 2px 10px;
+		padding: 10px 10px 10px 10px;
+		border-top: 2px solid rgb(30, 30, 30);
+		border-bottom: 2px solid rgb(30, 30, 30);
+	
+	}
+	.content-nav {
+		cursor: pointer;
+		margin: 4px 4px 4px 4px;
+		padding: 0px 0px 0px 0px;
+		border-top: 0px solid rgb(30, 30, 30);
+		border-bottom: 0px solid rgb(30, 30, 30);
+	}
+	.content-nav:hover {
+		background-color: var(--active-text-color);
+	}
+	
