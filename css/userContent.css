@@ -56,6 +56,10 @@
 						padding: 5px 0px 5px 0px;
 						margin: 5px 5px 10px 5px;
 						border-color: var(--active-text-color);
+		border-left: 1px solid rgb(50, 50, 50);
+		border-right: 1px solid rgb(30, 30, 30);
+		border-top: 1px solid rgb(50, 50, 50);
+		border-bottom: 1px solid rgb(30, 30, 30);
 					}
 					.submit-form {
 						border-color: var(--active-text-color);
@@ -90,10 +94,17 @@
 	input, .nav-item {
 	  	transition: 0.3s ease-in-out;
 	 	outline: none;
+		
 	}		
 	input:focus, .nav-item:focus {
 		box-shadow: 0 0 5px var(--active-text-color);
 		border: 1px solid var(--active-text-color);
+		
+		
+		border-left: 1px solid rgb(30, 30, 30);
+		border-right: 1px solid rgb(50, 50, 50);
+		border-top: 1px solid rgb(30, 30, 30);
+		border-bottom: 1px solid rgb(50, 50, 50);
 	}
 	
 	

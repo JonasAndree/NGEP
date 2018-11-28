@@ -269,3 +269,18 @@ function toggleMainContent(side) {
 		}
 	}
 }
+
+
+function goToContent(id) {
+	console.log(id);
+}
+
+
+
+
+
+
+
+
+
+
