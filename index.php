@@ -620,7 +620,7 @@
     					<div class="content-div content-header">
     						<h1>Trials</h1>
     					</div>
-        				<div class="content-div" contenteditable="true">
+        				<div class="content-div" contenteditable="true" onblur="saveText(this)">
             				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ullamcorper 
             				laoreet sem, vel fringilla sem dictum ut. Nullam tincidunt luctus purus, 
             				sed pellentesque magna venenatis laoreet. Nunc in bibendum sem. 

@@ -16,6 +16,9 @@ var leftVisible = true;
 document.getElementById("trials-header-hidden-text").style.display = "none";
 document.getElementById("arsenalen-header-hidden-text").style.display = "none";
 
+
+
+
 function initPage() {
 
 	document.getElementById("arsenalen-main-content").style.width = 
@@ -275,7 +278,18 @@ function goToContent(id) {
 	console.log(id);
 }
 
-
+function saveText(element) {
+	console.log(element);
+	console.log(element.innerHTML);
+	element.classList.toggle("save-indicator");
+	
+	setTimeout(function () {
+		removeSaveIndicator(element);
+	}, 2000, element);
+}
+function removeSaveIndicator(element) {
+	element.classList.toggle("save-indicator");
+}
 
 
 
