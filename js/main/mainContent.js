@@ -17,7 +17,6 @@ document.getElementById("trials-header-hidden-text").style.display = "none";
 document.getElementById("arsenalen-header-hidden-text").style.display = "none";
 
 function initPage() {
-
 	document.getElementById("arsenalen-main-content").style.width = 
 		document.getElementById("main-left").offsetWidth;
 }
@@ -275,7 +274,26 @@ function goToContent(id) {
 	console.log(id);
 }
 
+function saveText(element) {
+	//console.log(element);
+	//console.log(element.innerHTML);
+	element.classList.toggle("save-indicator");
+	
+	element.getElementsByClassName("edit-tool-container")[0].style.display = "none";
 
+	
+	setTimeout(function () {
+		removeSaveIndicator(element);
+	}, 2000, element);
+}
+function removeSaveIndicator(element) {
+	element.classList.toggle("save-indicator");
+}
+function showEditableBar(element) {
+	console.log(element);
+	console.log(element.getElementsByClassName("edit-tool-container")[0]);
+	element.getElementsByClassName("edit-tool-container")[0].style.display = "block";
+}
 
 
 

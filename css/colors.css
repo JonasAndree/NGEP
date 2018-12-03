@@ -5,6 +5,7 @@
 	--text-color: rgb(200, 200, 200);
 	--nav-color: rgba(34, 34, 34, 0.8);
 	--active-text-color: rgb(255, 128, 64);
+	--transparent-active-text-color: rgba(255, 128, 64, 0.5);
 	/*--active-text-color: rgb(27, 255, 128);*/
 	--hover-text-color: #ff8040;
 	/*--hover-text-color: #1bff80;*/

@@ -329,13 +329,16 @@
 	.content-nav {
 		cursor: pointer;
 		margin: 0px 0px 0px 0px;
-		padding: 5px 10px 5px 10px;
-		border-top: 0px solid rgb(30, 30, 30);
-		border-bottom: 0px solid rgb(30, 30, 30);
+		padding: 4px 7px 4px 7px;
+		
+		border-left: 1px solid rgb(50, 50, 50);
+		border-right: 1px solid rgb(30, 30, 30);
+		border-top: 1px solid rgb(50, 50, 50);
+		border-bottom: 1px solid rgb(30, 30, 30);
 		
 	}
 	.content-nav:hover {
-		background-color: var(--active-text-color);
+		background-color: var(--transparent-active-text-color);
 	}
 	.content-nav:active {
 		border-left: 1px solid rgb(30, 30, 30);
@@ -344,3 +347,57 @@
 		border-bottom: 1px solid rgb(50, 50, 50);
 	}
 	
+	
+	
+[contenteditable="true"]:hover::before {
+	position: absolute;
+	display: block;
+	font-size: .75em;
+	float: right;
+	margin-left: 85%;
+	margin-top: -10px;
+	content:"Edit Me!";
+	color: var(--active-text-color);
+	outline:none;
+}
+	
+[contenteditable="true"]:focus::before{
+	content:"Editing me!";
+	position: absolute;
+	display: block;
+	font-size: .75em;
+	float: right;
+	margin-left: 82%;
+	margin-top: -10px;
+	color: var(--active-text-color);
+	outline:none;
+}
+.save-indicator::before {
+	content:"Saved!";
+	position: absolute;
+	display: block;
+	font-size: .75em;
+	float: right;
+	margin-left: 85%;
+	margin-top: -10px;
+	color: var(--active-text-color);
+	outline: none;
+}
+	
+[contenteditable="true"]:active, [contenteditable="true"]:focus {
+	background-color: var(--main-background-color);
+	border-color: var(--transparent-active-text-color);
+	outline:none;
+}
+
+.edit-tool-container {
+	display: none;
+}
+	.edit-tool-content {
+		width: 100%;
+		height: 40px;
+		margin-top: 10px;
+		margin-bottom: -10px;
+		background-color: var(--main-background-color);
+		
+	}

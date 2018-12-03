@@ -620,7 +620,7 @@
     					<div class="content-div content-header">
     						<h1>Trials</h1>
     					</div>
-        				<div class="content-div" contenteditable="true">
+        				<div class="content-div" contenteditable="true" onfocus="showEditableBar(this)" onblur="saveText(this)">
             				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ullamcorper 
             				laoreet sem, vel fringilla sem dictum ut. Nullam tincidunt luctus purus, 
             				sed pellentesque magna venenatis laoreet. Nunc in bibendum sem. 
@@ -637,8 +637,13 @@
                             Pellentesque a dolor neque. Praesent sit amet urna eu orci efficitur 
                             volutpat. Nam sed tincidunt felis. Nulla tempus quis diam ut 
                             sollicitudin. 
+                            <div class="edit-tool-container">
+                                <div class="edit-tool-content">
+                                	
+                                </div>	
+                            </div>
                         </div>
-                        <div class="content-div" contenteditable="true">
+                        <div class="content-div" contenteditable="true" onfocus="showEditableBar(this)" onblur="saveText(this)">
                             Aenean efficitur mi tortor, ut mollis ex elementum ac. Duis bibendum
                              mattis purus, vel viverra nulla ullamcorper quis.
                             In posuere turpis sit amet mi tincidunt, vitae tempor nulla ullamcorper.
@@ -655,6 +660,11 @@
                             vitae non mi. Nulla facilisi. Maecenas laoreet odio a sem fringilla, 
                             a lobortis felis tristique. Nulla consectetur lacinia magna, id dapibus 
                             ligula aliquam pretium.
+                            <div class="edit-tool-container">
+                                <div class="edit-tool-content">
+                                	
+                                </div>	
+                            </div>
                        	</div>
         			</div>
     			</div>
