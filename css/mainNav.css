@@ -25,9 +25,10 @@ nav#course-navbar { }
 		border-right: 2px solid rgb(30, 30, 30);
 	}
 	#page-logo {
-		background-image: url("../images/main/logo.gif");
+		background-image: url("../images/NGEP2.png");
 		background-repeat: no-repeat;
-		background-size: 60vh;
+		
+		background-size: cover;
 		height: 120px;
 		line-height: 130px;
 		margin-top: 46px;
@@ -184,8 +185,9 @@ nav#course-navbar { }
    		word-wrap: break-word;	
 	}
 	.nav-paranet {
-		background-color: #000000;
+		background-color: var(--paranet-color);
 		color: var(--active-text-color);
+		opacity: 0.9;
    		word-wrap: break-word;
    		transform: scale(1.10, 1.10); 
    		margin-top: 5px;

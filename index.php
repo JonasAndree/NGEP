@@ -19,7 +19,7 @@
 	<div id="background-field">
 		<div id="logo">
 			<div id="NGE">Nge</div>
-			<!-- <div id="NextGen">
+			<div id="NextGen">
 				<font size="5" >N</font> <font>ext </font>
 				<font size="5" >G</font> <font>en</font>
 			</div>
@@ -55,7 +55,7 @@
 				<div id="page-logo-content">
         			<div id='page-logo' class='nav-item' 
         				 onclick='updateNavBar("0", "Courses"); updateUserNavBar("0", "Courses")' >
-        				<h1>Ngep</h1>
+        				<!-- <h1>Ngep</h1> -->
         			</div>
     			</div>
 			</div>
