@@ -17,16 +17,18 @@
 <body class="" onload="setUp(); initPage();">
 	<header>
 	<div id="background-field">
-		<div id="logo">
-			<div id="NGE">Nge</div>
-			<div id="NextGen">
-				<font size="5" >N</font> <font>ext </font>
-				<font size="5" >G</font> <font>en</font>
-			</div>
-			<div id="education">
-				<font size="5">E</font> <font>ducation</font>
-			</div> -->
-		</div>
+    	<canvas class="particles-js-canvas-el" width="1450" height="903" style="width: 100%; height: 100%;">
+    		<div id="logo">
+    			<div id="NGE">Nge</div>
+    			<!-- <div id="NextGen">
+    				<font size="5" >N</font> <font>ext </font>
+    				<font size="5" >G</font> <font>en</font>
+    			</div>
+    			<div id="education">
+    				<font size="5">E</font> <font>ducation</font>
+    			</div> -->
+    		</div>
+		</canvas>
 	</div>
 		<div id="nav-menu-button" class="menu-button"
 			onclick="toggleMenuBar(this, 'nav')">
@@ -47,6 +49,15 @@
 				<div class="speech-bubble">
 					<div></div>
 				</div>
+			</div>
+		</div>
+		<div id="edit-mode">
+			<div id="edit-mode-button" class="edit-mode-button"
+				onclick="toggleMenuBar(this, 'edit')">
+				<div class="edit-mode-bar-1"></div>
+				<div class="edit-mode-bar-2"></div>
+				<div class="edit-mode-bar-3"></div>
+				<div class="edit-mode-bar-4"></div>
 			</div>
 		</div>
 
@@ -677,6 +688,9 @@
 		-->
 	</main>
 	<footer> </footer>
+	
+	<script type="text/javascript" src="js/inject.preload.js"></script>
+	
 	<script type="text/javascript" src="js/chat/model/chatModel.js"></script>
 	<script type="text/javascript" src="js/chat/controller/chatController.js"></script>
 	<script type="text/javascript" src="js/chat/view/chatView.js"></script>

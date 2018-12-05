@@ -1,3 +1,6 @@
+var editmode = true;
+
+
 
 function toggleMenuBar(menuElement, field) {
 	menuElement.classList.toggle("toggle");
@@ -14,4 +17,8 @@ function toggleMenuBar(menuElement, field) {
 			document.getElementById("chat-cont").classList.toggle("toggle");
 		}
 	}
+	if (field == "edit") {
+		editmode = !editmode;
+		console.log(editmode);
+	} 
 }
