@@ -13,22 +13,21 @@
     <link rel="stylesheet" type="text/css" href="css/userContent.css" />
     <link rel="stylesheet" type="text/css" href="css/chat.css" />
     <link rel="stylesheet" type="text/css" href="css/mainContent.css" />
+    <link rel="stylesheet" type="text/css" href="css/logo.css" />
 </head>
 <body class="" onload="setUp(); initPage();">
 	<header>
 	<div id="background-field">
-    	<canvas class="particles-js-canvas-el" width="1450" height="903" style="width: 100%; height: 100%;">
-    		<div id="logo">
-    			<div id="NGE">Nge</div>
-    			<!-- <div id="NextGen">
-    				<font size="5" >N</font> <font>ext </font>
-    				<font size="5" >G</font> <font>en</font>
-    			</div>
-    			<div id="education">
-    				<font size="5">E</font> <font>ducation</font>
-    			</div> -->
-    		</div>
-		</canvas>
+		<div id="logo">
+			<div id="NGE">Nge</div>
+			<!-- <div id="NextGen">
+				<font size="5" >N</font> <font>ext </font>
+				<font size="5" >G</font> <font>en</font>
+			</div>
+			<div id="education">
+				<font size="5">E</font> <font>ducation</font>
+			</div> -->
+		</div>
 	</div>
 		<div id="nav-menu-button" class="menu-button"
 			onclick="toggleMenuBar(this, 'nav')">
@@ -65,7 +64,9 @@
 			<div id="page-logo-container">
 				<div id="page-logo-content">
         			<div id='page-logo' class='nav-item' 
-        				 onclick='updateNavBar("0", "Courses"); updateUserNavBar("0", "Courses")' >
+        				 onclick='updateNavBar("0", "Courses"); updateUserNavBar("0", "Courses")' >				
+		        			<canvas id="canvas-logo-container">
+		        			</canvas>
         				<!-- <h1>Ngep</h1> -->
         			</div>
     			</div>
@@ -95,18 +96,6 @@
 			</div>
 		</div>
 	</header>
-	<div id="background-field">
-		<div id="logo">
-			<div id="NGE">Nge</div>
-			<!-- <div id="NextGen">
-				<font size="5" >N</font> <font>ext </font>
-				<font size="5" >G</font> <font>en</font>
-			</div>
-			<div id="education">
-				<font size="5">E</font> <font>ducation</font>
-			</div> -->
-		</div>
-	</div>
 	<main id="main">
 		<header id="page-heading" >
 			<div id="page-image"></div>
@@ -688,9 +677,6 @@
 		-->
 	</main>
 	<footer> </footer>
-	
-	<script type="text/javascript" src="js/inject.preload.js"></script>
-	
 	<script type="text/javascript" src="js/chat/model/chatModel.js"></script>
 	<script type="text/javascript" src="js/chat/controller/chatController.js"></script>
 	<script type="text/javascript" src="js/chat/view/chatView.js"></script>
@@ -705,5 +691,9 @@
 	
 	<script type="text/javascript" src="js/main/mainContent.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
+
+   	<script type="text/javascript" src="js/three.min.js"></script>
+	<script type="text/javascript" src="js/logo.js"></script>
+	
 </body>
 </html>
