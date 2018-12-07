@@ -275,13 +275,8 @@ function goToContent(id) {
 }
 
 function saveText(element) {
-	//console.log(element);
-	//console.log(element.innerHTML);
 	element.classList.toggle("save-indicator");
-	
-	element.getElementsByClassName("edit-tool-container")[0].style.display = "none";
-
-	
+	element.getElementsByClassName("edit-tool-container")[0].style.display = "none";	
 	setTimeout(function () {
 		removeSaveIndicator(element);
 	}, 2000, element);
@@ -290,13 +285,67 @@ function removeSaveIndicator(element) {
 	element.classList.toggle("save-indicator");
 }
 function showEditableBar(element) {
-	console.log(element);
-	console.log(element.getElementsByClassName("edit-tool-container")[0]);
 	element.getElementsByClassName("edit-tool-container")[0].style.display = "block";
 }
 
 
+function updateMainContent(id, heading, pageType) {
+	console.log("ID: " + id);
+	console.log("Heading:" + heading);
+	console.log("PageType: " + pageType);
+	updatePageTitel(heading);
+	updatePageImage(id, heading, pageType);
+	updatePageContent(id, heading, pageType);
+	updatePageNavContent(id, heading, pageType);
+}
 
+
+function updatePageTitel(heading) {
+	document.getElementById("page-titel").innerHTML = heading;
+}
+function updatePageImage(id, heading, pageType) {/*
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			document.getElementById("page-image").innerHTML = this.responseText;
+		}
+	};
+	xmlhttp.open("GET", "php/navbar/getPageImage.php", true);
+	xmlhttp.send();*/
+	console.log("TODO: change image")
+}
+function updatePageContent(id, heading, pageType) {
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			document.getElementById("arsenalen-main-content").innerHTML = this.responseText;
+		}
+	};
+	xmlhttp.open("GET", "php/main/updateArsenalen.php?id=" + id + 
+												   "&heading=" + heading + 
+												   "&pageType=" + pageType +
+												   "&editmode=" + editmode
+												   , true);
+	xmlhttp.send();
+}
+
+
+
+
+function updatePageNavContent(id, heading, pageType) {
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			document.getElementById("arsenalen-main-nav-content").innerHTML = this.responseText;
+		}
+	};
+	xmlhttp.open("GET", "php/main/updateNavArsenalen.php?id=" + id + 
+													   "&heading=" + heading + 
+													   "&pageType=" + pageType +
+													   "&editmode=" + editmode
+													   , true);
+	xmlhttp.send();
+}
 
 
 

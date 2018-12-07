@@ -65,8 +65,8 @@
 				<div id="page-logo-content">
         			<div id='page-logo' class='nav-item' 
         				 onclick='updateNavBar("0", "Courses"); updateUserNavBar("0", "Courses")' >				
-		        			<canvas id="canvas-logo-container">
-		        			</canvas>
+		        			<!--<canvas id="canvas-logo-container">
+		        			</canvas>-->
         				<!-- <h1>Ngep</h1> -->
         			</div>
     			</div>
@@ -692,8 +692,8 @@
 	<script type="text/javascript" src="js/main/mainContent.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 
-   	<script type="text/javascript" src="js/three.min.js"></script>
+   	<!-- <script type="text/javascript" src="js/three.min.js"></script>
 	<script type="text/javascript" src="js/logo.js"></script>
-	
+	 -->
 </body>
 </html>

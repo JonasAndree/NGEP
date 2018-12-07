@@ -25,6 +25,19 @@ function toggleMenuBar(menuElement, field) {
 	}
 	if (field == "edit") {
 		editmode = !editmode;
-		console.log(editmode);
+		toggleEditmode();
+	}
+}
+function toggleEditmode() {
+	var editableContent = document.querySelectorAll('[contenteditable]');
+	for (var i = 0; i < editableContent.length; i++) {
+		editableContent[i].setAttribute("contenteditable", editmode);
+		if(editmode == true) { 
+			editableContent[i].setAttribute("onfocus", "showEditableBar(this)");
+			editableContent[i].setAttribute("onblur", "saveText(this)");
+		} else {
+			editableContent[i].setAttribute("onfocus", "");
+			editableContent[i].setAttribute("onblur", "");
+		}
 	}
 }

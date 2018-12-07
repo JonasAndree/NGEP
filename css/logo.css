@@ -1,7 +1,9 @@
 canvas {
 	display: block;
-	vertical-align: bottom;
+    width: 160px;
+    height: 120px;
 } /* ---- particles.js container ---- */
+
 /*
 #particles-js {
 	position: absolute;

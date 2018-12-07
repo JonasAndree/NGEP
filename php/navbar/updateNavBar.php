@@ -3,19 +3,12 @@ session_start();
 
 class Page
 {
-
     public $parent = "root";
-
     public $level = 0;
-
     public $parentType = "root";
-
     public $heading = "Courses";
-
     public $id = 0;
-
     public $children = array();
-
     public function __toString()
     {
         return "My parent is: $this->parent <br> " . "My parentType is: $this->parentType <br>" . "My heading is: $this->heading <br>" . "My id is: $this->id <br>" . "My # children is:" . count($this->children) . "<br><br>";
@@ -106,11 +99,15 @@ function createPage($page, $level)
                                               \"$bar\")'";
         if ($bar == "nav") {
             echo "onclick='updateNavBar(\"$page->id\", \"$page->heading\")
-                           updateUserNavBar(\"0\", \"Courses\");'>";
+                           updateUserNavBar(\"0\", \"Courses\");
+                           updateMainContent(\"$page->id\", \"$page->heading\", \"subject\");
+                            '>";
                             
         } else {
             echo "onclick='updateUserNavBar(\"$page->id\", \"$page->heading\")
-                           updateNavBar(\"0\", \"Courses\");'>";
+                           updateNavBar(\"0\", \"Courses\");
+                           updateMainContent(\"$page->id\", \"$page->heading\", \"specificcourse\");
+                           '>";
         }
     
     if (count($page->children) > 0) {

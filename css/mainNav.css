@@ -25,9 +25,9 @@ nav#course-navbar { }
 		border-right: 2px solid rgb(30, 30, 30);
 	}
 	#page-logo {
-		/*background-image: url("../images/NGEP2.png");
+		background-image: url("../images/NGEP2.png");
 		background-repeat: no-repeat;
-		*/
+		
 		background-size: cover;
 		height: 120px;
 		line-height: 130px;
@@ -37,8 +37,6 @@ nav#course-navbar { }
 		color: var(--bage-logo-color);
 		transform: scale(1.1, 1.1);
 		font-family:"EVE", arial, sans-serif;
-		padding-bottom: 0px;
-    padding-top: 0px;
 	}
 	#page-logo:hover {
 		filter: brightness(110%);
@@ -225,8 +223,7 @@ nav#course-navbar { }
 	.nav-item .arrow:before {
 		position: absolute;
 		content:"";
-		transform: scale(0.80, 0.80);
-		background-image: url(../images/arrow.png);
+		transform: scale(0.80, 0../images/arrow.png-image: url(../images/arrow.png);
 		display: block;
 		width: 8px;
 		top: 0;
