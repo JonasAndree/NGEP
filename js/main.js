@@ -40,4 +40,5 @@ function toggleEditmode() {
 			editableContent[i].setAttribute("onblur", "");
 		}
 	}
+	createUserNavBar();
 }

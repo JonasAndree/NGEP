@@ -271,12 +271,14 @@ function toggleMainContent(side) {
 
 
 function goToContent(id) {
-	console.log(id);
+	var myElement = document.getElementById(id);
+	var topPos = myElement.offsetTop;
+	document.getElementById('arsenalen-main-content').scrollTop = topPos;
 }
 
 function saveText(element) {
 	element.classList.toggle("save-indicator");
-	element.getElementsByClassName("edit-tool-container")[0].style.display = "none";	
+	//element.getElementsByClassName("edit-tool-container")[0].style.display = "none";	
 	setTimeout(function () {
 		removeSaveIndicator(element);
 	}, 2000, element);
@@ -285,7 +287,7 @@ function removeSaveIndicator(element) {
 	element.classList.toggle("save-indicator");
 }
 function showEditableBar(element) {
-	element.getElementsByClassName("edit-tool-container")[0].style.display = "block";
+	//element.getElementsByClassName("edit-tool-container")[0].style.display = "block";
 }
 
 
@@ -319,6 +321,7 @@ function updatePageContent(id, heading, pageType) {
 	xmlhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			document.getElementById("arsenalen-main-content").innerHTML = this.responseText;
+			getViewArsenalen();
 		}
 	};
 	xmlhttp.open("GET", "php/main/updateArsenalen.php?id=" + id + 
@@ -329,25 +332,42 @@ function updatePageContent(id, heading, pageType) {
 	xmlhttp.send();
 }
 
-
-
-
+/**
+ * Updates content nav
+ * @param id
+ * @param heading
+ * @param pageType
+ * @returns
+ */
 function updatePageNavContent(id, heading, pageType) {
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			document.getElementById("arsenalen-main-nav-content").innerHTML = this.responseText;
+			getViewArsenalen();
 		}
 	};
 	xmlhttp.open("GET", "php/main/updateNavArsenalen.php?id=" + id + 
 													   "&heading=" + heading + 
-													   "&pageType=" + pageType +
-													   "&editmode=" + editmode
+													   "&pageType=" + pageType
 													   , true);
 	xmlhttp.send();
 }
 
 
+var mainCont = document.getElementById("arsenalen-main-content"); 
+var mainNavCont = document.getElementById("arsenalen-main-nav-content");
+var mainNavContTop = mainNavCont.getBoundingClientRect().top;
+mainCont.onscroll = function(){getViewArsenalen();};
 
+function getViewArsenalen() {
+	var scrolHeight = mainCont.scrollHeight;
+	var mainTop = mainCont.scrollTop;
+	var windowH = window.innerHeight;
+	var navHeight = mainNavCont.scrollHeight;
+	var scroller = document.getElementById("arsenalen-viewer"); 
+	scroller.style.height = windowH * (navHeight/scrolHeight) + "px";
+	scroller.style.top = (mainTop * (navHeight/scrolHeight) + mainNavContTop) + "px";
+}
 
 

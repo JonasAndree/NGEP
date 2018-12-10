@@ -118,7 +118,7 @@ function updateUserNavBar(id, heading) {
 	};
 	xmlhttp.open("GET", "php/navbar/updateNavBar.php?id=" + id + 
 												   "&heading=" + heading + 
-												   "&bar=" + "user", 
+												   "&bar=" + "user",
 												   true);
 	xmlhttp.send();
 }
@@ -127,7 +127,7 @@ function createUserNavBar() {
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-			updateUserNavBar("0", "Courses");
+			updateUserNavBar("0", "My courses");
 		}
 	};
 	var firstName = localStorage.getItem('firstName');
@@ -138,8 +138,10 @@ function createUserNavBar() {
 		xmlhttp.open("GET", "php/navbar/createUserNavBar.php?firstName=" + firstName + 
 									"&lastName=" + lastName + 
 									"&position=" + position + 
-									"&school=" + school + 
-									"&mail=" + mail, true);
+									"&school=" + school +
+									"&editmode=" + editmode + 
+									"&mail=" + mail
+									, true);
 	xmlhttp.send();
 	pupulateChat();
 }

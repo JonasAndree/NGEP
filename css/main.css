@@ -5,8 +5,10 @@
  **********************************************************/
  
 ::selection {
-    color: var(--nav-color); 
-    background: var(--active-text-color);
+   /* color: var(--nav-color); 
+    */background: rgba(255, 128, 64, 0.6);
+    border: thin solid var(--nav-color);
+    
 }
 ::-webkit-scrollbar {
 	width: 8px;

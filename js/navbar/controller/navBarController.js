@@ -22,6 +22,8 @@ function resetNav() {
 		    elementHovered[i].style.transform = "scale(1.0, 1.0)";
 		}
 	}
+
+	document.getElementById("main").classList.remove("fade");
 }
 
 
@@ -32,6 +34,8 @@ window.addEventListener("mouseup", function(event) {
 var activeBar = null; 
 
 function navElementMouseOver(element, parentHeading, parentId, level, bar) {
+	document.getElementById("main").classList.add("fade");
+	
 	if (activeBar == null)
 		activeBar = bar; 
 	if (activeBar != bar) {

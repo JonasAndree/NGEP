@@ -12,13 +12,16 @@ $mail = $_REQUEST['mail'];
 $school = $_REQUEST['school'];
 $position = $_REQUEST['position'];
 
+$editmode = $_REQUEST['editmode'];
+
+
 include "getSpecificCourses.php";
 
 $newPageId = 500000000;
 while ($course = $result->fetch_assoc()) {
     getRootPages($rootPage, $course, $newPageId);
 }
-if ($position == "Teacher") {
+if ($position == "Teacher" && $GLOBALS["editmode"] == "true") {
     $newPage = new Page();
     $newPage->parent = $rootPage;
     $newPage->parentType = "root";
@@ -26,8 +29,6 @@ if ($position == "Teacher") {
     $newPage->id = "" + $newPageId;
     array_push($rootPage->children, $newPage);
 }
-
-
 
 function getRootPages($rootPage, $course, $newPageId)
 {
@@ -40,6 +41,7 @@ function getRootPages($rootPage, $course, $newPageId)
     array_push($rootPage->children, $newPage);
     getPages($newPage, $newPageId);
 }
+
 function getPages($parent, $newPageId)
 {
     $parentId = $parent->id;
@@ -54,7 +56,7 @@ function getPages($parent, $newPageId)
         getPages($newPage, $newPageId--);
     }
     
-    if ($GLOBALS["position"] == "Teacher") {
+    if ($GLOBALS["position"] == "Teacher" && $GLOBALS["editmode"] == "true") {
         $newPageId--;
         $newPage = new Page();
         $newPage->parent = $parent;

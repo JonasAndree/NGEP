@@ -223,7 +223,8 @@ nav#course-navbar { }
 	.nav-item .arrow:before {
 		position: absolute;
 		content:"";
-		transform: scale(0.80, 0../images/arrow.png-image: url(../images/arrow.png);
+		transform: scale(0.80, 0.8);
+		background-image: url(../images/arrow.png-image: url(../images/arrow.png);
 		display: block;
 		width: 8px;
 		top: 0;

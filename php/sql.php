@@ -79,13 +79,13 @@ function updateUserImage($image, $mail)
 }
 
 /**
- * Get under pages to page
+ * Get under subjects to page
  *
  * @param int $parentId
  */
 function getPageChildren($parentId)
 {
-    return $GLOBALS['conn']->query("SELECT * FROM `pages` WHERE parent='$parentId'");
+    return $GLOBALS['conn']->query("SELECT * FROM `subjects` WHERE parent='$parentId'");
 }
 
 function getCoursesForTeacher($mail)
@@ -118,11 +118,12 @@ function getUsers($mail, $course)
             specificcourse ON users.school=specificcourse.school)
             WHERE `teacher`='$mail' AND `course`='$course' AND active=1 AND users.position='Student'
             ORDER BY users.firstname";
-    
+
     return $GLOBALS['conn']->query($sql);
 }
 
-function getChatDialogInfo($mail, $resip_mail, $resip_course) {
+function getChatDialogInfo($mail, $resip_mail, $resip_course)
+{
     $sql = "SELECT * FROM `messages` WHERE touser='$mail' AND fromuser='$resip_mail' AND course='$resip_course'
             UNION
             SELECT * FROM `messages` WHERE touser='$resip_mail' AND fromuser='$mail' AND course='$resip_course'
@@ -130,7 +131,8 @@ function getChatDialogInfo($mail, $resip_mail, $resip_course) {
     return $GLOBALS['conn']->query($sql);
 }
 
-function getChatDialog($mail, $resip_mail, $resip_course) {
+function getChatDialog($mail, $resip_mail, $resip_course)
+{
     $sql = "SELECT * FROM `messages` WHERE touser='$mail' AND fromuser='$resip_mail' AND course='$resip_course'
             UNION
             SELECT * FROM `messages` WHERE touser='$resip_mail' AND fromuser='$mail' AND course='$resip_course'
@@ -138,7 +140,8 @@ function getChatDialog($mail, $resip_mail, $resip_course) {
     return $GLOBALS['conn']->query($sql);
 }
 
-function getPageContent($page, $pagetype) {
+function getPageContent($page, $pagetype)
+{
     $sql = "SELECT * FROM pagecontent WHERE page='$page' AND pagetype='$pagetype' ORDER BY position";
     return $GLOBALS['conn']->query($sql);
 }

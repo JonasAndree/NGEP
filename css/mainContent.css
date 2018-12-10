@@ -6,6 +6,10 @@
 	background-color: var(--nav-color);
 	right: 0px;
 }
+#main.fade {
+	filter: blur(5px) grayscale(20%);
+}
+
 	
 	#page-heading {
     	border-radius:5px 5px 5px 5px;
@@ -296,13 +300,13 @@
 	}
 	#trials-main-nav-content {
 		float: right;
-   		direction:rtl;
+   		direction: rtl;
    		text-align: left;
 	}
 	.main-nav-content {
 		padding: 0px;
-		height: calc(100vh - 30px);
-		width: 70px;
+		/*height: calc(100vh - 30px);
+		*/width: 70px;
 		font-size: 2px;
 	    overflow: auto;
 	    overflow-x: hidden;
@@ -336,7 +340,10 @@
 		border-right: 1px solid rgb(30, 30, 30);
 		border-top: 1px solid rgb(50, 50, 50);
 		border-bottom: 1px solid rgb(30, 30, 30);
-		
+		-webkit-user-select: none; /* Safari */        
+		-moz-user-select: none; /* Firefox */
+		-ms-user-select: none; /* IE10+/Edge */
+		user-select: none; /* Standard */
 	}
 	.content-nav:hover {
 		background-color: var(--transparent-active-text-color);
@@ -347,6 +354,14 @@
 		border-top: 1px solid rgb(30, 30, 30);
 		border-bottom: 1px solid rgb(50, 50, 50);
 	}
+		#arsenalen-viewer {
+			position: absolute;
+			width: 75px;
+			height: 100px;
+			border: thin solid;
+			border-color: var(--active-text-color);
+			background-color: var(--transparent-active-text-color);
+		}
 	
 	
 	

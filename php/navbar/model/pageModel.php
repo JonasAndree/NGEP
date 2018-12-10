@@ -4,7 +4,7 @@ class Page
     public $parent = "root";
     public $level = 0;
     public $parentType = "root";
-    public $newPageId = "Courses";
+    public $newPageId = "My courses";
     public $id = 0;
     public $children = array();
     public function __toString() {

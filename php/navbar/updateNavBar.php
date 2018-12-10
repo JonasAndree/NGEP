@@ -3,12 +3,19 @@ session_start();
 
 class Page
 {
+
     public $parent = "root";
+
     public $level = 0;
+
     public $parentType = "root";
-    public $heading = "Courses";
+
+    public $heading = "My courses";
+
     public $id = 0;
+
     public $children = array();
+
     public function __toString()
     {
         return "My parent is: $this->parent <br> " . "My parentType is: $this->parentType <br>" . "My heading is: $this->heading <br>" . "My id is: $this->id <br>" . "My # children is:" . count($this->children) . "<br><br>";
@@ -16,39 +23,40 @@ class Page
 }
 $bar = $_REQUEST['bar'];
 
-if ($bar == "nav") 
+if ($bar == "nav")
     $activeSession = $_SESSION['activePage'];
-else 
+else
     $activeSession = $_SESSION['activeUserPage'];
 
 $foundActivePage;
-$found = findActivePage($activeSession, 
-                        (int) $_REQUEST['id'], 
-                        $_REQUEST['heading']);
+$found = findActivePage($activeSession, (int) $_REQUEST['id'], $_REQUEST['heading']);
 
-if ($foundActivePage->heading != "Courses" && $foundActivePage->id != 0) {
+if (($foundActivePage->heading != "My courses" || $foundActivePage->heading != "Subjects") && $foundActivePage->id != 0) {
     $parentPreviusId = ($foundActivePage->parent)->id;
     $parentPreviusHeading = ($foundActivePage->parent)->heading;
+
     echo "<li class='nav-item nav-paranet nav-back'
               style='list-style-type: none;'";
     if ($GLOBALS["bar"] == "nav") {
         echo "onclick='updateNavBar(\"$parentPreviusId\",
                                     \"$parentPreviusHeading\");
-	                   updateUserNavBar(\"0\", \"Courses\");
-                        '>";
+	                   updateUserNavBar(\"0\", \"My courses\");
+                       updateMainContent(\"$parentPreviusId\", \"$parentPreviusHeading\", \"subject\");
+                       '>";
     } else {
         echo "onclick='updateUserNavBar(\"$parentPreviusId\",
                                         \"$parentPreviusHeading\");
-	                   updateNavBar(\"0\", \"Courses\");
-                        '>";
+	                   updateNavBar(\"0\", \"Subjects\");
+                       updateMainContent(\"$parentPreviusId\", \"$parentPreviusHeading\", \"specificcourse\");
+                       '>";
     }
-        echo "<div class='animate-arrow'>";
-            echo "<span class='arrow back'><span></span></span>";
-                echo "$parentPreviusHeading";
-        echo "</div>";
+    echo "<div class='animate-arrow'>";
+    echo "<span class='arrow back'><span></span></span>";
+    echo "$parentPreviusHeading";
+    echo "</div>";
     echo "</li>";
 }
-if ($foundActivePage->id == 0 && $foundActivePage->heading == "Courses") {
+if ($foundActivePage->id == 0 && ($foundActivePage->heading == "My courses" || $foundActivePage->heading == "Subjects")) {
     createContainer($foundActivePage, 0);
 } else {
     createPage($foundActivePage, 0);
@@ -60,23 +68,23 @@ function createContainer($page, $level)
     $parentId = $page->id;
     $parentHeading = $page->heading;
     // $level = $page->level;
-    if ($parentId != 0 && $page->heading != "Courses") {
+    if ($parentId != 0 && ($page->heading != "My courses" || $page->heading != "Subjects")) {
         echo "<div id='sub-nav-container-$parentHeading-$parentId' 
                    class='sub-nav-container' level='$level'>";
-            echo "<div id='sub-nav-content-$parentHeading-$parentId' 
+        echo "<div id='sub-nav-content-$parentHeading-$parentId' 
                            class='sub-nav-content'>";
-                echo "<ul id='sub-nav-ul-$parentHeading-$parentId'>";
-                    foreach ($page->children as $child) {
-                        createPage($child, $level);
-                    }
-                echo "</ul>";
-            echo "</div>";
+        echo "<ul id='sub-nav-ul-$parentHeading-$parentId'>";
+        foreach ($page->children as $child) {
+            createPage($child, $level);
+        }
+        echo "</ul>";
+        echo "</div>";
         echo "</div>";
     } else {
         echo "<ul id='sub-nav-ul-$parentHeading-$parentId'>";
-            foreach ($page->children as $child) {
-                createPage($child, $level);
-            }
+        foreach ($page->children as $child) {
+            createPage($child, $level);
+        }
         echo "</ul>";
     }
 }
@@ -84,42 +92,42 @@ function createContainer($page, $level)
 function createPage($page, $level)
 {
     echo "<li id='nav-item-$page->heading-$page->id'";
-              echo "heading='$page->heading'";
-    if ($page->heading == "Create new page" || $page->heading=="Create new course")
-        echo "class='nav-item nav-add-item'"; 
-    else 
-        echo "class='nav-item'"; 
-    
-        $bar = $GLOBALS["bar"];
-        echo "style='list-style-type: none;'";
-        echo "onmouseover='navElementMouseOver(this,
+    echo "heading='$page->heading'";
+
+    if ($page->heading == "Create new page" || $page->heading == "Create new course")
+        echo "class='nav-item nav-add-item'";
+    else
+        echo "class='nav-item'";
+
+    $bar = $GLOBALS["bar"];
+    echo "style='list-style-type: none;'";
+    echo "onmouseover='navElementMouseOver(this,
                                               \"$page->heading\",
                                               \"$page->id\",
                                               $level,
                                               \"$bar\")'";
-        if ($bar == "nav") {
-            echo "onclick='updateNavBar(\"$page->id\", \"$page->heading\")
-                           updateUserNavBar(\"0\", \"Courses\");
+    if ($bar == "nav") {
+        echo "onclick='updateNavBar(\"$page->id\", \"$page->heading\")
+                           updateUserNavBar(\"0\", \"My courses\");
                            updateMainContent(\"$page->id\", \"$page->heading\", \"subject\");
                             '>";
-                            
-        } else {
-            echo "onclick='updateUserNavBar(\"$page->id\", \"$page->heading\")
-                           updateNavBar(\"0\", \"Courses\");
+    } else {
+        echo "onclick='updateUserNavBar(\"$page->id\", \"$page->heading\")
+                           updateNavBar(\"0\", \"Subjects\");
                            updateMainContent(\"$page->id\", \"$page->heading\", \"specificcourse\");
                            '>";
-        }
-    
+    }
+
     if (count($page->children) > 0) {
         echo "<div class='animate-arrow'>";
-            echo "<div class='nav-button-parent'>";
-                echo "$page->heading";
-            echo "</div>";
-            echo "<span class='arrow'><span></span></span>";
+        echo "<div class='nav-button-parent'>";
+        echo "$page->heading";
+        echo "</div>";
+        echo "<span class='arrow'><span></span></span>";
         echo "</div>";
     } else {
         echo "<div class='nav-button-parent-not'>";
-            echo "$page->heading";
+        echo "$page->heading";
         echo "</div>";
     }
     echo "</li>";

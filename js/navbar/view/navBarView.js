@@ -8,7 +8,7 @@ function updateNavBar(id, heading) {
 	};
 	xmlhttp.open("GET", "php/navbar/updateNavBar.php?id=" + id + 
 												   "&heading=" + heading + 
-												   "&bar=" + "nav"
+												   "&bar=" + "nav" 
 												   , true);
 	xmlhttp.send();
 }
@@ -17,7 +17,7 @@ function createNavbar() {
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-			updateNavBar("0", "Courses");
+			updateNavBar("0", "Subjects");
 		}
 	};
 	xmlhttp.open("GET", "php/navbar/createNavBar.php", true);

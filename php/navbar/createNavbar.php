@@ -21,6 +21,7 @@ function getPages($parent)
 }
 
 $rootPage = new Page();
+$rootPage->heading = "Subjects";
 getPages($rootPage);
 $_SESSION['rootPage'] = $rootPage;
 $_SESSION['activePage'] = $rootPage;

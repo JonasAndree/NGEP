@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="css/mainContent.css" />
     <link rel="stylesheet" type="text/css" href="css/logo.css" />
 </head>
-<body class="" onload="setUp(); initPage();">
+<body class="" onload="setUp(); initPage(); getViewArsenalen();">
 	<header>
 	<div id="background-field">
 		<div id="logo">
@@ -64,7 +64,7 @@
 			<div id="page-logo-container">
 				<div id="page-logo-content">
         			<div id='page-logo' class='nav-item' 
-        				 onclick='updateNavBar("0", "Courses"); updateUserNavBar("0", "Courses")' >				
+        				 onclick='updateNavBar("0", "Subjects"); updateUserNavBar("0", "My courses")' >				
 		        			<!--<canvas id="canvas-logo-container">
 		        			</canvas>-->
         				<!-- <h1>Ngep</h1> -->
@@ -318,7 +318,7 @@
                             volutpat. Nam sed tincidunt felis. Nulla tempus quis diam ut 
                             sollicitudin. 
                         </div>
-                        
+
 						<div id="arsenalen-content-id-13" class="content-div">
                             Aenean efficitur mi tortor, ut mollis ex elementum ac. Duis bibendum
                              mattis purus, vel viverra nulla ullamcorper quis.
@@ -337,6 +337,7 @@
                             a lobortis felis tristique. Nulla consectetur lacinia magna, id dapibus 
                             ligula aliquam pretium.
         				</div>
+        				
         			</div>
     			</div>
     			<div id="arsenalen-main-nav-content" class="main-nav-content">
@@ -561,6 +562,7 @@
                         ligula aliquam pretium.
     				</div>
     			</div>
+    			<div id="arsenalen-viewer"></div>
     		</section>
     	</div>
         <div id="main-splitter-center" 
@@ -637,11 +639,6 @@
                             Pellentesque a dolor neque. Praesent sit amet urna eu orci efficitur 
                             volutpat. Nam sed tincidunt felis. Nulla tempus quis diam ut 
                             sollicitudin. 
-                            <div class="edit-tool-container">
-                                <div class="edit-tool-content">
-                                	
-                                </div>	
-                            </div>
                         </div>
                         <div class="content-div" contenteditable="true" onfocus="showEditableBar(this)" onblur="saveText(this)">
                             Aenean efficitur mi tortor, ut mollis ex elementum ac. Duis bibendum
@@ -660,11 +657,6 @@
                             vitae non mi. Nulla facilisi. Maecenas laoreet odio a sem fringilla, 
                             a lobortis felis tristique. Nulla consectetur lacinia magna, id dapibus 
                             ligula aliquam pretium.
-                            <div class="edit-tool-container">
-                                <div class="edit-tool-content">
-                                	
-                                </div>	
-                            </div>
                        	</div>
         			</div>
     			</div>
@@ -672,9 +664,6 @@
 		</div>
         <div id="main-splitter-right" 
         	 onmousedown="mainSplitterDown(event, this);"></div>
-      
-	<!--  
-		-->
 	</main>
 	<footer> </footer>
 	<script type="text/javascript" src="js/chat/model/chatModel.js"></script>
