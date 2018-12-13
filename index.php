@@ -14,7 +14,40 @@
     <link rel="stylesheet" type="text/css" href="css/chat.css" />
     <link rel="stylesheet" type="text/css" href="css/mainContent.css" />
     <link rel="stylesheet" type="text/css" href="css/logo.css" />
+	
+	
+	<!-- codemirror  --> 
+    <script src="js/lib/codemirror.js"></script>
+    <link rel="stylesheet" href="css/lib/codemirror.css">
+    <link rel="stylesheet" href="css/lib/monokai.css">
+    
+    <script src="js/lib/javascript.js"></script>
+    <script src="js/lib/addon/selection/active-line.js"></script>
+    <script src="js/lib/addon/edit/matchbrackets.js"></script>
+	<script src="js/lib/addon/edit/closebrackets.js"></script>
+
+    <script src="js/lib/addon/hint/show-hint.js"></script>
+    <script src="js/lib/addon/hint/javascript-hint.js"></script>
+    <script src="js/lib/mode/markdown.js"></script>
+    
+    
+    <script src="js/lib/addon/fold/foldcode.js"></script>
+    <script src="js/lib/addon/fold/foldgutter.js"></script>
+    <script src="js/lib/addon/fold/brace-fold.js"></script>
+    <script src="js/lib/addon/fold/xml-fold.js"></script>
+    <script src="js/lib/addon/fold/indent-fold.js"></script>
+    <script src="js/lib/addon/fold/markdown-fold.js"></script>
+    <script src="js/lib/addon/fold/comment-fold.js"></script>
+
+    <link rel="stylesheet" href="css/lib/fullscreen.css">
+	<script src="js/lib/addon/fullscreen.js"></script>
+	<style>
+      .breakpoints { width: .8em; }
+    </style>
 </head>
+
+
+
 <body class="" onload="setUp(); initPage(); getViewArsenalen();">
 	<header>
 	<div id="background-field">
@@ -99,7 +132,7 @@
 	<main id="main">
 		<header id="page-heading" >
 			<div id="page-image"></div>
-			<h1 id="page-titel">Page titel</h1>
+			<h1 id="page-titel"  contenteditable="true">Page titel</h1>
 		</header>
         <div id="main-margin-left"></div>
         <div id="main-splitter-left" 
@@ -116,229 +149,236 @@
     		<section id="arsenalen-main">
     			<div id="arsenalen-main-container">
         			<div id="arsenalen-main-content" class="main-content">
-        				<div class="content-div content-header">
-        					<h1 id="arsenalen-content-id-1">Arsenalen</h1>
+        				<div id="arsenalen-lefti">
+            				<div class="content-div content-header"  contenteditable="true">
+            					<h1 id="arsenalen-content-id-1">Arsenalen</h1>
+            				</div>
+            				<div id="content-div"
+            					 class="content-div content-code"
+            					 contenteditable="true" 
+            					 >
+            				</div>
+            				
+            				<div id="arsenalen-content-id-2" class="content-div" contenteditable="true" onblur="saveText(this)">
+                				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ullamcorper 
+                				laoreet sem, vel fringilla sem dictum ut. Nullam tincidunt luctus purus, 
+                				sed pellentesque magna venenatis laoreet. Nunc in bibendum sem. 
+                				Sed commodo ligula ac fringilla laoreet. Duis aliquam leo ut dolor 
+                				consequat cursus. Nulla pharetra eros quis porta maximus.
+                				Morbi laoreet eros eu eros ultricies tempor. Maecenas non dolor orci.
+                                Vestibulum vel urna ut lacus rhoncus sagittis congue ut nibh. Donec ac 
+                                ornare justo, non faucibus elit. 
+                                Mauris pulvinar lobortis dapibus. Morbi eu quam id neque imperdiet 
+                                dictum. Donec id accumsan ligula. Sed et iaculis nisi, nec malesuada 
+                                purus. Nullam aliquet enim nec semper posuere. Quisque dictum leo eget 
+                                tellus dapibus, nec faucibus urna condimentum.
+                                Aenean fermentum est in orci iaculis, eget mollis metus egestas. 
+                                Pellentesque a dolor neque. Praesent sit amet urna eu orci efficitur 
+                                volutpat. Nam sed tincidunt felis. Nulla tempus quis diam ut 
+                                sollicitudin. 
+                            </div>
+                            <div id="arsenalen-content-id-3" class="content-div" contenteditable="true" onblur="saveText(this)">
+                                Aenean efficitur mi tortor, ut mollis ex elementum ac. Duis bibendum
+                                 mattis purus, vel viverra nulla ullamcorper quis.
+                                In posuere turpis sit amet mi tincidunt, vitae tempor nulla ullamcorper.
+                                 Fusce lacus ante, maximus commodo nulla vitae, auctor sollicitudin 
+                                 nulla. Sed varius luctus mauris. Duis iaculis nibh sit amet enim egestas, 
+                                 vel volutpat libero posuere. Etiam sodales in dolor eget mattis. 
+                                 Ut ante tellus, varius vitae ullamcorper at, elementum vel turpis. 
+                                 Integer commodo justo ut orci venenatis, vel imperdiet massa imperdiet. 
+                                 In mattis vulputate ligula ac malesuada.
+                                Nam quis augue ac libero molestie efficitur ut nec velit. Integer 
+                                efficitur rhoncus velit, eu vehicula dui ultrices sit amet. In sit 
+                                amet gravida metus. Maecenas eu vulputate mi, eget tempus felis. 
+                                Cras eu laoreet ante. Fusce nec leo laoreet mauris accumsan luctus 
+                                vitae non mi. Nulla facilisi. Maecenas laoreet odio a sem fringilla, 
+                                a lobortis felis tristique. Nulla consectetur lacinia magna, id dapibus 
+                                ligula aliquam pretium.
+                            </div>
+                            <div id="arsenalen-content-id-4" class="content-div" contenteditable="true" onblur="saveText(this)">
+                				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ullamcorper 
+                				laoreet sem, vel fringilla sem dictum ut. Nullam tincidunt luctus purus, 
+                				sed pellentesque magna venenatis laoreet. Nunc in bibendum sem. 
+                				Sed commodo ligula ac fringilla laoreet. Duis aliquam leo ut dolor 
+                				consequat cursus. Nulla pharetra eros quis porta maximus.
+                				Morbi laoreet eros eu eros ultricies tempor. Maecenas non dolor orci.
+                                Vestibulum vel urna ut lacus rhoncus sagittis congue ut nibh. Donec ac 
+                                ornare justo, non faucibus elit. 
+                                Mauris pulvinar lobortis dapibus. Morbi eu quam id neque imperdiet 
+                                dictum. Donec id accumsan ligula. Sed et iaculis nisi, nec malesuada 
+                                purus. Nullam aliquet enim nec semper posuere. Quisque dictum leo eget 
+                                tellus dapibus, nec faucibus urna condimentum.
+                                Aenean fermentum est in orci iaculis, eget mollis metus egestas. 
+                                Pellentesque a dolor neque. Praesent sit amet urna eu orci efficitur 
+                                volutpat. Nam sed tincidunt felis. Nulla tempus quis diam ut 
+                                sollicitudin. 
+                            </div>
+                            <div id="arsenalen-content-id-5" class="content-div" contenteditable="true" onblur="saveText(this)">
+                                Aenean efficitur mi tortor, ut mollis ex elementum ac. Duis bibendum
+                                 mattis purus, vel viverra nulla ullamcorper quis.
+                                In posuere turpis sit amet mi tincidunt, vitae tempor nulla ullamcorper.
+                                 Fusce lacus ante, maximus commodo nulla vitae, auctor sollicitudin 
+                                 nulla. Sed varius luctus mauris. Duis iaculis nibh sit amet enim egestas, 
+                                 vel volutpat libero posuere. Etiam sodales in dolor eget mattis. 
+                                 Ut ante tellus, varius vitae ullamcorper at, elementum vel turpis. 
+                                 Integer commodo justo ut orci venenatis, vel imperdiet massa imperdiet. 
+                                 In mattis vulputate ligula ac malesuada.
+                                Nam quis augue ac libero molestie efficitur ut nec velit. Integer 
+                                efficitur rhoncus velit, eu vehicula dui ultrices sit amet. In sit 
+                                amet gravida metus. Maecenas eu vulputate mi, eget tempus felis. 
+                                Cras eu laoreet ante. Fusce nec leo laoreet mauris accumsan luctus 
+                                vitae non mi. Nulla facilisi. Maecenas laoreet odio a sem fringilla, 
+                                a lobortis felis tristique. Nulla consectetur lacinia magna, id dapibus 
+                                ligula aliquam pretium.
+                				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ullamcorper 
+                				laoreet sem, vel fringilla sem dictum ut. Nullam tincidunt luctus purus, 
+                				sed pellentesque magna venenatis laoreet. Nunc in bibendum sem. 
+                				Sed commodo ligula ac fringilla laoreet. Duis aliquam leo ut dolor 
+                				consequat cursus. Nulla pharetra eros quis porta maximus.
+                				Morbi laoreet eros eu eros ultricies tempor. Maecenas non dolor orci.
+                                Vestibulum vel urna ut lacus rhoncus sagittis congue ut nibh. Donec ac 
+                                ornare justo, non faucibus elit. 
+                                Mauris pulvinar lobortis dapibus. Morbi eu quam id neque imperdiet 
+                                dictum. Donec id accumsan ligula. Sed et iaculis nisi, nec malesuada 
+                                purus. Nullam aliquet enim nec semper posuere. Quisque dictum leo eget 
+                                tellus dapibus, nec faucibus urna condimentum.
+                                Aenean fermentum est in orci iaculis, eget mollis metus egestas. 
+                                Pellentesque a dolor neque. Praesent sit amet urna eu orci efficitur 
+                                volutpat. Nam sed tincidunt felis. Nulla tempus quis diam ut 
+                                sollicitudin. 
+                            </div>
+                            <div id="arsenalen-content-id-6" class="content-div" contenteditable="true" onblur="saveText(this)">
+                                Aenean efficitur mi tortor, ut mollis ex elementum ac. Duis bibendum
+                                 mattis purus, vel viverra nulla ullamcorper quis.
+                                In posuere turpis sit amet mi tincidunt, vitae tempor nulla ullamcorper.
+                                 Fusce lacus ante, maximus commodo nulla vitae, auctor sollicitudin 
+                                 nulla. Sed varius luctus mauris. Duis iaculis nibh sit amet enim egestas, 
+                                 vel volutpat libero posuere. Etiam sodales in dolor eget mattis. 
+                                 Ut ante tellus, varius vitae ullamcorper at, elementum vel turpis. 
+                                 Integer commodo justo ut orci venenatis, vel imperdiet massa imperdiet. 
+                                 In mattis vulputate ligula ac malesuada.
+                                Nam quis augue ac libero molestie efficitur ut nec velit. Integer 
+                                efficitur rhoncus velit, eu vehicula dui ultrices sit amet. In sit 
+                                amet gravida metus. Maecenas eu vulputate mi, eget tempus felis. 
+                                Cras eu laoreet ante. Fusce nec leo laoreet mauris accumsan luctus 
+                                vitae non mi. Nulla facilisi. Maecenas laoreet odio a sem fringilla, 
+                                a lobortis felis tristique. Nulla consectetur lacinia magna, id dapibus 
+                                ligula aliquam pretium.
+                            </div>
+                            <div id="arsenalen-content-id-7" class="content-div" contenteditable="true" onblur="saveText(this)">
+                				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ullamcorper 
+                				laoreet sem, vel fringilla sem dictum ut. Nullam tincidunt luctus purus, 
+                				sed pellentesque magna venenatis laoreet. Nunc in bibendum sem. 
+                				Sed commodo ligula ac fringilla laoreet. Duis aliquam leo ut dolor 
+                				consequat cursus. Nulla pharetra eros quis porta maximus.
+                				Morbi laoreet eros eu eros ultricies tempor. Maecenas non dolor orci.
+                                Vestibulum vel urna ut lacus rhoncus sagittis congue ut nibh. Donec ac 
+                                ornare justo, non faucibus elit. 
+                                Mauris pulvinar lobortis dapibus. Morbi eu quam id neque imperdiet 
+                                dictum. Donec id accumsan ligula. Sed et iaculis nisi, nec malesuada 
+                                purus. Nullam aliquet enim nec semper posuere. Quisque dictum leo eget 
+                                tellus dapibus, nec faucibus urna condimentum.
+                                Aenean fermentum est in orci iaculis, eget mollis metus egestas. 
+                                Pellentesque a dolor neque. Praesent sit amet urna eu orci efficitur 
+                                volutpat. Nam sed tincidunt felis. Nulla tempus quis diam ut 
+                                sollicitudin. 
+                            </div>
+                            <div id="arsenalen-content-id-8" class="content-div" contenteditable="true" onblur="saveText(this)">
+                                Aenean efficitur mi tortor, ut mollis ex elementum ac. Duis bibendum
+                                 mattis purus, vel viverra nulla ullamcorper quis.
+                                In posuere turpis sit amet mi tincidunt, vitae tempor nulla ullamcorper.
+                                 Fusce lacus ante, maximus commodo nulla vitae, auctor sollicitudin 
+                                 nulla. Sed varius luctus mauris. Duis iaculis nibh sit amet enim egestas, 
+                                 vel volutpat libero posuere. Etiam sodales in dolor eget mattis. 
+                                 Ut ante tellus, varius vitae ullamcorper at, elementum vel turpis. 
+                                 Integer commodo justo ut orci venenatis, vel imperdiet massa imperdiet. 
+                                 In mattis vulputate ligula ac malesuada.
+                                Nam quis augue ac libero molestie efficitur ut nec velit. Integer 
+                                efficitur rhoncus velit, eu vehicula dui ultrices sit amet. In sit 
+                                amet gravida metus. Maecenas eu vulputate mi, eget tempus felis. 
+                                Cras eu laoreet ante. Fusce nec leo laoreet mauris accumsan luctus 
+                                vitae non mi. Nulla facilisi. Maecenas laoreet odio a sem fringilla, 
+                                a lobortis felis tristique. Nulla consectetur lacinia magna, id dapibus 
+                                ligula aliquam pretium. 
+                            </div>
+                            <div id="arsenalen-content-id-9" class="content-div" contenteditable="true" onblur="saveText(this)">
+                				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ullamcorper 
+                				laoreet sem, vel fringilla sem dictum ut. Nullam tincidunt luctus purus, 
+                				sed pellentesque magna venenatis laoreet. Nunc in bibendum sem. 
+                				Sed commodo ligula ac fringilla laoreet. Duis aliquam leo ut dolor 
+                				consequat cursus. Nulla pharetra eros quis porta maximus.
+                				Morbi laoreet eros eu eros ultricies tempor. Maecenas non dolor orci.
+                                Vestibulum vel urna ut lacus rhoncus sagittis congue ut nibh. Donec ac 
+                                ornare justo, non faucibus elit. 
+                                Mauris pulvinar lobortis dapibus. Morbi eu quam id neque imperdiet 
+                                dictum. Donec id accumsan ligula. Sed et iaculis nisi, nec malesuada 
+                                purus. Nullam aliquet enim nec semper posuere. Quisque dictum leo eget 
+                                tellus dapibus, nec faucibus urna condimentum.
+                                Aenean fermentum est in orci iaculis, eget mollis metus egestas. 
+                                Pellentesque a dolor neque. Praesent sit amet urna eu orci efficitur 
+                                volutpat. Nam sed tincidunt felis. Nulla tempus quis diam ut 
+                                sollicitudin. 
+                            </div>
+                            <div id="arsenalen-content-id-10" class="content-div" contenteditable="true" onblur="saveText(this)">
+                                Aenean efficitur mi tortor, ut mollis ex elementum ac. Duis bibendum
+                                 mattis purus, vel viverra nulla ullamcorper quis.
+                                In posuere turpis sit amet mi tincidunt, vitae tempor nulla ullamcorper.
+                                 Fusce lacus ante, maximus commodo nulla vitae, auctor sollicitudin 
+                                 nulla. Sed varius luctus mauris. Duis iaculis nibh sit amet enim egestas, 
+                                 vel volutpat libero posuere. Etiam sodales in dolor eget mattis. 
+                                 Ut ante tellus, varius vitae ullamcorper at, elementum vel turpis. 
+                                 Integer commodo justo ut orci venenatis, vel imperdiet massa imperdiet. 
+                                 In mattis vulputate ligula ac malesuada.
+                                Nam quis augue ac libero molestie efficitur ut nec velit. Integer 
+                                efficitur rhoncus velit, eu vehicula dui ultrices sit amet. In sit 
+                                amet gravida metus. Maecenas eu vulputate mi, eget tempus felis. 
+                                Cras eu laoreet ante. Fusce nec leo laoreet mauris accumsan luctus 
+                                vitae non mi. Nulla facilisi. Maecenas laoreet odio a sem fringilla, 
+                                a lobortis felis tristique. Nulla consectetur lacinia magna, id dapibus 
+                                ligula aliquam pretium.
+                            </div>
+                            <div id="arsenalen-content-id-11" class="content-div content-header" contenteditable="true" onblur="saveText(this)">
+    							<h1>Arsenalen22</h1>
+    						</div>
+    						<div id="arsenalen-content-id-12" class="content-div" contenteditable="true" onblur="saveText(this)">
+                				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ullamcorper 
+                				laoreet sem, vel fringilla sem dictum ut. Nullam tincidunt luctus purus, 
+                				sed pellentesque magna venenatis laoreet. Nunc in bibendum sem. 
+                				Sed commodo ligula ac fringilla laoreet. Duis aliquam leo ut dolor 
+                				consequat cursus. Nulla pharetra eros quis porta maximus.
+                				Morbi laoreet eros eu eros ultricies tempor. Maecenas non dolor orci.
+                                Vestibulum vel urna ut lacus rhoncus sagittis congue ut nibh. Donec ac 
+                                ornare justo, non faucibus elit. 
+                                Mauris pulvinar lobortis dapibus. Morbi eu quam id neque imperdiet 
+                                dictum. Donec id accumsan ligula. Sed et iaculis nisi, nec malesuada 
+                                purus. Nullam aliquet enim nec semper posuere. Quisque dictum leo eget 
+                                tellus dapibus, nec faucibus urna condimentum.
+                                Aenean fermentum est in orci iaculis, eget mollis metus egestas. 
+                                Pellentesque a dolor neque. Praesent sit amet urna eu orci efficitur 
+                                volutpat. Nam sed tincidunt felis. Nulla tempus quis diam ut 
+                                sollicitudin. 
+                            </div>
+    
+    						<div id="arsenalen-content-id-13" class="content-div" contenteditable="true" onblur="saveText(this)">
+                                Aenean efficitur mi tortor, ut mollis ex elementum ac. Duis bibendum
+                                 mattis purus, vel viverra nulla ullamcorper quis.
+                                In posuere turpis sit amet mi tincidunt, vitae tempor nulla ullamcorper.
+                                 Fusce lacus ante, maximus commodo nulla vitae, auctor sollicitudin 
+                                 nulla. Sed varius luctus mauris. Duis iaculis nibh sit amet enim egestas, 
+                                 vel volutpat libero posuere. Etiam sodales in dolor eget mattis. 
+                                 Ut ante tellus, varius vitae ullamcorper at, elementum vel turpis. 
+                                 Integer commodo justo ut orci venenatis, vel imperdiet massa imperdiet. 
+                                 In mattis vulputate ligula ac malesuada.
+                                Nam quis augue ac libero molestie efficitur ut nec velit. Integer 
+                                efficitur rhoncus velit, eu vehicula dui ultrices sit amet. In sit 
+                                amet gravida metus. Maecenas eu vulputate mi, eget tempus felis. 
+                                Cras eu laoreet ante. Fusce nec leo laoreet mauris accumsan luctus 
+                                vitae non mi. Nulla facilisi. Maecenas laoreet odio a sem fringilla, 
+                                a lobortis felis tristique. Nulla consectetur lacinia magna, id dapibus 
+                                ligula aliquam pretium.
+            				</div>
         				</div>
-        				<div id="arsenalen-content-id-2" class="content-div">
-            				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ullamcorper 
-            				laoreet sem, vel fringilla sem dictum ut. Nullam tincidunt luctus purus, 
-            				sed pellentesque magna venenatis laoreet. Nunc in bibendum sem. 
-            				Sed commodo ligula ac fringilla laoreet. Duis aliquam leo ut dolor 
-            				consequat cursus. Nulla pharetra eros quis porta maximus.
-            				Morbi laoreet eros eu eros ultricies tempor. Maecenas non dolor orci.
-                            Vestibulum vel urna ut lacus rhoncus sagittis congue ut nibh. Donec ac 
-                            ornare justo, non faucibus elit. 
-                            Mauris pulvinar lobortis dapibus. Morbi eu quam id neque imperdiet 
-                            dictum. Donec id accumsan ligula. Sed et iaculis nisi, nec malesuada 
-                            purus. Nullam aliquet enim nec semper posuere. Quisque dictum leo eget 
-                            tellus dapibus, nec faucibus urna condimentum.
-                            Aenean fermentum est in orci iaculis, eget mollis metus egestas. 
-                            Pellentesque a dolor neque. Praesent sit amet urna eu orci efficitur 
-                            volutpat. Nam sed tincidunt felis. Nulla tempus quis diam ut 
-                            sollicitudin. 
-                        </div>
-                        <div id="arsenalen-content-id-3" class="content-div">
-                            Aenean efficitur mi tortor, ut mollis ex elementum ac. Duis bibendum
-                             mattis purus, vel viverra nulla ullamcorper quis.
-                            In posuere turpis sit amet mi tincidunt, vitae tempor nulla ullamcorper.
-                             Fusce lacus ante, maximus commodo nulla vitae, auctor sollicitudin 
-                             nulla. Sed varius luctus mauris. Duis iaculis nibh sit amet enim egestas, 
-                             vel volutpat libero posuere. Etiam sodales in dolor eget mattis. 
-                             Ut ante tellus, varius vitae ullamcorper at, elementum vel turpis. 
-                             Integer commodo justo ut orci venenatis, vel imperdiet massa imperdiet. 
-                             In mattis vulputate ligula ac malesuada.
-                            Nam quis augue ac libero molestie efficitur ut nec velit. Integer 
-                            efficitur rhoncus velit, eu vehicula dui ultrices sit amet. In sit 
-                            amet gravida metus. Maecenas eu vulputate mi, eget tempus felis. 
-                            Cras eu laoreet ante. Fusce nec leo laoreet mauris accumsan luctus 
-                            vitae non mi. Nulla facilisi. Maecenas laoreet odio a sem fringilla, 
-                            a lobortis felis tristique. Nulla consectetur lacinia magna, id dapibus 
-                            ligula aliquam pretium.
-                        </div>
-                        <div id="arsenalen-content-id-4" class="content-div">
-            				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ullamcorper 
-            				laoreet sem, vel fringilla sem dictum ut. Nullam tincidunt luctus purus, 
-            				sed pellentesque magna venenatis laoreet. Nunc in bibendum sem. 
-            				Sed commodo ligula ac fringilla laoreet. Duis aliquam leo ut dolor 
-            				consequat cursus. Nulla pharetra eros quis porta maximus.
-            				Morbi laoreet eros eu eros ultricies tempor. Maecenas non dolor orci.
-                            Vestibulum vel urna ut lacus rhoncus sagittis congue ut nibh. Donec ac 
-                            ornare justo, non faucibus elit. 
-                            Mauris pulvinar lobortis dapibus. Morbi eu quam id neque imperdiet 
-                            dictum. Donec id accumsan ligula. Sed et iaculis nisi, nec malesuada 
-                            purus. Nullam aliquet enim nec semper posuere. Quisque dictum leo eget 
-                            tellus dapibus, nec faucibus urna condimentum.
-                            Aenean fermentum est in orci iaculis, eget mollis metus egestas. 
-                            Pellentesque a dolor neque. Praesent sit amet urna eu orci efficitur 
-                            volutpat. Nam sed tincidunt felis. Nulla tempus quis diam ut 
-                            sollicitudin. 
-                        </div>
-                        <div id="arsenalen-content-id-5" class="content-div">
-                            Aenean efficitur mi tortor, ut mollis ex elementum ac. Duis bibendum
-                             mattis purus, vel viverra nulla ullamcorper quis.
-                            In posuere turpis sit amet mi tincidunt, vitae tempor nulla ullamcorper.
-                             Fusce lacus ante, maximus commodo nulla vitae, auctor sollicitudin 
-                             nulla. Sed varius luctus mauris. Duis iaculis nibh sit amet enim egestas, 
-                             vel volutpat libero posuere. Etiam sodales in dolor eget mattis. 
-                             Ut ante tellus, varius vitae ullamcorper at, elementum vel turpis. 
-                             Integer commodo justo ut orci venenatis, vel imperdiet massa imperdiet. 
-                             In mattis vulputate ligula ac malesuada.
-                            Nam quis augue ac libero molestie efficitur ut nec velit. Integer 
-                            efficitur rhoncus velit, eu vehicula dui ultrices sit amet. In sit 
-                            amet gravida metus. Maecenas eu vulputate mi, eget tempus felis. 
-                            Cras eu laoreet ante. Fusce nec leo laoreet mauris accumsan luctus 
-                            vitae non mi. Nulla facilisi. Maecenas laoreet odio a sem fringilla, 
-                            a lobortis felis tristique. Nulla consectetur lacinia magna, id dapibus 
-                            ligula aliquam pretium.
-            				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ullamcorper 
-            				laoreet sem, vel fringilla sem dictum ut. Nullam tincidunt luctus purus, 
-            				sed pellentesque magna venenatis laoreet. Nunc in bibendum sem. 
-            				Sed commodo ligula ac fringilla laoreet. Duis aliquam leo ut dolor 
-            				consequat cursus. Nulla pharetra eros quis porta maximus.
-            				Morbi laoreet eros eu eros ultricies tempor. Maecenas non dolor orci.
-                            Vestibulum vel urna ut lacus rhoncus sagittis congue ut nibh. Donec ac 
-                            ornare justo, non faucibus elit. 
-                            Mauris pulvinar lobortis dapibus. Morbi eu quam id neque imperdiet 
-                            dictum. Donec id accumsan ligula. Sed et iaculis nisi, nec malesuada 
-                            purus. Nullam aliquet enim nec semper posuere. Quisque dictum leo eget 
-                            tellus dapibus, nec faucibus urna condimentum.
-                            Aenean fermentum est in orci iaculis, eget mollis metus egestas. 
-                            Pellentesque a dolor neque. Praesent sit amet urna eu orci efficitur 
-                            volutpat. Nam sed tincidunt felis. Nulla tempus quis diam ut 
-                            sollicitudin. 
-                        </div>
-                        <div id="arsenalen-content-id-6" class="content-div">
-                            Aenean efficitur mi tortor, ut mollis ex elementum ac. Duis bibendum
-                             mattis purus, vel viverra nulla ullamcorper quis.
-                            In posuere turpis sit amet mi tincidunt, vitae tempor nulla ullamcorper.
-                             Fusce lacus ante, maximus commodo nulla vitae, auctor sollicitudin 
-                             nulla. Sed varius luctus mauris. Duis iaculis nibh sit amet enim egestas, 
-                             vel volutpat libero posuere. Etiam sodales in dolor eget mattis. 
-                             Ut ante tellus, varius vitae ullamcorper at, elementum vel turpis. 
-                             Integer commodo justo ut orci venenatis, vel imperdiet massa imperdiet. 
-                             In mattis vulputate ligula ac malesuada.
-                            Nam quis augue ac libero molestie efficitur ut nec velit. Integer 
-                            efficitur rhoncus velit, eu vehicula dui ultrices sit amet. In sit 
-                            amet gravida metus. Maecenas eu vulputate mi, eget tempus felis. 
-                            Cras eu laoreet ante. Fusce nec leo laoreet mauris accumsan luctus 
-                            vitae non mi. Nulla facilisi. Maecenas laoreet odio a sem fringilla, 
-                            a lobortis felis tristique. Nulla consectetur lacinia magna, id dapibus 
-                            ligula aliquam pretium.
-                        </div>
-                        <div id="arsenalen-content-id-7" class="content-div">
-            				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ullamcorper 
-            				laoreet sem, vel fringilla sem dictum ut. Nullam tincidunt luctus purus, 
-            				sed pellentesque magna venenatis laoreet. Nunc in bibendum sem. 
-            				Sed commodo ligula ac fringilla laoreet. Duis aliquam leo ut dolor 
-            				consequat cursus. Nulla pharetra eros quis porta maximus.
-            				Morbi laoreet eros eu eros ultricies tempor. Maecenas non dolor orci.
-                            Vestibulum vel urna ut lacus rhoncus sagittis congue ut nibh. Donec ac 
-                            ornare justo, non faucibus elit. 
-                            Mauris pulvinar lobortis dapibus. Morbi eu quam id neque imperdiet 
-                            dictum. Donec id accumsan ligula. Sed et iaculis nisi, nec malesuada 
-                            purus. Nullam aliquet enim nec semper posuere. Quisque dictum leo eget 
-                            tellus dapibus, nec faucibus urna condimentum.
-                            Aenean fermentum est in orci iaculis, eget mollis metus egestas. 
-                            Pellentesque a dolor neque. Praesent sit amet urna eu orci efficitur 
-                            volutpat. Nam sed tincidunt felis. Nulla tempus quis diam ut 
-                            sollicitudin. 
-                        </div>
-                        <div id="arsenalen-content-id-8" class="content-div">
-                            Aenean efficitur mi tortor, ut mollis ex elementum ac. Duis bibendum
-                             mattis purus, vel viverra nulla ullamcorper quis.
-                            In posuere turpis sit amet mi tincidunt, vitae tempor nulla ullamcorper.
-                             Fusce lacus ante, maximus commodo nulla vitae, auctor sollicitudin 
-                             nulla. Sed varius luctus mauris. Duis iaculis nibh sit amet enim egestas, 
-                             vel volutpat libero posuere. Etiam sodales in dolor eget mattis. 
-                             Ut ante tellus, varius vitae ullamcorper at, elementum vel turpis. 
-                             Integer commodo justo ut orci venenatis, vel imperdiet massa imperdiet. 
-                             In mattis vulputate ligula ac malesuada.
-                            Nam quis augue ac libero molestie efficitur ut nec velit. Integer 
-                            efficitur rhoncus velit, eu vehicula dui ultrices sit amet. In sit 
-                            amet gravida metus. Maecenas eu vulputate mi, eget tempus felis. 
-                            Cras eu laoreet ante. Fusce nec leo laoreet mauris accumsan luctus 
-                            vitae non mi. Nulla facilisi. Maecenas laoreet odio a sem fringilla, 
-                            a lobortis felis tristique. Nulla consectetur lacinia magna, id dapibus 
-                            ligula aliquam pretium. 
-                        </div>
-                        <div id="arsenalen-content-id-9" class="content-div">
-            				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ullamcorper 
-            				laoreet sem, vel fringilla sem dictum ut. Nullam tincidunt luctus purus, 
-            				sed pellentesque magna venenatis laoreet. Nunc in bibendum sem. 
-            				Sed commodo ligula ac fringilla laoreet. Duis aliquam leo ut dolor 
-            				consequat cursus. Nulla pharetra eros quis porta maximus.
-            				Morbi laoreet eros eu eros ultricies tempor. Maecenas non dolor orci.
-                            Vestibulum vel urna ut lacus rhoncus sagittis congue ut nibh. Donec ac 
-                            ornare justo, non faucibus elit. 
-                            Mauris pulvinar lobortis dapibus. Morbi eu quam id neque imperdiet 
-                            dictum. Donec id accumsan ligula. Sed et iaculis nisi, nec malesuada 
-                            purus. Nullam aliquet enim nec semper posuere. Quisque dictum leo eget 
-                            tellus dapibus, nec faucibus urna condimentum.
-                            Aenean fermentum est in orci iaculis, eget mollis metus egestas. 
-                            Pellentesque a dolor neque. Praesent sit amet urna eu orci efficitur 
-                            volutpat. Nam sed tincidunt felis. Nulla tempus quis diam ut 
-                            sollicitudin. 
-                        </div>
-                        <div id="arsenalen-content-id-10" class="content-div">
-                            Aenean efficitur mi tortor, ut mollis ex elementum ac. Duis bibendum
-                             mattis purus, vel viverra nulla ullamcorper quis.
-                            In posuere turpis sit amet mi tincidunt, vitae tempor nulla ullamcorper.
-                             Fusce lacus ante, maximus commodo nulla vitae, auctor sollicitudin 
-                             nulla. Sed varius luctus mauris. Duis iaculis nibh sit amet enim egestas, 
-                             vel volutpat libero posuere. Etiam sodales in dolor eget mattis. 
-                             Ut ante tellus, varius vitae ullamcorper at, elementum vel turpis. 
-                             Integer commodo justo ut orci venenatis, vel imperdiet massa imperdiet. 
-                             In mattis vulputate ligula ac malesuada.
-                            Nam quis augue ac libero molestie efficitur ut nec velit. Integer 
-                            efficitur rhoncus velit, eu vehicula dui ultrices sit amet. In sit 
-                            amet gravida metus. Maecenas eu vulputate mi, eget tempus felis. 
-                            Cras eu laoreet ante. Fusce nec leo laoreet mauris accumsan luctus 
-                            vitae non mi. Nulla facilisi. Maecenas laoreet odio a sem fringilla, 
-                            a lobortis felis tristique. Nulla consectetur lacinia magna, id dapibus 
-                            ligula aliquam pretium.
-                        </div>
-                        <div id="arsenalen-content-id-11" class="content-div content-header">
-							<h1>Arsenalen22</h1>
-						</div>
-						<div id="arsenalen-content-id-12" class="content-div">
-            				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ullamcorper 
-            				laoreet sem, vel fringilla sem dictum ut. Nullam tincidunt luctus purus, 
-            				sed pellentesque magna venenatis laoreet. Nunc in bibendum sem. 
-            				Sed commodo ligula ac fringilla laoreet. Duis aliquam leo ut dolor 
-            				consequat cursus. Nulla pharetra eros quis porta maximus.
-            				Morbi laoreet eros eu eros ultricies tempor. Maecenas non dolor orci.
-                            Vestibulum vel urna ut lacus rhoncus sagittis congue ut nibh. Donec ac 
-                            ornare justo, non faucibus elit. 
-                            Mauris pulvinar lobortis dapibus. Morbi eu quam id neque imperdiet 
-                            dictum. Donec id accumsan ligula. Sed et iaculis nisi, nec malesuada 
-                            purus. Nullam aliquet enim nec semper posuere. Quisque dictum leo eget 
-                            tellus dapibus, nec faucibus urna condimentum.
-                            Aenean fermentum est in orci iaculis, eget mollis metus egestas. 
-                            Pellentesque a dolor neque. Praesent sit amet urna eu orci efficitur 
-                            volutpat. Nam sed tincidunt felis. Nulla tempus quis diam ut 
-                            sollicitudin. 
-                        </div>
-
-						<div id="arsenalen-content-id-13" class="content-div">
-                            Aenean efficitur mi tortor, ut mollis ex elementum ac. Duis bibendum
-                             mattis purus, vel viverra nulla ullamcorper quis.
-                            In posuere turpis sit amet mi tincidunt, vitae tempor nulla ullamcorper.
-                             Fusce lacus ante, maximus commodo nulla vitae, auctor sollicitudin 
-                             nulla. Sed varius luctus mauris. Duis iaculis nibh sit amet enim egestas, 
-                             vel volutpat libero posuere. Etiam sodales in dolor eget mattis. 
-                             Ut ante tellus, varius vitae ullamcorper at, elementum vel turpis. 
-                             Integer commodo justo ut orci venenatis, vel imperdiet massa imperdiet. 
-                             In mattis vulputate ligula ac malesuada.
-                            Nam quis augue ac libero molestie efficitur ut nec velit. Integer 
-                            efficitur rhoncus velit, eu vehicula dui ultrices sit amet. In sit 
-                            amet gravida metus. Maecenas eu vulputate mi, eget tempus felis. 
-                            Cras eu laoreet ante. Fusce nec leo laoreet mauris accumsan luctus 
-                            vitae non mi. Nulla facilisi. Maecenas laoreet odio a sem fringilla, 
-                            a lobortis felis tristique. Nulla consectetur lacinia magna, id dapibus 
-                            ligula aliquam pretium.
-        				</div>
-        				
-        			</div>
+    				</div>
     			</div>
     			<div id="arsenalen-main-nav-content" class="main-nav-content">
     				<div class="content-div content-header content-nav" onclick="goToContent('arsenalen-content-id-1')">
@@ -525,7 +565,7 @@
                     <div class="content-div content-header content-nav" onclick="goToContent('arsenalen-content-id-11')">
 						<h1>Arsenalen22</h1>
 					</div>
-					<div class="content-div content-nav" onclick="goToContent('arsenalen-content-id-12')">
+					<div class="content-div content-nav" onclick="goToContent('arsenalen-content-id-12')" onblur="saveText(this)">
         				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ullamcorper 
         				laoreet sem, vel fringilla sem dictum ut. Nullam tincidunt luctus purus, 
         				sed pellentesque magna venenatis laoreet. Nunc in bibendum sem. 

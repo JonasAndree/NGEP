@@ -5,12 +5,11 @@
 	z-index: -10;
 	background-color: var(--nav-color);
 	right: 0px;
+	transition: 0.3s;
 }
 #main.fade {
 	filter: blur(5px) grayscale(20%);
 }
-
-	
 	#page-heading {
     	border-radius:5px 5px 5px 5px;
 		background-color: black;
@@ -22,8 +21,6 @@
 		overflow: hidden;
 		border-top: 3px solid rgb(30, 30, 30);
 		border-bottom: 3px solid rgb(50, 50, 50);
-		
-  
 	}
 		#page-image {
 			width: 100%;
@@ -50,8 +47,6 @@
 		    -moz-text-stroke-width: 2px;  
   			-webkit-text-stroke-width: 2px;
 		}
-	
-
 	#main-margin-left {
 		width: 190px;
 		height: 100vh;
@@ -181,7 +176,6 @@
 		height: 10px;
 		opacity: 0;
 	}
-	
 	.main-header-item .arrow:after {
 		position: absolute;
 		content: '';
@@ -196,8 +190,6 @@
 		height: 10px;
 		opacity: 0;
 	}
-		
-		
 	.main-header-item:hover .arrow:before {
 		opacity: 0.5;
 	  	animation: animate-arrow-2 0.8s ease-in-out infinite 0.1s ;
@@ -224,7 +216,6 @@
 			min-height: 14.546px;
 			color: var(--active-text-color)
 		}
-		
 		#trials-header-hidden-text {
 			diaplay: none;
 		}
@@ -234,7 +225,6 @@
 		top: 90px;
 		height: 100vh;
 	}
-	
 	.main-header-item {
 		position: relative;
 		cursor: pointer;
@@ -264,9 +254,6 @@
 		border-bottom: 1px solid rgb(50, 50, 50);
 		border-top: 1px solid rgb(30, 30, 30);
 	}
-	
-	
-	
 	#trials-main-container {
 		float: left;
 		height: calc(100vh - 10px);
@@ -287,9 +274,12 @@
 		#arsenalen-main-content {
 		    overflow: auto;
 		    overflow-x: hidden;
-    		direction:rtl;
-    		text-align: left;
+    		direction: rtl;
 		}
+			#arsenalen-lefti {
+				direction: ltr;
+    			text-align: left;
+			}
 		#trials-main-content {
 		    overflow: auto;
 		    overflow-x: hidden;
@@ -416,4 +406,14 @@
 		margin-bottom: -10px;
 		background-color: var(--main-background-color);
 		
+	}
+	
+	.content-code {
+		margin-left: 0px;
+		padding-left: 0px;
+	}
+	
+	.primitivaDatatyper { 
+		background-color: green;
+		color: red;
 	}

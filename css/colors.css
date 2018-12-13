@@ -21,6 +21,10 @@
 	--chat-pressed-color: #ff8040;
 	--chat-parent-pressed-bg-color: rgb(15, 15, 15);
 	--chat-parent-childe-bg-color: rgb(25, 25, 25);
+	
+	--primitiva-datatyper: rgb(255, 128, 64);
+	
+	
 	/*font-family:"EVE", arial, sans-serif;*/
 	
 	/*font-family: "Lucida Console", Monaco, monospace;*/

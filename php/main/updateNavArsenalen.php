@@ -3,7 +3,6 @@ include_once "../sql.php";
 
 $page = $_REQUEST["id"];
 $pageType = $_REQUEST["pageType"];
-$editmode = $_REQUEST["editmode"];
 
 $result = getPageContent($page, $pageType);
 
