@@ -31,9 +31,18 @@ function initPage() {
 		getViewArsenalen();
 	};
 
-	codeStyler(document.getElementById("main"));
-
+	
+	var codeMirrorDivs = document.getElementsByClassName("CodeMirror");
+	for (var i = 0; i < codeMirrorDivs.length; i++) {
+		codeMirrorDivs[i].addEventListener('focusin', cool(document.getElementsByClassName("CodeMirror")[i]));
+	}	
 }
+
+function cool(element) {
+	console.log(element);
+	console.log("element.parentElement.style.backgroundColor = '#FFF'");
+}
+
 window.addEventListener("mousemove", function(event) {
 	if (dragedSplitter != null) {
 		moveSplitter(event);
@@ -45,27 +54,25 @@ window.addEventListener("mouseup", function(event) {
 	document.body.setAttribute("class", "");
 });
 
-window
-		.addEventListener(
-				"resize",
-				function(event) {
-					var diff = window.innerWidth / windowWidth;
-					var mainMarginLeftDiv = document
-							.getElementById("main-margin-left");
-					var mainLeftDiv = document.getElementById("main-left");
-					var mainRightDiv = document.getElementById("main-right");
-					var mainMarginRightDiv = document
-							.getElementById("main-margin-right");
-					mainMarginLeftDiv.style.width = mainMarginLeftDiv.offsetWidth
-							* diff + "px";
-					mainLeftDiv.style.width = mainLeftDiv.offsetWidth * diff
-							+ "px";
-					mainRightDiv.style.width = mainRightDiv.offsetWidth * diff
-							+ "px";
+window.addEventListener("resize",
+	function(event) {
+		var diff = window.innerWidth / windowWidth;
+		var mainMarginLeftDiv = document
+				.getElementById("main-margin-left");
+		var mainLeftDiv = document.getElementById("main-left");
+		var mainRightDiv = document.getElementById("main-right");
+		var mainMarginRightDiv = document
+				.getElementById("main-margin-right");
+		mainMarginLeftDiv.style.width = mainMarginLeftDiv.offsetWidth
+				* diff + "px";
+		mainLeftDiv.style.width = mainLeftDiv.offsetWidth * diff
+				+ "px";
+		mainRightDiv.style.width = mainRightDiv.offsetWidth * diff
+				+ "px";
 
-					windowWidth = window.innerWidth;
-					// resizeHeader("resize");
-				});
+		windowWidth = window.innerWidth;
+		// resizeHeader("resize");
+	});
 
 function resizeHeader(caller) {
 	var pageHeading = document.getElementById("page-heading");
@@ -322,7 +329,7 @@ function saveText(element) {
 	element.classList.toggle("save-indicator");
 	// element.getElementsByClassName("edit-tool-container")[0].style.display =
 	// "none";
-	codeStyler(element);
+	//codeStyler(element);
 	console.log("save text");
 	setTimeout(function() {
 		removeSaveIndicator(element);
@@ -411,34 +418,13 @@ function getPositionCaret(documentElement) {
 
 }
 
-function codeStyler(container) {
 
-	var elements = container.getElementsByTagName("code");
 
-	for (var i = 0; i < elements.length; i++) {
-		var str = elements[i].innerHTML;
-
-		var highlightHTMLStart = "<span style='color:var(--primitiva-datatyper);'>";
-		var highlightHTMLEnd = "</span>";
-
-		str = str
-				.replace(/int/g, highlightHTMLStart + "int" + highlightHTMLEnd);
-		str = str.replace(/double/g, highlightHTMLStart + "double"
-				+ highlightHTMLEnd);
-		str = str.replace(/float/g, highlightHTMLStart + "float"
-				+ highlightHTMLEnd);
-		str = str.replace(/char/g, highlightHTMLStart + "char"
-				+ highlightHTMLEnd);
-		str = str.replace(/long/g, highlightHTMLStart + "long"
-				+ highlightHTMLEnd);
-		str = str.replace(/short/g, highlightHTMLStart + "short"
-				+ highlightHTMLEnd);
-
-		console.log(str);
-		elements[i].innerHTML = str;
-	}
-}
-
+/************************************************************
+ * 			
+ * 						Editor
+ * 
+ ************************************************************/
 var editor = CodeMirror(document.getElementById("content-div"), {
 	value : "function myScript() {\n \t return 100;\n}",
 	extraKeys : {
@@ -468,11 +454,13 @@ var editor = CodeMirror(document.getElementById("content-div"), {
 	gutters : [ "CodeMirror-linenumbers", "CodeMirror-foldgutter",
 			"breakpoints" ]
 });
+
 editor.on("gutterClick", function(cm, n) {
 	var info = cm.lineInfo(n);
 	cm.setGutterMarker(n, "breakpoints", info.gutterMarkers ? null
 			: makeMarker());
 });
+
 
 function makeMarker() {
 	var marker = document.createElement("div");
@@ -480,3 +468,4 @@ function makeMarker() {
 	marker.innerHTML = "●";
 	return marker;
 }
+

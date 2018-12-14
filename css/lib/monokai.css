@@ -2,6 +2,11 @@
 .cm-s-monokai.CodeMirror {
 	background: var(--bg-color);
 	color: #f8f8f2;
+	
+		border-left: 1px solid rgb(30, 30, 30);
+		border-right: 1px solid rgb(50, 50, 50);
+		border-bottom: 1px solid rgb(50, 50, 50);
+		border-top: 1px solid rgb(30, 30, 30);
 }
 
 .cm-s-monokai div.CodeMirror-selected {

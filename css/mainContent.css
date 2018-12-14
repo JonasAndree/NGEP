@@ -366,7 +366,6 @@
 	color: var(--active-text-color);
 	outline:none;
 }
-	
 [contenteditable="true"]:focus::before{
 	content:"Editing me!";
 	position: absolute;
@@ -394,6 +393,12 @@
 	background-color: var(--main-background-color);
 	border-color: var(--transparent-active-text-color);
 	outline:none;
+}
+
+CodeMirror:active, CodeMirror:focus {
+	background-color: var(--main-background-color);
+		border-color: var(--transparent-active-text-color);
+	
 }
 
 .edit-tool-container {

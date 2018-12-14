@@ -42,8 +42,9 @@
     <link rel="stylesheet" href="css/lib/fullscreen.css">
 	<script src="js/lib/addon/fullscreen.js"></script>
 	<style>
-      .breakpoints { width: .8em; }
+        .breakpoints { width: .8em; }
     </style>
+    
 </head>
 
 
@@ -706,6 +707,10 @@
         	 onmousedown="mainSplitterDown(event, this);"></div>
 	</main>
 	<footer> </footer>
+	
+	
+	
+	
 	<script type="text/javascript" src="js/chat/model/chatModel.js"></script>
 	<script type="text/javascript" src="js/chat/controller/chatController.js"></script>
 	<script type="text/javascript" src="js/chat/view/chatView.js"></script>
@@ -720,6 +725,8 @@
 	
 	<script type="text/javascript" src="js/main/mainContent.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
+
+
 
    	<!-- <script type="text/javascript" src="js/three.min.js"></script>
 	<script type="text/javascript" src="js/logo.js"></script>
