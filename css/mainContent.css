@@ -365,7 +365,7 @@
 	content:"Edit Me!";
 	color: var(--active-text-color);
 	outline:none;
-}
+}/*
 [contenteditable="true"]:focus::before{
 	content:"Editing me!";
 	position: absolute;
@@ -376,7 +376,19 @@
 	margin-top: -10px;
 	color: var(--active-text-color);
 	outline:none;
+}*/
+.edit-indicator::before {
+	content:"Editing me!";
+	position: absolute;
+	display: block;
+	font-size: .75em;
+	float: right;
+	margin-left: 82%;
+	margin-top: -10px;
+	color: var(--active-text-color);
+	outline:none;
 }
+
 .save-indicator::before {
 	content:"Saved!";
 	position: absolute;
@@ -395,11 +407,6 @@
 	outline:none;
 }
 
-CodeMirror:active, CodeMirror:focus {
-	background-color: var(--main-background-color);
-		border-color: var(--transparent-active-text-color);
-	
-}
 
 .edit-tool-container {
 	display: none;
@@ -413,10 +420,6 @@ CodeMirror:active, CodeMirror:focus {
 		
 	}
 	
-	.content-code {
-		margin-left: 0px;
-		padding-left: 0px;
-	}
 	
 	.primitivaDatatyper { 
 		background-color: green;

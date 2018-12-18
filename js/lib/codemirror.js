@@ -3259,6 +3259,31 @@
       signal(cm, "focus", cm, e);
       cm.state.focused = true;
       addClass(cm.display.wrapper, "CodeMirror-focused");
+      cm.display.sizer.parentElement.parentElement.parentElement.style.borderColor = "var(--transparent-active-text-color)";
+      /**
+       * 
+       * 
+       * 
+       * 
+       * 
+       * 
+       * 
+       * 
+       * 
+       * 				THIS IS WHERE WE NEED TO SAVE SHIT
+       * 
+       * 
+       * 
+       * 
+       * 
+       * 
+       * 
+       * 
+       * 
+       * 
+       * 
+       */
+      
       // This test prevents this from firing when a context
       // menu is closed (since the input reset would kill the
       // select-all detection hack)
@@ -3273,6 +3298,8 @@
   }
   function onBlur(cm, e) {
     if (cm.state.delayingBlurEvent) { return }
+    cm.display.sizer.parentElement.parentElement.parentElement.style.borderColor = "rgb(30, 30, 30)";
+    saveText(cm.display.sizer.parentElement.parentElement.parentElement);
 
     if (cm.state.focused) {
       signal(cm, "blur", cm, e);

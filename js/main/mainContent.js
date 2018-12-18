@@ -325,15 +325,17 @@ function goToContent(id) {
 	document.getElementById('arsenalen-main-content').scrollTop = topPos;
 }
 
+function editingNotice(element) {
+	element.classList.toggle("edit-indicator");
+	console.log("edit text");
+}
+
 function saveText(element) {
 	element.classList.toggle("save-indicator");
-	// element.getElementsByClassName("edit-tool-container")[0].style.display =
-	// "none";
-	//codeStyler(element);
 	console.log("save text");
 	setTimeout(function() {
 		removeSaveIndicator(element);
-	}, 2000, element);
+	}, 1000, element);
 }
 function removeSaveIndicator(element) {
 	element.classList.toggle("save-indicator");
@@ -344,9 +346,9 @@ function showEditableBar(element) {
 }
 
 function updateMainContent(id, heading, pageType) {
-	console.log("ID: " + id);
-	console.log("Heading:" + heading);
-	console.log("PageType: " + pageType);
+//	console.log("ID: " + id);
+//	console.log("Heading:" + heading);
+//	console.log("PageType: " + pageType);
 	updatePageTitel(heading);
 	updatePageImage(id, heading, pageType);
 	updatePageContent(id, heading, pageType);
@@ -411,11 +413,6 @@ function getViewArsenalen() {
 	scroller.style.height = windowH * (navHeight / scrolHeight) + "px";
 	scroller.style.top = (mainTop * (navHeight / scrolHeight) + mainNavContTop)
 			+ "px";
-}
-function getPositionCaret(documentElement) {
-	var highlightHTMLStart = "<span style='color:var(--primitiva-datatyper);'>";
-	var highlightHTMLEnd = "</span>";
-
 }
 
 

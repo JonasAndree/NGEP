@@ -3,19 +3,19 @@
 	background: var(--bg-color);
 	color: #f8f8f2;
 	
-		border-left: 1px solid rgb(30, 30, 30);
-		border-right: 1px solid rgb(50, 50, 50);
-		border-bottom: 1px solid rgb(50, 50, 50);
-		border-top: 1px solid rgb(30, 30, 30);
+	border-left: 1px solid rgb(30, 30, 30);
+	border-right: 1px solid rgb(50, 50, 50);
+	border-bottom: 1px solid rgb(50, 50, 50);
+	border-top: 1px solid rgb(30, 30, 30);
 }
 
 .cm-s-monokai div.CodeMirror-selected {
-	background: #49483E;
+	background: var(--transparent-active-text-color);
 }
 
 .cm-s-monokai .CodeMirror-line::selection, .cm-s-monokai .CodeMirror-line>span::selection,
 	.cm-s-monokai .CodeMirror-line>span>span::selection {
-	background: rgba(73, 72, 62, .99);
+	background: var(73, 72, 62, .99);
 }
 
 .cm-s-monokai .CodeMirror-line::-moz-selection, .cm-s-monokai .CodeMirror-line>span::-moz-selection,
@@ -41,11 +41,11 @@
 }
 
 .cm-s-monokai .CodeMirror-cursor {
-	border-left: 1px solid #f8f8f0;
+	border-left: 2px solid rgba(255, 255, 255,0.8);
 }
 
 .cm-s-monokai span.cm-comment {
-	color: #75715e;
+	color: #00ff00;
 }
 
 .cm-s-monokai span.cm-atom {
